@@ -1,7 +1,15 @@
-h1 {
-	font-size: 2.5rem;
+.title1 {
+	font-size: 64px;
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 50px;
+	color: white;
+}
+
+.titletext {
+	font-size: 22px;
+	text-align: center;
+	margin-top: 0px;
+	color: white;
 }
 
 body {
@@ -12,7 +20,7 @@ body {
 /* Style the top navigation bar */
 .topnav {
 	overflow: hidden;
-	background-color: rgb(211, 51, 30);
+	background-color: #d3331e;
 }
   
 /* Style the topnav links */
@@ -33,19 +41,17 @@ body {
 
 /* Style the content */
 .content {
-	background-color: #ddd;
+	background-color: rgb(36, 14, 14);
 	background-image: url("./Images/happypeople.jpg");
 	background-size: cover;
 	padding: 10px;
 	height: 700px;
 	width: 100%;
-
-	/*height: 00px; /* Should be removed. Only for demonstration */
 }
   
 /* Style the footer */
 .footer {
-	background-color: #f1f1f1;
+	background-color: #d3331e;
 	padding: 10px;
 	height: 50px;
 }  
@@ -54,8 +60,26 @@ body {
 	margin: 0 auto;
 	width: 500px;
 	text-align: center;
+	color: white;
 }
   
+.button1 {
+	margin: 0 auto;
+	width: 130px;
+	display: block;
+	background-color: #d3601e;
+	color: white;
+	text-align: center;
+	padding: 15px 10px;
+	font-size: 14px;
+	border-radius: 50px;
+	margin-top: 150px;
+}
+
+.button1:hover{
+	background-color: #944415;
+	cursor: pointer;
+}
 
 .hide { display: none; }
 .show { display: block; }
