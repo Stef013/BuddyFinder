@@ -2,6 +2,29 @@ import React, { Component } from 'react'
 
 class App extends Component {
 
+    constructor() {
+        super()
+      }
+
+    componentWillMount() {
+        this.getData()
+    }
+
+    getData() {
+        // create a new XMLHttpRequest
+        var xhr = new XMLHttpRequest()
+    
+        // get a callback when the server responds
+        xhr.addEventListener('load', () => {
+          // update the state of the component with the result here
+          console.log(xhr.responseText)
+        })
+        // open the request with the verb and the url
+        xhr.open('GET', 'http://localhost:4567/User/GetTest')
+        // send the request
+        xhr.send()
+      }
+
     render() {
 
         var data = "datadinges";
@@ -12,8 +35,6 @@ class App extends Component {
                     <a href="#">Login</a>
                     <a href="#">Contact</a>
                     <a href="#">About</a>
-
-
                 </div>
 
                 <div className="content">
@@ -24,20 +45,6 @@ class App extends Component {
                     <div className="button1">Get Started ></div>
 
                     <p>{data}</p>
-
-
-                    <script type="text/javascript" src="httpscript.js"></script>
-
-                    <script type="text/javascript">
-                        console.log("VUILE KENKER")
-                        const http = new XMLHttpRequest()
-                    
-                        http.open("GET", "http://localhost:4567/User/GetTest")
-                        http.send()
-                    
-                        http.onload = () => console.log(http.responseText)
-
-                    </script>
 
                 </div>
 
