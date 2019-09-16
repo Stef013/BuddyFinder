@@ -1,23 +1,51 @@
 import React, { Component } from 'react'
 
+var hoppa = "jema";
+
+/*function Welcome(props) {
+     // create a new XMLHttpRequest
+     var xhr = new XMLHttpRequest()
+     // get a callback when the server responds
+     xhr.addEventListener('load', () => {
+       // update the state of the component with the result here
+       hoppa = xhr.responseText;
+      // this.setState({ name: name });
+       console.log(hoppa)  
+       return <h1>{props.name}</h1>;
+     })
+     // open the request with the verb and the url
+     xhr.open('GET', 'http://localhost:4567/User/GetTest')
+     // send the request
+     xhr.send()
+
+     return "kale moeder";
+
+  }
+
+  const element = <Welcome name="Sara" />;*/
+
 class App extends Component {
 
     constructor() {
         super()
-      }
-
-    componentWillMount() {
-        this.getData()
     }
 
+    componentDidMount() {
+      this.getData()
+    }
+    
     getData() {
         // create a new XMLHttpRequest
         var xhr = new XMLHttpRequest()
-    
         // get a callback when the server responds
         xhr.addEventListener('load', () => {
           // update the state of the component with the result here
-          console.log(xhr.responseText)
+         // this.state.data = xhr.responseText;
+
+          const self = this;
+          self.setState({ data: xhr.responseText });
+         // this.setState({ name: name });
+          console.log(this.state.data)
         })
         // open the request with the verb and the url
         xhr.open('GET', 'http://localhost:4567/User/GetTest')
@@ -25,9 +53,10 @@ class App extends Component {
         xhr.send()
       }
 
+      
     render() {
-
-        var data = "datadinges";
+        
+        var data2 = "datadinges";
         try{
         return (
             <div className="App">
@@ -39,13 +68,15 @@ class App extends Component {
 
                 <div className="content">
                     <div className="title1">BuddyFinder</div>
-                    <p>{data = "Dikkertje"}</p>
+                    <p>{data2 = "Dikkertje"}</p>
 
                     <div className="titletext"><center><p>Find buddies for your favorite activities!</p></center></div>
                     <div className="button1">Get Started ></div>
 
-                    <p>{data}</p>
-
+                    { this.state && this.state.data &&
+                        <div>{this.state.data}</div>
+                    }
+                    
                 </div>
 
                 <div className="footer">
