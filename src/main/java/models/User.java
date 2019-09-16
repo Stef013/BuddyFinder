@@ -3,12 +3,13 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name="buddyfinder_users")
 public class User
 {
     @Id
     private int userId;
     private String username;
+    private String password;
     private String firstname;
     private String lastname;
 
@@ -17,6 +18,11 @@ public class User
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
+    }
+
+    public User()
+    {
+
     }
 
     public int getUserId()
@@ -37,6 +43,16 @@ public class User
     public void setUsername(String username)
     {
         this.username = username;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public String getFirstname()
