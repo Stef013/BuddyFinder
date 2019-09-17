@@ -1,6 +1,9 @@
 package rest.controllers;
 
 import com.google.gson.Gson;
+import data.UserRepository;
+import models.LoginModel;
+import models.User;
 
 import static rest.JsonUtil.json;
 import static spark.Spark.*;
@@ -8,6 +11,7 @@ import static spark.Spark.*;
 public class Usercontroller
 {
     private Gson gson = new Gson();
+    private UserRepository userRepository = new UserRepository();
 
     public Usercontroller(final String a)
     {
@@ -37,14 +41,16 @@ public class Usercontroller
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
 
-        post("/Player/Register", (request, response) ->  {
+        post("/User/Register/", (request, response) ->  {
 
-            System.out.println("In /Player/Register");
+            System.out.println("In /User/Register");
             String body = request.body();
-            //account = gson.fromJson(body, AccountRequestObject.class);
-            //AccountObject account = gson.fromJson(body, AccountObject.class);
+            System.out.println(body);
 
-           boolean result = true;
+            LoginModel lm = gson.fromJson(body, LoginModel.class);
+            User user = new User(lm.getUsername(), lm.getPassword()) ;
+
+            boolean result = userRepository.insertUser(user);
 
             String json = gson.toJson(result);
             System.out.println(json);
@@ -54,7 +60,7 @@ public class Usercontroller
 
         post("/User/Login", (request, response) -> {
 
-            System.out.println("In /Player/Login");
+            System.out.println("In /User/Login");
             String body = request.body();
             //AccountObject account = gson.fromJson(body, AccountObject.class);
 

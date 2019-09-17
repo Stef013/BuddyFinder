@@ -9,6 +9,7 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.password" value="vQzTCdskA2UBvfzp"/>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="eclipselink.allow-zero-id" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
