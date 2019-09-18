@@ -3,13 +3,38 @@
 	text-align: center;
 	margin-top: 50px;
 	color: white;
+	text-shadow: 1px 0 black, 0 0px black, 0px 0 black, 0 1px black;
 }
 
 .titletext {
 	font-size: 22px;
 	text-align: center;
 	margin-top: 0px;
-	color: white;
+	color: rgb(255, 255, 255);
+}
+
+.logintext {
+	font-size: 32px;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 15px;
+	margin-left: 0;
+	color: rgb(255, 255, 255);
+}
+
+.registertext {
+	font-size: 32px;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 15px;
+	margin-left: 0;
+	margin-right: 105px;
+	color: rgb(255, 255, 255);
+	display: inline-block;
+}
+.text1 {
+	font-size: 16px;
+	color: rgb(255, 255, 255);	
 }
 
 body {
@@ -65,15 +90,18 @@ body {
   
 .button1 {
 	margin: 0 auto;
-	width: 130px;
+	width: 90px;
 	display: block;
 	background-color: #d3601e;
 	color: white;
 	text-align: center;
-	padding: 15px 10px;
+	padding: 6px 6px;
 	font-size: 14px;
 	border-radius: 50px;
-	margin-top: 60px;
+	border-color: rgba(192, 192, 192, 0.986);
+	border-style: outset;
+	border-width: 2px;
+	margin-top: 10px;
 }
 
 .loginbutton {
@@ -90,7 +118,23 @@ body {
 }
 
 .button1:hover, .loginbutton:hover{
-	background-color: #944415;
+	background-color: #9444156b;
+	cursor: pointer;
+}
+
+.backLink {
+	
+	color: #ee6e25;
+	font-size: 18px;
+	margin-right: 0px;
+	display: inline-block;
+	position: initial;
+	text-align: left;
+	margin-right: 50px;
+}
+
+.backLink:hover{
+	color: #1ed369;
 	cursor: pointer;
 }
 
@@ -108,7 +152,7 @@ input[type=text], input[type=password] {
 	margin: 0 auto;
 	width: 350px !important;
 	background-color: #ddcdc4;
-	background: rgba(0,0,0,0.6);
+	background: rgba(0,0,0,0.7);
 	border-radius: 10%;
 	margin-top: 50px;
 	padding: 40px ;

@@ -15,6 +15,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        document.getElementById("container2").style.display = 'none';
         this.getData()
     }
 
@@ -34,6 +35,18 @@ class App extends Component {
         xhr.open('GET', 'http://localhost:4567/User/GetTest')
         // send the request
         xhr.send()
+    }
+
+    switch(bool) {
+        if(bool)
+        {
+            document.getElementById("container1").style.display = 'none';
+            document.getElementById("container2").style.display = 'block';
+        }
+        else{
+            document.getElementById("container1").style.display = 'block';
+            document.getElementById("container2").style.display = 'none';
+        }
     }
 
     login() {
@@ -62,18 +75,17 @@ class App extends Component {
         console.log(LoginModel.username);
         console.log(LoginModel.password);
 
-        axios.post(`http://localhost:4567/User/Register/`, { username: name, password: password})
-           .then(res => {
-             console.log(res);
-             console.log(res.data);
-        })
+        axios.post(`http://localhost:4567/User/Register/`, { username: name, password: password })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
 
         console.log("verzonden denk ik")
     }
 
     render() {
 
-        var data2 = "datadinges";
         try {
             return (
                 <div className="App">
@@ -85,11 +97,10 @@ class App extends Component {
 
                     <div className="content">
                         <div className="title1">BuddyFinder</div>
-                        <p>{data2 = "Dikkertje"}</p>
-
                         <div className="titletext"><center><p>Find buddies for your favorite activities!</p></center></div>
                         <div className="container" id="container1">
                             <center>
+                                <div className="logintext">Login</div>
                                 <input type="text" placeholder="Enter Username" name="uname" id="usernameBox" required></input>
                                 <br></br>
                                 <br></br>
@@ -98,9 +109,28 @@ class App extends Component {
                                 <br></br>
                                 <br></br>
                                 <button className="loginbutton" onClick={this.login}>Login</button>
+                                <br></br>
+                                <div className="text1">Don't have an account? Sign up now!</div>
+                                <div className="button1" onClick={() => this.switch(true)}>Sign up</div>
+
                             </center>
                         </div>
-                        <div className="button1">Get Started ></div>
+                        <div className="container" id="container2">
+                            <center>
+                                <div><div className="backLink" onClick={() => this.switch(false)} > {"<back"} </div><div className="registertext">Sign up</div></div>
+                                <input type="text" placeholder="Enter Username" name="uname" id="usernameBox" required></input>
+                                <br></br>
+                                <br></br>
+
+                                <input type="password" placeholder="Enter Password" name="psw" id="regPasswordBox" required></input>
+                                <br></br>
+                                <br></br>
+                                <input type="password" placeholder="Confirm Password" name="psw" id="regConfirmPasswordBox" required></input>
+                                <br></br>
+                                <br></br>
+                                <button className="loginbutton" onClick={this.login}>Register</button>
+                            </center>
+                        </div>
 
                         {this.state && this.state.data &&
                             <div>{this.state.data}</div>
