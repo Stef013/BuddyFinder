@@ -41,9 +41,9 @@ public class Usercontroller
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
 
-        post("/User/Register/", (request, response) ->  {
+        post("/User/SignUp/", (request, response) ->  {
 
-            System.out.println("In /User/Register");
+            System.out.println("In /User/SignUp");
             String body = request.body();
             System.out.println(body);
 
@@ -58,17 +58,21 @@ public class Usercontroller
 
         });
 
-        post("/User/Login", (request, response) -> {
+        post("/User/Login/", (request, response) -> {
 
             System.out.println("In /User/Login");
             String body = request.body();
-            //AccountObject account = gson.fromJson(body, AccountObject.class);
+            System.out.println(body);
 
-            //AccountObject LoggedInUser = AL.login(account.getPlayerName(), account.getPassword());
+            LoginModel lm = gson.fromJson(body, LoginModel.class);
+            User user = new User(lm.getUsername(), lm.getPassword()) ;
 
-            //String json = gson.toJson(LoggedInUser);
-            //System.out.println(LoggedInUser);
-            return body;
+            User resultdata = userRepository.getUserData(user);
+
+            String json = gson.toJson(resultdata);
+            System.out.println(json);
+
+            return json;
         });
 
         get("/User/GetTest", (request, response) -> "lol", json());

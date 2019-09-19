@@ -2,10 +2,7 @@ package data;
 
 import models.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
+import javax.persistence.*;
 
 public class UserRepository
 {
@@ -29,6 +26,10 @@ public class UserRepository
 
     public boolean insertUser(User user)
     {
+        if (getUserData(user) != null)
+        {
+            return false;
+        }
         try{
             openConnection();
             em.getTransaction().begin();
@@ -41,7 +42,33 @@ public class UserRepository
         }
         catch(Exception ex)
         {
+            emf.close();
             return false;
+        }
+    }
+
+    public User getUserData(User user)
+    {
+        try{
+            openConnection();
+            em.getTransaction().begin();
+
+            String sql = "Select * FROM buddyfinder_users WHERE Username = ?1 AND Password = ?2";
+
+            Query query = em.createNativeQuery(sql, User.class);
+            query.setParameter(1, user.getUsername());
+            query.setParameter(2, user.getPassword());
+            User userdata = (User)query.getSingleResult();
+
+            //em.getTransaction().commit();
+            emf.close();
+
+            return userdata;
+        }
+        catch(Exception ex)
+        {
+            emf.close();
+            return null;
         }
     }
 }
