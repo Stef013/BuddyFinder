@@ -5,13 +5,17 @@ import { empty } from 'rxjs';
 // Global variables
 var uname;
 var pword;
+var cpword;
+var hoppa;
 
 class App extends Component {
 
     constructor() {
         super()
-        this.sendPOST = this.sendPOST.bind(this);
+        this.sendLoginRequest = this.sendLoginRequest.bind(this);
+        this.sendSignUpRequest = this.sendSignUpRequest.bind(this);
         this.login = this.login.bind(this);
+        this.signUp = this.signUp.bind(this);
     }
 
     componentDidMount() {
@@ -38,12 +42,11 @@ class App extends Component {
     }
 
     switch(bool) {
-        if(bool)
-        {
+        if (bool) {
             document.getElementById("container1").style.display = 'none';
             document.getElementById("container2").style.display = 'block';
         }
-        else{
+        else {
             document.getElementById("container1").style.display = 'block';
             document.getElementById("container2").style.display = 'none';
         }
@@ -57,31 +60,70 @@ class App extends Component {
         console.log(pword);
 
         if (!uname || !pword) {
-            alert("Login in fields cannot be empty!")
+            alert("Login fields cannot be empty!")
         }
         else {
-            this.sendPOST(uname, pword);
+            this.sendLoginRequest(uname, pword);
         }
 
     }
 
-    sendPOST(name, password) {
+    signUp() {
+        uname = document.getElementById("suUsernameBox").value;
+        pword = document.getElementById("suPasswordBox").value;
+        cpword = document.getElementById("suConfirmPasswordBox").value;
+        console.log("in SignUp methode");
+        console.log(uname);
+        console.log(pword);
 
-        const LoginModel = {
-            username: name,
-            password: password,
-        };
 
-        console.log(LoginModel.username);
-        console.log(LoginModel.password);
+        if (!uname || !pword || !cpword) {
+            alert("Sign Up fields cannot be empty!")
+        }
+        else {
+            if (pword != cpword) {
+                alert("Passwords do not match!")
+            }
+            else {
+                this.sendSignUpRequest(uname, pword);
+            }
+        }
+    }
 
-        axios.post(`http://localhost:4567/User/Register/`, { username: name, password: password })
+    sendLoginRequest(name, password) {
+
+        axios.post(`http://localhost:4567/User/Login/`, { username: name, password: password })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-            })
 
-        console.log("verzonden denk ik")
+                if (!res.data)
+                {
+                    alert("Wrong username or password.")
+                }
+                else{
+                    alert("Welcome " + res.data.username + "!")
+
+                    hoppa = res.data.username;
+                    console.log(hoppa);
+                }
+            })
+    }
+
+    sendSignUpRequest(name, password) {
+
+        axios.post(`http://localhost:4567/User/SignUp/`, { username: name, password: password })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                if (res.data)
+                {
+                    alert("Account has been created!")
+                }
+                else{
+                    alert("Username is already taken")
+                }
+            })
     }
 
     render() {
@@ -112,23 +154,22 @@ class App extends Component {
                                 <br></br>
                                 <div className="text1">Don't have an account? Sign up now!</div>
                                 <div className="button1" onClick={() => this.switch(true)}>Sign up</div>
-
                             </center>
                         </div>
                         <div className="container" id="container2">
                             <center>
                                 <div><div className="backLink" onClick={() => this.switch(false)} > {"<back"} </div><div className="registertext">Sign up</div></div>
-                                <input type="text" placeholder="Enter Username" name="uname" id="usernameBox" required></input>
+                                <input type="text" placeholder="Enter Username" name="uname" id="suUsernameBox" required></input>
                                 <br></br>
                                 <br></br>
 
-                                <input type="password" placeholder="Enter Password" name="psw" id="regPasswordBox" required></input>
+                                <input type="password" placeholder="Enter Password" name="psw" id="suPasswordBox" required></input>
                                 <br></br>
                                 <br></br>
-                                <input type="password" placeholder="Confirm Password" name="psw" id="regConfirmPasswordBox" required></input>
+                                <input type="password" placeholder="Confirm Password" name="psw" id="suConfirmPasswordBox" required></input>
                                 <br></br>
                                 <br></br>
-                                <button className="loginbutton" onClick={this.login}>Register</button>
+                                <button className="loginbutton" onClick={this.signUp}>Register</button>
                             </center>
                         </div>
 
