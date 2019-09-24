@@ -39,7 +39,9 @@
 
 body {
 	margin: 0;
-	font-family: roboto !important;
+	background-image: url("./Images/happypeople.jpg");
+	background-size: cover;
+	/*font-family: roboto !important;*/
 }
 
 /* Style the top navigation bar */
@@ -66,9 +68,9 @@ body {
 
 /* Style the content */
 .content {
-	background-color: rgb(36, 14, 14);
-	background-image: url("./Images/happypeople.jpg");
-	background-size: cover;
+	/*background-color: rgb(36, 14, 14);*/
+	/*background-image: url("./Images/happypeople.jpg");
+	background-size: cover;*/
 	padding: 10px;
 	height: 700px;
 	width: 100%;

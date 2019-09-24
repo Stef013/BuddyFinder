@@ -23,6 +23,16 @@ class App extends Component {
         this.getData()
     }
 
+    redirect = () => {
+        
+        this.props.history.push({
+            pathname: '/home',
+            search: '?query=abc',
+            state: { user: uname }
+          })
+      
+    }
+
     getData() {
         // create a new XMLHttpRequest
         var xhr = new XMLHttpRequest()
@@ -102,10 +112,11 @@ class App extends Component {
                     alert("Wrong username or password.")
                 }
                 else{
-                    alert("Welcome " + res.data.username + "!")
+                    //alert("Welcome " + res.data.username + "!")
 
                     hoppa = res.data.username;
                     console.log(hoppa);
+                    this.redirect();
                 }
             })
     }
