@@ -1,16 +1,13 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
 
 class Home extends React.Component {
 
-   
-    
     redirect = () => {
-        
-          this.props.history.push('/contact')
-        
-      }
-    
+
+        this.props.history.push('/contact')
+
+    }
+
 
     render() {
         return (
@@ -23,31 +20,31 @@ class Home extends React.Component {
                 </div>
 
                 <div className="content">
-                    <div className="title1">Welcome! { this.props.location.state.user}</div>
-                    <div className="container" id="container1">
+                    <div className="hometext">Welcome {this.props.location.state.loggedInUser.username}!</div>
+                    <div>
+                        <div className="homeMatchContainer" id="matchContainer">
 
-                        <div className="logintext">Recent Matches</div>
-                        <br></br>
-                        <div className="text1">No matches found...</div>
-                        <br></br>
-                        <div className="button1" onClick= {this.redirect} >redirect</div>
-                        <br></br>
-                    </div>
-                    <div float="left">
-                        <div className="container" id="container2">
-                            <center>
-                                <div className="registertext">My Buddies</div>
+                            <div className="logintext">Recent Matches</div>
+                            <br></br>
+                            <div className="text1">No matches found...</div>
+                            <br></br>
+                            <div className="button1" onClick={this.redirect} >redirect</div>
+                            <br></br>
+                        </div>
+                        <div className="homeBuddyContainer" id="buddyContainer">
 
-                            </center>
+                            <div className="logintext">My Buddies</div>
+                            <br></br>
+                            <div className="text1">You have no buddies yet.</div>
                         </div>
                     </div>
                 </div>
 
-                <div className="footer">
+                <footer>
                     <div className="footertext">
                         <p>Created by Stefan Vujinovic - Official licenced product by Microsoft</p>
                     </div>
-                </div>
+                </footer>
             </div>
         )
     }
@@ -56,5 +53,4 @@ class Home extends React.Component {
     }
 }
 
-
-export default withRouter(Home)
+export default Home

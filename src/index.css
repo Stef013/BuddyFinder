@@ -1,9 +1,10 @@
+/*--------------------TEXT-------------------------------------------------------------*/
 .title1 {
 	font-size: 64px;
 	text-align: center;
 	margin-top: 50px;
 	color: white;
-	text-shadow: 1px 0 black, 0 0px black, 0px 0 black, 0 1px black;
+	text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 1px black;
 }
 
 .titletext {
@@ -11,6 +12,15 @@
 	text-align: center;
 	margin-top: 0px;
 	color: rgb(255, 255, 255);
+}
+
+.hometext {
+	font-size: 46px;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 50px;
+	color: rgb(255, 255, 255);
+	text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 1px black;
 }
 
 .logintext {
@@ -37,6 +47,7 @@
 	color: rgb(255, 255, 255);	
 }
 
+/*--------------------------BODY, NAV, CONTENT & FOOTER----------------------------*/
 body {
 	margin: 0;
 	background-image: url("./Images/happypeople.jpg");
@@ -44,13 +55,12 @@ body {
 	/*font-family: roboto !important;*/
 }
 
-/* Style the top navigation bar */
 .topnav {
 	overflow: hidden;
 	background-color: #d3331e;
 }
   
-/* Style the topnav links */
+/* Topnav links */
 .topnav a {
 	float: right;
 	display: block;
@@ -60,28 +70,26 @@ body {
 	text-decoration: none;
 }
   
-/* Change color on hover */
 .topnav a:hover {
 	background-color: #ddd;
 	color: black;
 }
 
-/* Style the content */
 .content {
-	/*background-color: rgb(36, 14, 14);*/
-	/*background-image: url("./Images/happypeople.jpg");
-	background-size: cover;*/
 	padding: 10px;
 	height: 700px;
 	width: 100%;
 }
   
-/* Style the footer */
-.footer {
+footer{
 	background-color: #d3331e;
 	padding: 10px;
-	height: 50px;
-}  
+	height: 45px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	position: fixed;
+}
 
 .footertext {
 	margin: 0 auto;
@@ -89,7 +97,8 @@ body {
 	text-align: center;
 	color: white;
 }
-  
+
+/*-----------------------------------BUTTONS & LINKS----------------------------------------*/
 .button1 {
 	margin: 0 auto;
 	width: 90px;
@@ -100,7 +109,6 @@ body {
 	padding: 6px 6px;
 	font-size: 14px;
 	border-radius: 50px;
-	border-color: rgba(192, 192, 192, 0.986);
 	border-style: outset;
 	border-width: 2px;
 	margin-top: 10px;
@@ -140,6 +148,7 @@ body {
 	cursor: pointer;
 }
 
+/*-------------------------------------INPUT--------------------------------*/
 input[type=text], input[type=password] {
 	margin: 0 auto;
 	width: 250px;
@@ -149,17 +158,47 @@ input[type=text], input[type=password] {
 	box-sizing: border-box;
 }
 
+/*-------------------------------------CONTAINERS---------------------------*/
 .container {
 	display: block;
 	margin: 0 auto;
 	width: 350px !important;
-	background-color: #ddcdc4;
+	/*background-color: #ddcdc4;*/
 	background: rgba(0,0,0,0.7);
 	border-radius: 10%;
 	margin-top: 50px;
 	padding: 40px ;
   }
 
+.homeMatchContainer {
+	display: block;
+	/*margin: 0 auto;*/
+	width: 350px !important;
+	height: 400px;
+	background: rgba(0,0,0,0.7);
+	border-radius: 10%;
+	margin-top: 50px;
+	margin-left: 25%;
+	padding: 40px;
+	display: inline-block;
+}
+
+.homeBuddyContainer {
+	display: block;
+	/*margin: 0 auto;*/
+	width: 350px !important;
+	height: 400px;
+	background: rgba(0,0,0,0.7);
+	border-radius: 10%;
+	margin-top: 50px;
+	padding: 40px;
+	margin-left: 0%;
+	margin-right: 25%;
+	float: right;
+	display: inline-block;
+}
+
+/*------------------------------------OTHER----------------------------------*/
 .hide { display: none; }
 .show { display: block; }
 .right { float: right; }

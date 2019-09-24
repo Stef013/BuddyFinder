@@ -8,6 +8,13 @@ var pword;
 var cpword;
 var hoppa;
 
+var loggedInUser = {
+    username: null,
+    firstname: null,
+    lastname: null,
+    city: null
+}
+
 class App extends Component {
 
     constructor() {
@@ -24,13 +31,12 @@ class App extends Component {
     }
 
     redirect = () => {
-        
+
         this.props.history.push({
             pathname: '/home',
-            search: '?query=abc',
-            state: { user: uname }
-          })
-      
+            state: { loggedInUser }
+        })
+
     }
 
     getData() {
@@ -107,14 +113,16 @@ class App extends Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (!res.data)
-                {
+                if (!res.data) {
                     alert("Wrong username or password.")
                 }
-                else{
+                else {
                     //alert("Welcome " + res.data.username + "!")
 
                     hoppa = res.data.username;
+                    loggedInUser.username = res.data.username;
+                    loggedInUser.firstname = res.data.firstname;
+                    loggedInUser.lastname = res.data.lastname;
                     console.log(hoppa);
                     this.redirect();
                 }
@@ -127,11 +135,10 @@ class App extends Component {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-                if (res.data)
-                {
+                if (res.data) {
                     alert("Account has been created!")
                 }
-                else{
+                else {
                     alert("Username is already taken")
                 }
             })
@@ -190,11 +197,11 @@ class App extends Component {
 
                     </div>
 
-                    <div className="footer">
+                    <footer>
                         <div className="footertext">
                             <p>Created by Stefan Vujinovic - Official licenced product by Microsoft</p>
                         </div>
-                    </div>
+                    </footer>
                 </div>
             )
         }
