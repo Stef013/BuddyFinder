@@ -12,13 +12,17 @@ public class User
     private String password;
     private String firstname;
     private String lastname;
+    private String country;
+    private String city;
 
-    public User(String username, String password, String firstname, String lastname)
+    public User(int userid, String username, String firstname, String lastname, String country, String city)
     {
+        this.userId = userid;
         this.username = username;
-        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.country = country;
+        this.city = city;
     }
 
     public User(String username, String password)
@@ -80,5 +84,25 @@ public class User
     public void setLastname(String lastname)
     {
         this.lastname = lastname;
+    }
+
+    public String getCountry()
+    {
+        return country;
+    }
+
+    public void setCountry(String country)
+    {
+        this.country = country;
+    }
+
+    public String getCity()
+    {
+        return city;
+    }
+
+    public void setCity(String city)
+    {
+        this.city = city;
     }
 }

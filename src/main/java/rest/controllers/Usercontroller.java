@@ -75,6 +75,24 @@ public class Usercontroller
             return json;
         });
 
+        post("/User/Update/", (request, response) -> {
+
+            System.out.println("In /User/Update");
+            String body = request.body();
+            System.out.println(body);
+
+            User user = gson.fromJson(body, User.class);
+            //User user = new User(lm.getUsername(), lm.getPassword()) ;
+
+            //User resultdata = userRepository.getUserData(user);
+
+            String resultdata = user.getUsername();
+            String json = gson.toJson(resultdata);
+            System.out.println(json);
+
+            return json;
+        });
+
         get("/User/GetTest", (request, response) -> "lol", json());
 
         exception(IllegalArgumentException.class, (e, req, res) -> {
