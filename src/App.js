@@ -163,10 +163,8 @@ class App extends Component {
                                 <div className="logintext">Login</div>
                                 <input type="text" placeholder="Enter Username" name="uname" id="usernameBox" required></input>
                                 <br></br>
-                                <br></br>
 
                                 <input type="password" placeholder="Enter Password" name="psw" id="passwordBox" required></input>
-                                <br></br>
                                 <br></br>
                                 <button className="loginbutton" onClick={this.login}>Login</button>
                                 <br></br>
@@ -179,13 +177,10 @@ class App extends Component {
                                 <div><div className="backLink" onClick={() => this.switch(false)} > {"<back"} </div><div className="registertext">Sign up</div></div>
                                 <input type="text" placeholder="Enter Username" name="uname" id="suUsernameBox" required></input>
                                 <br></br>
-                                <br></br>
 
                                 <input type="password" placeholder="Enter Password" name="psw" id="suPasswordBox" required></input>
                                 <br></br>
-                                <br></br>
                                 <input type="password" placeholder="Confirm Password" name="psw" id="suConfirmPasswordBox" required></input>
-                                <br></br>
                                 <br></br>
                                 <button className="loginbutton" onClick={this.signUp}>Register</button>
                             </center>

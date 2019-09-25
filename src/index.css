@@ -18,7 +18,7 @@
 	font-size: 46px;
 	text-align: center;
 	margin-top: 40px;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	color: rgb(255, 255, 255);
 	text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 1px black;
 }
@@ -50,7 +50,7 @@
 /*--------------------------BODY, NAV, CONTENT & FOOTER----------------------------*/
 body {
 	margin: 0;
-	background-image: url("./Images/happypeople.jpg");
+	background-image: url("./Images/happypeople2.jpg");
 	background-size: cover;
 	/*font-family: roboto !important;*/
 }
@@ -77,18 +77,29 @@ body {
 
 .content {
 	padding: 10px;
-	height: 700px;
+	min-height: 100%;
 	width: 100%;
 }
   
 footer{
+	clear: both;
 	background-color: #d3331e;
 	padding: 10px;
-	height: 45px;
+	height: 50px;
+	left: 0px;
 	bottom: 0px;
+	right: 0px;
+	position: absolute;
+}
+
+.footer2{
+	background-color: #d3331e;
+	padding: 10px;
+	height: 50px;
 	left: 0px;
 	right: 0px;
-	position: fixed;
+	margin-top: 20px;
+	position: absolute;
 }
 
 .footertext {
@@ -109,7 +120,7 @@ footer{
 	padding: 6px 6px;
 	font-size: 14px;
 	border-radius: 50px;
-	border-style: outset;
+	border-style: none !important;
 	border-width: 2px;
 	margin-top: 10px;
 }
@@ -117,18 +128,35 @@ footer{
 .loginbutton {
 	margin: 0 auto;
 	width: 100px;
+	height: 45px;
 	display: block;
 	background-color: #d3601e;
 	color: white;
 	text-align: center;
-	padding: 10px 10px;
+	padding: 12px 12px;
 	font-size: 14px;
 	border-radius: 50px;
+	border-style: none !important;
 	margin-top: 10px;
 }
 
-.button1:hover, .loginbutton:hover{
-	background-color: #9444156b;
+.getstartedbutton {
+	margin: 0 auto;
+	width: 120px;
+	height: 55px;
+	display: block;
+	background-color: #d3601e;
+	color: white;
+	text-align: center;
+	padding: 17px 12px;
+	font-size: 14px;
+	border-radius: 50px;
+	border-style: none !important;
+	margin-top: 10px;
+}
+
+.button1:hover, .loginbutton:hover, .getstartedbutton:hover{
+	background-color: #944415a4;
 	cursor: pointer;
 }
 
@@ -153,6 +181,9 @@ input[type=text], input[type=password] {
 	margin: 0 auto;
 	width: 250px;
 	padding: 6px 10px;
+	margin-bottom: 20px;
+	margin-left:15px;
+	margin-right: 17px;
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
@@ -163,12 +194,11 @@ input[type=text], input[type=password] {
 	display: block;
 	margin: 0 auto;
 	width: 350px !important;
-	/*background-color: #ddcdc4;*/
 	background: rgba(0,0,0,0.7);
 	border-radius: 10%;
 	margin-top: 50px;
 	padding: 40px ;
-  }
+}
 
 .homeMatchContainer {
 	display: block;
@@ -198,7 +228,36 @@ input[type=text], input[type=password] {
 	display: inline-block;
 }
 
+.profileContainer {
+	display: block;
+	margin: 0 auto;
+	width: 45% !important;
+	height: 40% !important;
+	background: rgba(0,0,0,0.7);
+	border-radius: 10%;
+	margin-top: 30px;
+	padding: 20px ;
+}
+
 /*------------------------------------OTHER----------------------------------*/
+.dot {
+	height: 120px;
+	width: 120px;
+	background-color: rgba(77, 77, 77, 0.842);
+	border-radius: 50%;
+	border-style: outset;
+	border-color: rgb(153, 153, 153);
+	border-width: 2px;
+	margin-bottom: 6px;
+	padding: 32px;
+	display: inline-block;
+}
+
+.dot:hover {
+	background-color: rgba(170, 95, 25, 0.342);
+	cursor: pointer;
+}
+
 .hide { display: none; }
 .show { display: block; }
 .right { float: right; }

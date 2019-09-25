@@ -1,13 +1,33 @@
 import React from 'react'
 
+var loggedInUser;
+
 class Home extends React.Component {
+
+    constructor(props) {
+        super(props)
+        loggedInUser = props.location.state.loggedInUser;
+    }
+
+    componentDidMount() {
+        if(!loggedInUser.firstname)
+        {
+            document.getElementById("matchContainer").style.display = 'none';
+            document.getElementById("buddyContainer").style.display = 'none';
+        }
+        else{
+            return true;
+        }
+    }
 
     redirect = () => {
 
-        this.props.history.push('/contact')
+        this.props.history.push({
+            pathname: '/newprofile',
+            state: { loggedInUser }
+        })
 
     }
-
 
     render() {
         return (
@@ -20,7 +40,9 @@ class Home extends React.Component {
                 </div>
 
                 <div className="content">
-                    <div className="hometext">Welcome {this.props.location.state.loggedInUser.username}!</div>
+                    <div className="hometext">Welcome {loggedInUser.username}!</div>
+
+                    
                     <div>
                         <div className="homeMatchContainer" id="matchContainer">
 
@@ -38,6 +60,14 @@ class Home extends React.Component {
                             <div className="text1">You have no buddies yet.</div>
                         </div>
                     </div>
+
+                    <div className="container" id="newProfileContainer">
+
+                            <div className="titletext">You need to create profile to use this site!</div>
+                            <br></br>
+                            
+                            <div className="getstartedbutton" onClick={this.redirect} >Get Started ></div>
+                        </div>
                 </div>
 
                 <footer>
