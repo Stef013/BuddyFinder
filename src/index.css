@@ -69,10 +69,25 @@ body {
 	padding: 14px 16px;
 	text-decoration: none;
 }
+
+.topnav b {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 7px 10px;
+	text-decoration: none;
+	font-size: 24px;
+	margin-bottom: 0px;
+}
   
 .topnav a:hover {
 	background-color: #ddd;
 	color: black;
+}
+
+.topnav b:hover {
+	cursor: pointer;
 }
 
 .content {

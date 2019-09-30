@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 var loggedInUser;
 
@@ -7,49 +8,57 @@ class NewProfile extends React.Component {
     constructor(props) {
         super(props)
         loggedInUser = props.location.state.loggedInUser;
+        this.newProfile = this.newProfile.bind(this)
+        this.sendNewProfileRequest = this.sendNewProfileRequest.bind(this)
     }
 
     redirect = () => {
-        this.props.history.push('/contact')
+        this.props.history.push({
+            pathname: '/home',
+            state: { loggedInUser }
+        })
     }
 
     newProfile() {
         var fname = document.getElementById("firstnameBox").value;
-        var lname = document.getElementById("lastnamebox").value;
+        var lname = document.getElementById("lastnameBox").value;
         var country = document.getElementById("countryBox").value;
         var city = document.getElementById("cityBox").value;
         console.log("in profile methode");
+        console.log(loggedInUser.userid)
         console.log(fname);
         console.log(lname);
         console.log(country);
         console.log(city);
 
-
-        /*if (!uname || !pword || !cpword) {
-            alert("Sign Up fields cannot be empty!")
+        if (!fname || !lname || !country || !city) {
+            alert("fields cannot be empty!")
         }
         else {
-            if (pword != cpword) {
-                alert("Passwords do not match!")
-            }
-            else {
-                this.sendSignUpRequest(uname, pword);
-            }
-        }*/
-        this.sendNewProfileRequest(fname, lname, country,city)
+
+            this.sendNewProfileRequest(fname, lname, country, city)
+        }
     }
 
     sendNewProfileRequest(fname, lname, cntry, cty) {
 
-        axios.post(`http://localhost:4567/User/Update/`, { firstname: fname, lastname: lname, country: cntry, city: cty  })
+        axios.post(`http://localhost:4567/User/Update/`, {
+            userid: loggedInUser.userid, username: loggedInUser.username,
+            password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty,
+        })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
                 if (res.data) {
-                    alert("Account has been created!")
+                    alert("Profile has been set up!")
+                    loggedInUser.firstname = fname;
+                    loggedInUser.lastname = lname;
+                    loggedInUser.country = cntry;
+                    loggedInUser.city = cty;
+                    this.redirect();
                 }
                 else {
-                    alert("Username is already taken")
+                    alert("Request Error!")
                 }
             })
     }
@@ -62,6 +71,7 @@ class NewProfile extends React.Component {
                     <a href="#">Account</a>
                     <a href="/contact">Contact</a>
                     <a href="#">About</a>
+                    <b href="/home">BuddyFinder</b>
                 </div>
 
                 <div className="content">
@@ -85,7 +95,7 @@ class NewProfile extends React.Component {
                             <br></br>
                             <input type="text" placeholder="Hobby3 (Optional)" name="hobby3" id="hobby3Box" required></input>
                             <br></br>
-                            <div className="loginbutton" onClick={this.redirect}> Save</div>
+                            <div className="loginbutton" onClick={this.newProfile}> Save</div>
                             <br></br>
                         </div>
                     </center>

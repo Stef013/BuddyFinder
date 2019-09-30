@@ -3,13 +3,11 @@ import axios from 'axios';
 import { empty } from 'rxjs';
 
 // Global variables
-var uname;
-var pword;
-var cpword;
-var hoppa;
 
 var loggedInUser = {
+    userid: null,
     username: null,
+    password: null,
     firstname: null,
     lastname: null,
     city: null
@@ -27,7 +25,7 @@ class App extends Component {
 
     componentDidMount() {
         document.getElementById("container2").style.display = 'none';
-        this.getData()
+        //this.getData()
     }
 
     redirect = () => {
@@ -36,10 +34,9 @@ class App extends Component {
             pathname: '/home',
             state: { loggedInUser }
         })
-
     }
 
-    getData() {
+    /*getData() {
         // create a new XMLHttpRequest
         var xhr = new XMLHttpRequest()
         // get a callback when the server responds
@@ -55,7 +52,7 @@ class App extends Component {
         xhr.open('GET', 'http://localhost:4567/User/GetTest')
         // send the request
         xhr.send()
-    }
+    }*/
 
     switch(bool) {
         if (bool) {
@@ -69,8 +66,8 @@ class App extends Component {
     }
 
     login() {
-        uname = document.getElementById("usernameBox").value;
-        pword = document.getElementById("passwordBox").value;
+        var uname = document.getElementById("usernameBox").value;
+        var pword = document.getElementById("passwordBox").value;
         console.log("in login methode");
         console.log(uname);
         console.log(pword);
@@ -81,17 +78,15 @@ class App extends Component {
         else {
             this.sendLoginRequest(uname, pword);
         }
-
     }
 
     signUp() {
-        uname = document.getElementById("suUsernameBox").value;
-        pword = document.getElementById("suPasswordBox").value;
-        cpword = document.getElementById("suConfirmPasswordBox").value;
+        var uname = document.getElementById("suUsernameBox").value;
+        var pword = document.getElementById("suPasswordBox").value;
+        var cpword = document.getElementById("suConfirmPasswordBox").value;
         console.log("in SignUp methode");
         console.log(uname);
         console.log(pword);
-
 
         if (!uname || !pword || !cpword) {
             alert("Sign Up fields cannot be empty!")
@@ -119,11 +114,12 @@ class App extends Component {
                 else {
                     //alert("Welcome " + res.data.username + "!")
 
-                    hoppa = res.data.username;
+                    loggedInUser.userid = res.data.userid;
                     loggedInUser.username = res.data.username;
+                    loggedInUser.password = res.data.password;
                     loggedInUser.firstname = res.data.firstname;
                     loggedInUser.lastname = res.data.lastname;
-                    console.log(hoppa);
+                    console.log(loggedInUser);
                     this.redirect();
                 }
             })
@@ -150,9 +146,10 @@ class App extends Component {
             return (
                 <div className="App">
                     <div className="topnav">
-                        <a href="#">Login</a>
-                        <a href="#">Contact</a>
+                        <a href="/">Login</a>
+                        <a href="/contact">Contact</a>
                         <a href="#">About</a>
+                        <b href="/">BuddyFinder</b>
                     </div>
 
                     <div className="content">

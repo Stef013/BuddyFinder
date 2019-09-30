@@ -7,6 +7,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props)
         loggedInUser = props.location.state.loggedInUser;
+        console.log(loggedInUser.firstname);
     }
 
     componentDidMount() {
@@ -16,7 +17,7 @@ class Home extends React.Component {
             document.getElementById("buddyContainer").style.display = 'none';
         }
         else{
-            return true;
+            document.getElementById("newProfileContainer").style.display = 'none';
         }
     }
 
@@ -37,6 +38,7 @@ class Home extends React.Component {
                     <a href="#">Account</a>
                     <a href="/contact">Contact</a>
                     <a href="#">About</a>
+                    <b href="/home">BuddyFinder</b>
                 </div>
 
                 <div className="content">
