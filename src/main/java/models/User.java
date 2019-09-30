@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class User
 {
     @Id
-    private int userId;
+    private int userid;
     private String username;
     private String password;
     private String firstname;
@@ -17,7 +17,7 @@ public class User
 
     public User(int userid, String username, String firstname, String lastname, String country, String city)
     {
-        this.userId = userid;
+        this.userid = userid;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -38,12 +38,12 @@ public class User
 
     public int getUserId()
     {
-        return userId;
+        return userid;
     }
 
     public void setUserId(int userId)
     {
-        this.userId = userId;
+        this.userid = userId;
     }
 
     public String getUsername()

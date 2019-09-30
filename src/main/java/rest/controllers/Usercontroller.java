@@ -82,11 +82,10 @@ public class Usercontroller
             System.out.println(body);
 
             User user = gson.fromJson(body, User.class);
-            //User user = new User(lm.getUsername(), lm.getPassword()) ;
 
-            //User resultdata = userRepository.getUserData(user);
+            boolean resultdata = userRepository.update(user);
 
-            String resultdata = user.getUsername();
+            //String resultdata = user.getFirstname();
             String json = gson.toJson(resultdata);
             System.out.println(json);
 

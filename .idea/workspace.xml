@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="056144d4-2b63-4008-8cb2-c4c885114fb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/rest/controllers/Usercontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rest/controllers/Usercontroller.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="90">
+              <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+            <state relative-caret-position="641">
+              <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,20 +83,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-62">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="380">
+              <caret line="83" column="44" lean-forward="true" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
               <folding>
                 <element signature="e#1542#1543#0" expanded="true" />
-                <element signature="e#1572#1573#0" expanded="true" />
-                <element signature="e#1622#1623#0" expanded="true" />
-                <element signature="e#1660#1661#0" expanded="true" />
-                <element signature="e#1695#1696#0" expanded="true" />
-                <element signature="e#1722#1723#0" expanded="true" />
-                <element signature="e#1766#1767#0" expanded="true" />
-                <element signature="e#1798#1799#0" expanded="true" />
+                <element signature="e#1582#1583#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,9 +141,10 @@
         <option value="$PROJECT_DIR$/src/main/java/rest/RestServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/LoginModel.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/models/PersonModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java" />
       </list>
     </option>
   </component>
@@ -158,10 +156,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="y" value="-15" />
-    <option name="width" value="985" />
-    <option name="height" value="1057" />
+    <option name="x" value="-17" />
+    <option name="y" value="-17" />
+    <option name="width" value="986" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -169,6 +167,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,14 +245,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569418350207" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569840891055" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -332,17 +330,18 @@
       <workItem from="1568891596686" duration="8347000" />
       <workItem from="1569316334722" duration="1201000" />
       <workItem from="1569401106701" duration="2230000" />
+      <workItem from="1569833943302" duration="6256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37363000" />
+    <option name="totallyTimeSpent" value="43619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1691" height="917" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17556784" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17802332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -352,7 +351,7 @@
       <window_info id="Persistence" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991013" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32991013" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32991013" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3992298" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,12 +399,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/LoginModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="152">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#423#424#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -427,45 +432,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/LoginModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/PersonModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="57">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
           <folding>
-            <element signature="e#169#170#0" expanded="true" />
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding>
-            <element signature="e#1542#1543#0" expanded="true" />
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1622#1623#0" expanded="true" />
-            <element signature="e#1660#1661#0" expanded="true" />
-            <element signature="e#1695#1696#0" expanded="true" />
-            <element signature="e#1722#1723#0" expanded="true" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#1798#1799#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+        <state relative-caret-position="641">
+          <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="83" column="44" lean-forward="true" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
+          <folding>
+            <element signature="e#1542#1543#0" expanded="true" />
+            <element signature="e#1582#1583#0" expanded="true" />
           </folding>
         </state>
       </provider>

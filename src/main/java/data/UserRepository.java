@@ -59,7 +59,7 @@ public class UserRepository
             query.setParameter(1, user.getUsername());
             query.setParameter(2, user.getPassword());
             User userdata = (User)query.getSingleResult();
-
+            System.out.println(userdata);
             //em.getTransaction().commit();
             emf.close();
 
@@ -69,6 +69,27 @@ public class UserRepository
         {
             emf.close();
             return null;
+        }
+    }
+
+    public boolean update(User user)
+    {
+        System.out.println(user.getUserId());
+        try{
+            openConnection();
+            em.getTransaction().begin();
+            //User userobject = em.(user.getUserId());
+
+            em.merge(user);
+            em.getTransaction().commit();
+            emf.close();
+
+            return true;
+        }
+        catch(Exception ex)
+        {
+            emf.close();
+            return false;
         }
     }
 }
