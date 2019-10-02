@@ -70,7 +70,8 @@ body {
 	text-decoration: none;
 }
 
-.topnav b {
+.homebutton
+{
 	float: left;
 	display: block;
 	color: #f2f2f2;
@@ -86,7 +87,7 @@ body {
 	color: black;
 }
 
-.topnav b:hover {
+.homebutton:hover {
 	cursor: pointer;
 }
 
@@ -197,6 +198,19 @@ input[type=text], input[type=password] {
 	width: 250px;
 	padding: 6px 10px;
 	margin-bottom: 20px;
+	margin-left:15px;
+	margin-right: 17px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+textarea {
+	margin: 0 auto !important;
+	width: 531px;
+	height: 125px !important;
+	padding: 0px 10px;
+	margin-bottom: 20px !important;
 	margin-left:15px;
 	margin-right: 17px;
 	display: inline-block;

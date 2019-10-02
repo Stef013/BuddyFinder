@@ -21,13 +21,18 @@ class Home extends React.Component {
         }
     }
 
-    redirect = () => {
+    refresh = () => {
+        this.props.history.push({
+            pathname: '/home',
+            state: { loggedInUser }
+        })
+    }
 
+    redirect = () => {
         this.props.history.push({
             pathname: '/newprofile',
             state: { loggedInUser }
         })
-
     }
 
     render() {
@@ -38,7 +43,7 @@ class Home extends React.Component {
                     <a href="#">Account</a>
                     <a href="/contact">Contact</a>
                     <a href="#">About</a>
-                    <b href="/home">BuddyFinder</b>
+                    <div className="homebutton" onClick={this.refresh}>BuddyFinder</div>
                 </div>
 
                 <div className="content">

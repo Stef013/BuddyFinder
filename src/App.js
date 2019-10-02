@@ -10,7 +10,12 @@ var loggedInUser = {
     password: null,
     firstname: null,
     lastname: null,
-    city: null
+    city: null,
+    country: null,
+    description: null,
+    hobby1: null,
+    hobby2: null,
+    hobby3: null
 }
 
 class App extends Component {
@@ -28,7 +33,7 @@ class App extends Component {
         //this.getData()
     }
 
-    redirect = () => {
+    redirectToHome = () => {
 
         this.props.history.push({
             pathname: '/home',
@@ -120,7 +125,7 @@ class App extends Component {
                     loggedInUser.firstname = res.data.firstname;
                     loggedInUser.lastname = res.data.lastname;
                     console.log(loggedInUser);
-                    this.redirect();
+                    this.redirectToHome();
                 }
             })
     }
@@ -149,7 +154,7 @@ class App extends Component {
                         <a href="/">Login</a>
                         <a href="/contact">Contact</a>
                         <a href="#">About</a>
-                        <b href="/">BuddyFinder</b>
+                        <div className="homebutton" onClick={this.refresh}>BuddyFinder</div>
                     </div>
 
                     <div className="content">

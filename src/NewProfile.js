@@ -24,27 +24,36 @@ class NewProfile extends React.Component {
         var lname = document.getElementById("lastnameBox").value;
         var country = document.getElementById("countryBox").value;
         var city = document.getElementById("cityBox").value;
+        var description = document.getElementById("aboutmeBox").value;
+        var hobby1 = document.getElementById("hobby1Box").value;
+        var hobby2 = document.getElementById("hobby2Box").value;
+        var hobby3 = document.getElementById("hobby3Box").value;
         console.log("in profile methode");
         console.log(loggedInUser.userid)
         console.log(fname);
         console.log(lname);
         console.log(country);
         console.log(city);
+        console.log(description);
+        console.log(hobby1);
+        console.log(hobby2);
+        console.log(hobby3);
 
-        if (!fname || !lname || !country || !city) {
+        if (!fname || !lname || !country || !city || !hobby1) {
             alert("fields cannot be empty!")
         }
         else {
 
-            this.sendNewProfileRequest(fname, lname, country, city)
+            this.sendNewProfileRequest(fname, lname, country, city, description, hobby1, hobby2, hobby3)
         }
     }
 
-    sendNewProfileRequest(fname, lname, cntry, cty) {
+    sendNewProfileRequest(fname, lname, cntry, cty, desc, hob1, hob2, hob3) {
 
         axios.post(`http://localhost:4567/User/Update/`, {
             userid: loggedInUser.userid, username: loggedInUser.username,
-            password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty,
+            password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1, 
+            hobby2: hob2, hobby3: hob3
         })
             .then(res => {
                 console.log(res);
@@ -55,6 +64,10 @@ class NewProfile extends React.Component {
                     loggedInUser.lastname = lname;
                     loggedInUser.country = cntry;
                     loggedInUser.city = cty;
+                    loggedInUser.description = desc;
+                    loggedInUser.hobby1 = hob1;
+                    loggedInUser.hobby2 = hob2;
+                    loggedInUser.hobby3 = hob3;
                     this.redirect();
                 }
                 else {
@@ -71,7 +84,7 @@ class NewProfile extends React.Component {
                     <a href="#">Account</a>
                     <a href="/contact">Contact</a>
                     <a href="#">About</a>
-                    <b href="/home">BuddyFinder</b>
+                    <div className="homebutton" onClick={this.redirect}>BuddyFinder</div>
                 </div>
 
                 <div className="content">
@@ -81,7 +94,7 @@ class NewProfile extends React.Component {
                             <div className="dot">Upload picture</div>
                             <br></br>
                             <div className="text1" margin-bottom="30px">{loggedInUser.username}</div>
-                            <br></br>
+                            
                             <br></br>
                             <input type="text" placeholder="First name" name="fname" id="firstnameBox" required></input>
                             <input type="text" placeholder="Last name" name="lname" id="lastnameBox" required></input>
@@ -89,7 +102,7 @@ class NewProfile extends React.Component {
                             <input type="text" placeholder="Country" name="country" id="countryBox" required></input>
                             <input type="text" placeholder="City" name="city" id="cityBox" required></input>
                             <br></br>
-                            <br></br>
+                            <textarea placeholder="About me:" id="aboutmeBox"></textarea>
                             <input type="text" placeholder="Hobby1" name="hobby1" id="hobby1Box" required></input>
                             <input type="text" placeholder="Hobby2 (Optional)" name="hobby2" id="hobby2Box" required></input>
                             <br></br>
