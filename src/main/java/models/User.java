@@ -14,8 +14,13 @@ public class User
     private String lastname;
     private String country;
     private String city;
+    private String description;
+    private String hobby1;
+    private String hobby2;
+    private String hobby3;
 
-    public User(int userid, String username, String firstname, String lastname, String country, String city)
+
+    /*public User(int userid, String username, String firstname, String lastname, String country, String city)
     {
         this.userid = userid;
         this.username = username;
@@ -23,7 +28,7 @@ public class User
         this.lastname = lastname;
         this.country = country;
         this.city = city;
-    }
+    }*/
 
     public User(String username, String password)
     {
@@ -104,5 +109,45 @@ public class User
     public void setCity(String city)
     {
         this.city = city;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
+    public String getHobby1()
+    {
+        return hobby1;
+    }
+
+    public void setHobby1(String hobby1)
+    {
+        this.hobby1 = hobby1;
+    }
+
+    public String getHobby2()
+    {
+        return hobby2;
+    }
+
+    public void setHobby2(String hobby2)
+    {
+        this.hobby2 = hobby2;
+    }
+
+    public String getHobby3()
+    {
+        return hobby3;
+    }
+
+    public void setHobby3(String hobby3)
+    {
+        this.hobby3 = hobby3;
     }
 }
