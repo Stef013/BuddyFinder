@@ -59,7 +59,7 @@ public class UserRepository
             query.setParameter(1, user.getUsername());
             query.setParameter(2, user.getPassword());
             User userdata = (User)query.getSingleResult();
-            System.out.println(userdata);
+            System.out.println(userdata.getHobby1());
             //em.getTransaction().commit();
             emf.close();
 

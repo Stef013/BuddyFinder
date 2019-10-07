@@ -1,9 +1,12 @@
 package rest.controllers;
 
 import com.google.gson.Gson;
+import data.MatchRepository;
 import data.UserRepository;
 import models.LoginModel;
 import models.User;
+
+import java.util.List;
 
 import static rest.JsonUtil.json;
 import static spark.Spark.*;
@@ -12,6 +15,7 @@ public class Usercontroller
 {
     private Gson gson = new Gson();
     private UserRepository userRepository = new UserRepository();
+    private MatchRepository matchRepository = new MatchRepository();
 
     public Usercontroller(final String a)
     {
@@ -87,6 +91,23 @@ public class Usercontroller
 
             //String resultdata = user.getFirstname();
             String json = gson.toJson(resultdata);
+            System.out.println(json);
+
+            return json;
+        });
+
+        post("/Match/", (request, response) -> {
+
+            System.out.println("In /Match");
+            String body = request.body();
+            System.out.println(body);
+
+            User user = gson.fromJson(body, User.class);
+
+            List<User> matches = matchRepository.findMatches(user);
+
+            //String resultdata = user.getFirstname();
+            String json = gson.toJson(matches);
             System.out.println(json);
 
             return json;
