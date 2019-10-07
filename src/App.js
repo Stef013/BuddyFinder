@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { empty } from 'rxjs';
 
 // Global variables
 
@@ -124,6 +123,11 @@ class App extends Component {
                     loggedInUser.password = res.data.password;
                     loggedInUser.firstname = res.data.firstname;
                     loggedInUser.lastname = res.data.lastname;
+                    loggedInUser.country = res.data.country;
+                    loggedInUser.city = res.data.city;
+                    loggedInUser.hobby1 = res.data.hobby1;
+                    loggedInUser.hobby2 = res.data.hobby2;
+                    loggedInUser.hobby3 = res.data.hobby3;
                     console.log(loggedInUser);
                     this.redirectToHome();
                 }
