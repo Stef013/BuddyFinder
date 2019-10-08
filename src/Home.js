@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 var loggedInUser;
-
+var matches;
 class Home extends React.Component {
 
     constructor(props) {
@@ -51,10 +51,18 @@ class Home extends React.Component {
                     alert("Werkt nie")
                 }
                 else {
-                    console.log(res.data);
-                    this.redirectToHome();
+                    console.log(res.data[0].firstname);
+                    this.setState({ matches: res.data });
                 }
             })
+    }
+
+    loadMatches = () => {
+        if(this.state.matches.length > 0){
+            return this.state.matches.map(function(each){
+              return(<div className="text1">{each.firstname + " " + each.lastname}</div>)
+            })
+          }
     }
 
     render() {
@@ -71,13 +79,15 @@ class Home extends React.Component {
                 <div className="content">
                     <div className="hometext">Welcome {loggedInUser.username}!</div>
 
-
                     <div>
                         <div className="homeMatchContainer" id="matchContainer">
 
                             <div className="logintext">Recent Matches</div>
                             <br></br>
-                            <div className="text1">No matches found...</div>
+                            {this.state && this.state.matches &&
+                                    
+                                this.loadMatches()
+                            }
                             <br></br>
                             <div className="button1" onClick={this.redirect} >redirect</div>
                             <br></br>

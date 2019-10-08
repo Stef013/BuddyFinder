@@ -96,7 +96,7 @@ class App extends Component {
             alert("Sign Up fields cannot be empty!")
         }
         else {
-            if (pword != cpword) {
+            if (pword !== cpword) {
                 alert("Passwords do not match!")
             }
             else {
@@ -116,8 +116,6 @@ class App extends Component {
                     alert("Wrong username or password.")
                 }
                 else {
-                    //alert("Welcome " + res.data.username + "!")
-
                     loggedInUser.userid = res.data.userid;
                     loggedInUser.username = res.data.username;
                     loggedInUser.password = res.data.password;
