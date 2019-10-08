@@ -192,6 +192,26 @@ footer{
 	cursor: pointer;
 }
 
+.matchesbutton{
+	margin: 0 auto;
+	width: 260px;
+	height: 50px;
+	display: block;
+	background-color: #525252ed;
+	color: white;
+	text-align: left;
+	padding: 17px 12px;
+	font-size: 17px;
+	border-radius: 15px;
+	border-style: none !important;
+	margin-top: 10px;
+}
+
+.matchesbutton:hover{
+	background-color: #6464645b;
+	cursor: pointer;
+}
+
 /*-------------------------------------INPUT--------------------------------*/
 input[type=text], input[type=password] {
 	margin: 0 auto;

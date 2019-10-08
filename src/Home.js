@@ -9,6 +9,8 @@ class Home extends React.Component {
         super(props)
         loggedInUser = props.location.state.loggedInUser;
         this.sendfindMatchRequest = this.sendfindMatchRequest.bind(this);
+        this.redirectToProfile = this.redirectToProfile.bind(this);
+        this.loadMatches = this.loadMatches.bind(this);
         console.log(loggedInUser.firstname);
     }
 
@@ -30,9 +32,16 @@ class Home extends React.Component {
         })
     }
 
-    redirect = () => {
+    redirectToNewProfile = () => {
         this.props.history.push({
             pathname: '/newprofile',
+            state: { loggedInUser }
+        })
+    }
+
+    redirectToProfile = () => {
+        this.props.history.push({
+            pathname: '/profile',
             state: { loggedInUser }
         })
     }
@@ -57,12 +66,12 @@ class Home extends React.Component {
             })
     }
 
-    loadMatches = () => {
-        if(this.state.matches.length > 0){
-            return this.state.matches.map(function(each){
-              return(<div className="text1">{each.firstname + " " + each.lastname}</div>)
+    loadMatches = (app) => {
+        if (app.state.matches.length > 0) {
+            return app.state.matches.map(function (each) {
+                return (<div className="matchesbutton" onClick={app.redirectToProfile}>{each.username}</div>)
             })
-          }
+        }
     }
 
     render() {
@@ -85,11 +94,11 @@ class Home extends React.Component {
                             <div className="logintext">Recent Matches</div>
                             <br></br>
                             {this.state && this.state.matches &&
-                                    
-                                this.loadMatches()
+                                
+                                this.loadMatches(this)
                             }
                             <br></br>
-                            <div className="button1" onClick={this.redirect} >redirect</div>
+                            <div className="button1" onClick={this.redirectToNewProfile} >redirect</div>
                             <br></br>
                         </div>
                         <div className="homeBuddyContainer" id="buddyContainer">
@@ -105,7 +114,7 @@ class Home extends React.Component {
                         <div className="titletext">You need to create profile to use this site!</div>
                         <br></br>
 
-                        <div className="getstartedbutton" onClick={this.redirect} >Get Started ></div>
+                        <div className="getstartedbutton" onClick={this.redirectToNewProfile} >Get Started ></div>
                     </div>
                 </div>
 

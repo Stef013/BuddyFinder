@@ -5,6 +5,7 @@ import App from './App'
 import Contact from './Contact';
 import Home from './Home';
 import NewProfile from './NewProfile';
+import Profile from './Profile';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -16,6 +17,7 @@ const routing = (
         <Route path="/home" component={Home} />
         <Route path="/contact" component={Contact} />
         <Route path="/newprofile" component={NewProfile} />
+        <Route path="/profile" component={Profile} />
       </div>
     </Router>
   )
