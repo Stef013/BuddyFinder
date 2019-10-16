@@ -31,7 +31,7 @@ public class MatchRepository
         try
         {
             openConnection();
-            em.getTransaction().begin();
+            //em.getTransaction().begin();
 
             String sql = "Select * FROM buddyfinder_users WHERE NOT UserID = ?1";
 
@@ -45,13 +45,16 @@ public class MatchRepository
             List<User> matches = new ArrayList<>();
             for(User u : allUsers)
             {
-                if(u.getHobby1().contains(user.getHobby1()) || u.getHobby1().contains(user.getHobby2()) ||
-                        u.getHobby1().contains(user.getHobby3()) || u.getHobby2().contains(user.getHobby1()) ||
-                        u.getHobby2().contains(user.getHobby2()) || u.getHobby2().contains(user.getHobby3()) ||
-                        u.getHobby3().contains(user.getHobby1()) || u.getHobby3().contains(user.getHobby2()) ||
-                        u.getHobby3().contains(user.getHobby3()))
+                if(u.getHobby1() != null)
                 {
-                    matches.add(u);
+                    if (u.getHobby1().contains(user.getHobby1()) || u.getHobby1().contains(user.getHobby2()) ||
+                            u.getHobby1().contains(user.getHobby3()) || u.getHobby2().contains(user.getHobby1()) ||
+                            u.getHobby2().contains(user.getHobby2()) || u.getHobby2().contains(user.getHobby3()) ||
+                            u.getHobby3().contains(user.getHobby1()) || u.getHobby3().contains(user.getHobby2()) ||
+                            u.getHobby3().contains(user.getHobby3()))
+                    {
+                        matches.add(u);
+                    }
                 }
             }
 

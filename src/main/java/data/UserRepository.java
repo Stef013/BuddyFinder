@@ -1,11 +1,13 @@
 package data;
 
 import models.User;
-
+import logic.Hashing;
 import javax.persistence.*;
 
 public class UserRepository
 {
+    private Hashing hashing;
+
     @PersistenceContext
     public static EntityManagerFactory emf;
     public static EntityManager em;
@@ -31,6 +33,11 @@ public class UserRepository
             return false;
         }
         try{
+
+            hashing = new Hashing();
+            String hashedPassword = hashing.hash(user.getPassword());
+            user.setPassword(hashedPassword);
+
             openConnection();
             em.getTransaction().begin();
 
@@ -50,6 +57,8 @@ public class UserRepository
     public User getUserData(User user)
     {
         try{
+            hashing = new Hashing();
+
             openConnection();
             em.getTransaction().begin();
 
@@ -57,7 +66,7 @@ public class UserRepository
 
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUsername());
-            query.setParameter(2, user.getPassword());
+            query.setParameter(2, hashing.hash(user.getPassword()));
             User userdata = (User)query.getSingleResult();
             System.out.println(userdata.getHobby1());
             //em.getTransaction().commit();
