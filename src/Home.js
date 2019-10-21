@@ -14,7 +14,7 @@ class Home extends React.Component {
         console.log(loggedInUser.firstname);
     }
 
-    componentDidMount() {
+    hideContainer() {
         if (!loggedInUser.firstname) {
             document.getElementById("matchContainer").style.display = 'none';
             document.getElementById("buddyContainer").style.display = 'none';
@@ -69,7 +69,7 @@ class Home extends React.Component {
     loadMatches = (app) => {
         if (app.state.matches.length > 0) {
             return app.state.matches.map(function (each) {
-                return (<div className="matchesbutton" onClick={app.redirectToProfile}>{each.username}</div>)
+                return (<div className="matchesbutton" onClick={app.redirectToProfile}><div className="dot2"></div>{each.username}</div>)
             })
         }
     }
@@ -117,6 +117,8 @@ class Home extends React.Component {
                         <div className="getstartedbutton" onClick={this.redirectToNewProfile} >Get Started ></div>
                     </div>
                 </div>
+
+                {this.hideContainer}
 
                 <footer>
                     <div className="footertext">

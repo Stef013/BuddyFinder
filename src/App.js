@@ -27,10 +27,10 @@ class App extends Component {
         this.signUp = this.signUp.bind(this);
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         document.getElementById("container2").style.display = 'none';
         //this.getData()
-    }
+    }*/
 
     redirectToHome = () => {
 
@@ -176,7 +176,7 @@ class App extends Component {
                                 <div className="button1" onClick={() => this.switch(true)}>Sign up</div>
                             </center>
                         </div>
-                        <div className="container" id="container2">
+                        <div className="container" id="container2" style={{display: 'none'}}>
                             <center>
                                 <div><div className="backLink" onClick={() => this.switch(false)} > {"<back"} </div><div className="registertext">Sign up</div></div>
                                 <input type="text" placeholder="Enter Username" name="uname" id="suUsernameBox" required></input>
