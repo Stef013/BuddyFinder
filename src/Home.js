@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import axios from 'axios'
 
 var loggedInUser;
@@ -12,15 +13,29 @@ class Home extends React.Component {
         this.redirectToProfile = this.redirectToProfile.bind(this);
         this.loadMatches = this.loadMatches.bind(this);
         console.log(loggedInUser.firstname);
+
+        this.state = { 
+            matchVisible: false,
+            newProfileVisible: false,
+         };
     }
 
-    hideContainer() {
+    componentDidMount() {
         if (!loggedInUser.firstname) {
-            document.getElementById("matchContainer").style.display = 'none';
-            document.getElementById("buddyContainer").style.display = 'none';
+            //ReactDOM.findDOMNode(this.refs.matchref).style.display='block';
+            //this.newProfileref.style.display="none";
+            this.setState({
+                matchVisible: !this.state.matchVisible,
+              });
+            //document.getElementById("matchContainer").style.display = 'none';
+            //document.getElementById("buddyContainer").style.display = 'none';
         }
         else {
-            document.getElementById("newProfileContainer").style.display = 'none';
+            //document.getElementById("newProfileContainer").style.display = 'none';
+            this.setState({
+                newProfileVisible: !this.state.newProfileVisible,
+              });
+
             this.sendfindMatchRequest();
         }
     }
@@ -57,7 +72,7 @@ class Home extends React.Component {
                 console.log(res.data);
 
                 if (!res.data) {
-                    alert("Werkt nie")
+                    //alert("Werkt nie")
                 }
                 else {
                     console.log(res.data[0].firstname);
@@ -89,7 +104,7 @@ class Home extends React.Component {
                     <div className="hometext">Welcome {loggedInUser.username}!</div>
 
                     <div>
-                        <div className="homeMatchContainer" id="matchContainer">
+                        <div className="homeMatchContainer" id="matchContainer" style={{display: this.state.matchVisible ? 'none' : '', }}>
 
                             <div className="logintext">Recent Matches</div>
                             <br></br>
@@ -101,7 +116,7 @@ class Home extends React.Component {
                             <div className="button1" onClick={this.redirectToNewProfile} >redirect</div>
                             <br></br>
                         </div>
-                        <div className="homeBuddyContainer" id="buddyContainer">
+                        <div className="homeBuddyContainer" id="buddyContainer" style={{display: this.state.matchVisible ? 'none' : '', }}>
 
                             <div className="logintext">My Buddies</div>
                             <br></br>
@@ -109,7 +124,7 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="container" id="newProfileContainer">
+                    <div className="container" id="newProfileContainer" ref={node => this.newProfileref = node} style={{display: this.state.newProfileVisible ? 'none' : '', }}>
 
                         <div className="titletext">You need to create profile to use this site!</div>
                         <br></br>
@@ -117,8 +132,6 @@ class Home extends React.Component {
                         <div className="getstartedbutton" onClick={this.redirectToNewProfile} >Get Started ></div>
                     </div>
                 </div>
-
-                {this.hideContainer}
 
                 <footer>
                     <div className="footertext">

@@ -37,6 +37,8 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "jsdom": "15.2.0",
+    "jsdom-global": "3.0.2",
     "react-test-renderer": "^16.10.2"
   }
 }
