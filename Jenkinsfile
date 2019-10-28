@@ -15,12 +15,12 @@ pipeline {
     stage('Test') {
       steps {
         script {
-          bat 'npm run test'
+          bat 'npm run test:coverage'
         }
       }
       post {
         always {
-          step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage/cobertura-coverage.xml'])
+          step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'])
         }
       }
     }
