@@ -18,11 +18,14 @@ pipeline {
           bat 'npm run test'
         }
       }
-      post {
+      /*post {
         always {
           step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'])
         }
-      }
+      }*/
+    }
+    stage ("Extract test results") {
+      cobertura coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'
     }
     stage('Build') {
       steps {
