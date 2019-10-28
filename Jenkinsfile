@@ -33,7 +33,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy') {
+    /*stage('Deploy') {
       when {
         expression {
           currentBuild.result == null || currentBuild.result == 'SUCCESS'
@@ -44,7 +44,7 @@ pipeline {
           def server = Artifactory.server 'My_Artifactory'
           uploadArtifact(server)
         }
-      }
+      }*/
     }
   }
 }
