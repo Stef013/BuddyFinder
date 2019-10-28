@@ -44,8 +44,8 @@ pipeline {
           def server = Artifactory.server 'My_Artifactory'
           uploadArtifact(server)
         }
-      }*/
-    }
+      }
+    }*/
   }
 }
 def uploadArtifact(server) {
