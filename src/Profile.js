@@ -8,7 +8,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props)
         loggedInUser = props.location.state.loggedInUser;
-        
+        profileUser = props.location.state.selectedUser;
     }
 
     redirect = () => {
@@ -17,6 +17,8 @@ class Profile extends React.Component {
             state: { loggedInUser }
         })
     }
+
+
 
     render() {
         return (
@@ -30,16 +32,34 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="content">
-                    <div className="hometext">Profile of [Insert User]</div>
 
-                    
-
-                <footer>
-                    <div className="footertext">
-                        <p>Created by Stefan Vujinovic - Official licenced product by Microsoft</p>
+                    <div className="profilecontainer">
+                        <center>
+                            
+                            <div className="dot3"></div>
+                            <div className="profilenametext">{profileUser.username}</div>
+                            <div className="text2">{profileUser.city}, {profileUser.country} </div>
+                            <br></br>
+                            <div className="text1"><b>Description:</b>
+                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                            </div>
+                            <br></br>
+                            <b><div className="text1">Hobby's:</div></b>
+                            <div className="hobbytext">{profileUser.hobby1}</div>
+                            <div className="hobbytext">{profileUser.hobby2}</div>
+                            <div className="hobbytext">{profileUser.hobby3}</div>
+                            <br></br>
+                            <div className="button1" style={{ float: "right" }}>+ Buddy</div>
+                        </center>
                     </div>
-                </footer>
-            </div>
+
+
+                    <footer>
+                        <div className="footertext">
+                            <p>Created by Stefan Vujinovic - Official licenced product by Microsoft</p>
+                        </div>
+                    </footer>
+                </div>
             </div>
         )
     }

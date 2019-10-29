@@ -14,10 +14,10 @@ class Home extends React.Component {
         this.loadMatches = this.loadMatches.bind(this);
         console.log(loggedInUser.firstname);
 
-        this.state = { 
+        this.state = {
             matchVisible: false,
             newProfileVisible: false,
-         };
+        };
     }
 
     componentDidMount() {
@@ -26,7 +26,7 @@ class Home extends React.Component {
             //this.newProfileref.style.display="none";
             this.setState({
                 matchVisible: !this.state.matchVisible,
-              });
+            });
             //document.getElementById("matchContainer").style.display = 'none';
             //document.getElementById("buddyContainer").style.display = 'none';
         }
@@ -34,7 +34,7 @@ class Home extends React.Component {
             //document.getElementById("newProfileContainer").style.display = 'none';
             this.setState({
                 newProfileVisible: !this.state.newProfileVisible,
-              });
+            });
 
             this.sendfindMatchRequest();
         }
@@ -54,10 +54,10 @@ class Home extends React.Component {
         })
     }
 
-    redirectToProfile = () => {
+    redirectToProfile = (selectedUser) => {
         this.props.history.push({
             pathname: '/profile',
-            state: { loggedInUser }
+            state: { loggedInUser, selectedUser }
         })
     }
 
@@ -84,7 +84,7 @@ class Home extends React.Component {
     loadMatches = (app) => {
         if (app.state.matches.length > 0) {
             return app.state.matches.map(function (each) {
-                return (<div className="matchesbutton" onClick={app.redirectToProfile}><div className="dot2"></div>{each.username}</div>)
+                return (<div className="matchesbutton" onClick={() => app.redirectToProfile(each)}><div className="dot2"></div>{each.username}</div>)
             })
         }
     }
@@ -104,19 +104,19 @@ class Home extends React.Component {
                     <div className="hometext">Welcome {loggedInUser.username}!</div>
 
                     <div>
-                        <div className="homeMatchContainer" id="matchContainer" style={{display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeMatchContainer" id="matchContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
 
                             <div className="logintext">Recent Matches</div>
                             <br></br>
                             {this.state && this.state.matches &&
-                                
+
                                 this.loadMatches(this)
                             }
                             <br></br>
                             <div className="button1" onClick={this.redirectToNewProfile} >redirect</div>
                             <br></br>
                         </div>
-                        <div className="homeBuddyContainer" id="buddyContainer" style={{display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeBuddyContainer" id="buddyContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
 
                             <div className="logintext">My Buddies</div>
                             <br></br>
@@ -124,7 +124,7 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="container" id="newProfileContainer" ref={node => this.newProfileref = node} style={{display: this.state.newProfileVisible ? 'none' : '', }}>
+                    <div className="container" id="newProfileContainer" ref={node => this.newProfileref = node} style={{ display: this.state.newProfileVisible ? 'none' : '', }}>
 
                         <div className="titletext">You need to create profile to use this site!</div>
                         <br></br>

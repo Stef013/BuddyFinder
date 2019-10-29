@@ -90,7 +90,7 @@ class NewProfile extends React.Component {
                 <div className="content">
                     <div className="hometext">Profile Set-up</div>
                     <center>
-                        <div className="profileContainer" id="profileContainer">
+                        <div className="newprofilecontainer" id="newprofileContainer">
                             <div className="dot">Upload picture</div>
                             <br></br>
                             <div className="text1" margin-bottom="30px">{loggedInUser.username}</div>
