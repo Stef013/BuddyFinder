@@ -4,9 +4,23 @@ import Profile from '../Profile';
 
 var loggedInUser = {
    userid: "1",
-   username: "tester",
+   username: "loggedinuser",
    password: "test123",
-   firstname: null,
+   firstname: "testertje",
+   lastname: null,
+   city: null,
+   country: null,
+   description: null,
+   hobby1: null,
+   hobby2: null,
+   hobby3: null
+}
+
+var selectedUser = {
+   userid: "1",
+   username: "selecteduser",
+   password: "test123",
+   firstname: "testname",
    lastname: null,
    city: null,
    country: null,
@@ -22,7 +36,8 @@ describe('Full page render', () => {
       const expectedProps = {
          location: {
             state: {
-               loggedInUser: loggedInUser
+               loggedInUser: loggedInUser,
+               selectedUser: selectedUser
             }
          }
       };
