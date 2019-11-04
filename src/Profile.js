@@ -1,20 +1,36 @@
 import React from 'react'
 
-var profileUser;
-var loggedInUser;
+//var profileUser;
+//var loggedInUser;
 
 class Profile extends React.Component {
+    
+    state = {
+        profileUser: null,
+        loggedInUser: null,
+    }
 
     constructor(props) {
         super(props)
-        loggedInUser = props.location.state.loggedInUser;
-        profileUser = props.location.state.selectedUser;
+        this.setState(() => ({ loggedInUser: props.location.state.loggedInUser }));
+        this.setState(() => ({ profileUser: props.location.state.selectedUser }));
+        
+        //profileUser = props.location.state.selectedUser
     }
+
+    componentDidMount () {
+        const { id } = this.props.match.params
+        console.log(id);
+       /* fetch(`https://api.twitter.com/user/${handle}`)
+          .then((user) => {
+            this.setState(() => ({ user }))
+          })*/
+      }
 
     redirect = () => {
         this.props.history.push({
             pathname: '/home',
-            state: { loggedInUser }
+            state: { loggedInUser: this.state.loggedInUser}
         })
     }
 
@@ -31,25 +47,25 @@ class Profile extends React.Component {
 
                 <div className="content">
 
-                    <div className="profilecontainer">
+                    {/*<div className="profilecontainer">
                         <center>
-                            
                             <div className="dot3"></div>
-                            <div className="profilenametext">{profileUser.username}</div>
-                            <div className="text2">{profileUser.city}, {profileUser.country} </div>
+                            <div className="profilenametext">{this.state.profileUser.username}</div>
+                            <div className="text2">{this.state.profileUser.city}, {this.state.profileUser.country} </div>
+                             
                             <br></br>
                             <div className="text1"><b>Description:</b>
                             <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
                             </div>
                             <br></br>
                             <b><div className="text1">Hobby's:</div></b>
-                            <div className="hobbytext">{profileUser.hobby1}</div>
-                            <div className="hobbytext">{profileUser.hobby2}</div>
-                            <div className="hobbytext">{profileUser.hobby3}</div>
+                            <div className="hobbytext">{this.state.profileUser.hobby1}</div>
+                            <div className="hobbytext">{this.state.profileUser.hobby2}</div>
+                            <div className="hobbytext">{this.state.profileUser.hobby3}</div>
                             <br></br>
                             <div className="button1" style={{ float: "right" }}>+ Buddy</div>
                         </center>
-                    </div>
+        </div>*/}
 
 
                     <footer>

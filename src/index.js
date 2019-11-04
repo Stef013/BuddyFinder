@@ -17,7 +17,7 @@ const routing = (
         <Route path="/home" component={Home} />
         <Route path="/contact" component={Contact} />
         <Route path="/newprofile" component={NewProfile} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile/:id" component={Profile} />
       </div>
     </Router>
   )
