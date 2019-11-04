@@ -28,7 +28,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          bat 'npm start'
+          bat 'npm build'
           bat 'npm pack'
         }
       }
