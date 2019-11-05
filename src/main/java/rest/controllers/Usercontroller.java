@@ -89,7 +89,6 @@ public class Usercontroller
 
             boolean resultdata = userRepository.update(user);
 
-            //String resultdata = user.getFirstname();
             String json = gson.toJson(resultdata);
             System.out.println(json);
 
@@ -106,14 +105,24 @@ public class Usercontroller
 
             List<User> matches = matchRepository.findMatches(user);
 
-            //String resultdata = user.getFirstname();
             String json = gson.toJson(matches);
             System.out.println(json);
 
             return json;
         });
 
-        get("/User/GetTest", (request, response) -> "lol", json());
+        get("/Profile", (request, response) -> {
+            System.out.println("In /Profile");
+            String username = request.queryParams("id");
+            System.out.println(username);
+
+            User userProfile = userRepository.getProfile(username);
+
+            String json = gson.toJson(userProfile);
+            System.out.println(json);
+
+            return json;
+        });
 
         exception(IllegalArgumentException.class, (e, req, res) -> {
 

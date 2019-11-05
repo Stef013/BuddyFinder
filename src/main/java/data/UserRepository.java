@@ -69,7 +69,29 @@ public class UserRepository
             query.setParameter(2, hashing.hash(user.getPassword()));
             User userdata = (User)query.getSingleResult();
             System.out.println(userdata.getHobby1());
-            //em.getTransaction().commit();
+            emf.close();
+
+            return userdata;
+        }
+        catch(Exception ex)
+        {
+            emf.close();
+            return null;
+        }
+    }
+
+    public User getProfile(String username)
+    {
+        try{
+            openConnection();
+            em.getTransaction().begin();
+            String sql = "Select * FROM buddyfinder_users WHERE Username = ?1";
+
+            Query query = em.createNativeQuery(sql, User.class);
+            query.setParameter(1, username);
+            User userdata = (User)query.getSingleResult();
+            userdata.setPassword(null);
+            System.out.println(userdata.getHobby1());
             emf.close();
 
             return userdata;
@@ -87,7 +109,6 @@ public class UserRepository
         try{
             openConnection();
             em.getTransaction().begin();
-            //User userobject = em.(user.getUserId());
 
             em.merge(user);
             em.getTransaction().commit();
