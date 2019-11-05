@@ -1,40 +1,55 @@
 import React from 'react'
+import axios from 'axios'
 
-//var profileUser;
-//var loggedInUser;
 
 class Profile extends React.Component {
-    
+
     state = {
         profileUser: null,
-        loggedInUser: null,
+        loggedInUser: null
     }
 
     constructor(props) {
         super(props)
         this.setState(() => ({ loggedInUser: props.location.state.loggedInUser }));
-        this.setState(() => ({ profileUser: props.location.state.selectedUser }));
-        
-        //profileUser = props.location.state.selectedUser
+        this.sendGetProfileRequest = this.sendGetProfileRequest.bind(this);
     }
 
-    componentDidMount () {
-        const { id } = this.props.match.params
+    componentWillMount() {
+        const { id } = this.props.match.params;
         console.log(id);
-       /* fetch(`https://api.twitter.com/user/${handle}`)
-          .then((user) => {
-            this.setState(() => ({ user }))
-          })*/
-      }
+        this.sendGetProfileRequest(id);
+    }
+
+    sendGetProfileRequest(id) {
+
+        axios.get(`http://localhost:4567/Profile`, { params: { id: id } })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                if (!res.data) {
+                    alert("No profile found!")
+                }
+                else {
+                    this.setState({ profileUser: res.data })
+                }
+            })
+    }
 
     redirect = () => {
         this.props.history.push({
             pathname: '/home',
-            state: { loggedInUser: this.state.loggedInUser}
+            state: { loggedInUser: this.state.loggedInUser }
         })
     }
 
     render() {
+
+        if (!this.state.profileUser) {
+            return <div>Loading...</div>
+        }
+
         return (
             <div className="App">
                 <div className="topnav">
@@ -46,16 +61,15 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="content">
-
-                    {/*<div className="profilecontainer">
+                    <div className="profilecontainer">
                         <center>
                             <div className="dot3"></div>
                             <div className="profilenametext">{this.state.profileUser.username}</div>
                             <div className="text2">{this.state.profileUser.city}, {this.state.profileUser.country} </div>
-                             
+
                             <br></br>
                             <div className="text1"><b>Description:</b>
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+                                <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
                             </div>
                             <br></br>
                             <b><div className="text1">Hobby's:</div></b>
@@ -65,7 +79,7 @@ class Profile extends React.Component {
                             <br></br>
                             <div className="button1" style={{ float: "right" }}>+ Buddy</div>
                         </center>
-        </div>*/}
+                    </div>
 
 
                     <footer>
@@ -77,7 +91,6 @@ class Profile extends React.Component {
             </div>
         )
     }
-
 }
 
 
