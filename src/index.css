@@ -75,6 +75,14 @@
 	width: 20%;
 }
 
+.loadingtext {
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 100px;
+	color: rgb(255, 255, 255);
+}
+
 /*--------------------------BODY, NAV, CONTENT & FOOTER----------------------------*/
 body {
 	margin: 0;

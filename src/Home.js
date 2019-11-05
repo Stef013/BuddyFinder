@@ -56,8 +56,8 @@ class Home extends React.Component {
 
     redirectToProfile = (selectedUser) => {
         this.props.history.push({
-            pathname: '/profile',
-            state: { loggedInUser, selectedUser }
+            pathname: '/profile/' + selectedUser.username,
+            state: { loggedInUser }
         })
     }
 
@@ -72,7 +72,7 @@ class Home extends React.Component {
                 console.log(res.data);
 
                 if (!res.data) {
-                    //alert("Werkt nie")
+                    
                 }
                 else {
                     console.log(res.data[0].firstname);

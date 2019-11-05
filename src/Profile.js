@@ -47,7 +47,7 @@ class Profile extends React.Component {
     render() {
 
         if (!this.state.profileUser) {
-            return <div>Loading...</div>
+            return <div className="loadingtext">Loading...</div>
         }
 
         return (
