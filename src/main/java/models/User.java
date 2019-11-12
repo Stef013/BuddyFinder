@@ -20,15 +20,6 @@ public class User
     private String hobby3;
 
 
-    /*public User(int userid, String username, String firstname, String lastname, String country, String city)
-    {
-        this.userid = userid;
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.country = country;
-        this.city = city;
-    }*/
 
     public User(String username, String password)
     {

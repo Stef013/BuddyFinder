@@ -17,11 +17,11 @@ public class MatchRepository
     {
         if (emf == null && em == null)
         {
-            emf = Persistence.createEntityManagerFactory("userPU");
+            emf = Persistence.createEntityManagerFactory("buddyfinderPU");
             em = emf.createEntityManager();
         } else if (!em.isOpen())
         {
-            emf = Persistence.createEntityManagerFactory("userPU");
+            emf = Persistence.createEntityManagerFactory("buddyfinderPU");
             em = emf.createEntityManager();
         }
     }
@@ -40,7 +40,6 @@ public class MatchRepository
 
             List<User> allUsers = query.getResultList();
             System.out.println(allUsers);
-
 
             List<User> matches = new ArrayList<>();
             for(User u : allUsers)

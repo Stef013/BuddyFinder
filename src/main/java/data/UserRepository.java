@@ -16,12 +16,12 @@ public class UserRepository
     {
         if(emf == null && em == null)
         {
-            emf = Persistence.createEntityManagerFactory("userPU");
+            emf = Persistence.createEntityManagerFactory("buddyfinderPU");
             em = emf.createEntityManager();
         }
         else if(!em.isOpen())
         {
-            emf = Persistence.createEntityManagerFactory("userPU");
+            emf = Persistence.createEntityManagerFactory("buddyfinderPU");
             em = emf.createEntityManager();
         }
     }

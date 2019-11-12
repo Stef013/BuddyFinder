@@ -11,13 +11,13 @@ import java.util.List;
 import static rest.JsonUtil.json;
 import static spark.Spark.*;
 
-public class Usercontroller
+public class UserController
 {
     private Gson gson = new Gson();
     private UserRepository userRepository = new UserRepository();
     private MatchRepository matchRepository = new MatchRepository();
 
-    public Usercontroller(final String a)
+    public UserController(final String a)
     {
         //Link
         //https://www.mscharhag.com/java/building-rest-api-with-spark
