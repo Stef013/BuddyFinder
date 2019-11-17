@@ -28,16 +28,7 @@ class NewProfile extends React.Component {
         var hobby1 = document.getElementById("hobby1Box").value;
         var hobby2 = document.getElementById("hobby2Box").value;
         var hobby3 = document.getElementById("hobby3Box").value;
-        console.log("in profile methode");
-        console.log(loggedInUser.userid)
-        console.log(fname);
-        console.log(lname);
-        console.log(country);
-        console.log(city);
-        console.log(description);
-        console.log(hobby1);
-        console.log(hobby2);
-        console.log(hobby3);
+        
 
         if (!fname || !lname || !country || !city || !hobby1) {
             alert("fields cannot be empty!")
@@ -50,7 +41,7 @@ class NewProfile extends React.Component {
 
     sendNewProfileRequest(fname, lname, cntry, cty, desc, hob1, hob2, hob3) {
 
-        axios.post(`http://localhost:4567/User/Update/`, {
+        axios.put(`http://localhost:4567/User`, {
             userid: loggedInUser.userid, username: loggedInUser.username,
             password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1, 
             hobby2: hob2, hobby3: hob3

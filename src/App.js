@@ -27,11 +27,6 @@ class App extends Component {
         this.signUp = this.signUp.bind(this);
     }
 
-    /*componentDidMount() {
-        document.getElementById("container2").style.display = 'none';
-        //this.getData()
-    }*/
-
     redirectToHome = () => {
 
         this.props.history.push({
@@ -39,24 +34,6 @@ class App extends Component {
             state: { loggedInUser }
         })
     }
-
-    /*getData() {
-        // create a new XMLHttpRequest
-        var xhr = new XMLHttpRequest()
-        // get a callback when the server responds
-        xhr.addEventListener('load', () => {
-            // update the state of the component with the result here
-
-            const self = this;
-            self.setState({ data: xhr.responseText });
-            // this.setState({ name: name });
-            console.log(this.state.data)
-        })
-        // open the request with the verb and the url
-        xhr.open('GET', 'http://localhost:4567/User/GetTest')
-        // send the request
-        xhr.send()
-    }*/
 
     switch(bool) {
         if (bool) {

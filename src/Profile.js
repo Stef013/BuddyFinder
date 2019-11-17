@@ -23,7 +23,7 @@ class Profile extends React.Component {
 
     sendGetProfileRequest(id) {
 
-        axios.get(`http://localhost:4567/Profile`, { params: { id: id } })
+        axios.get(`http://localhost:4567/User`, { params: { id: id } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -68,7 +68,7 @@ class Profile extends React.Component {
                             <div className="text2">{this.state.profileUser.city}, {this.state.profileUser.country} </div>
 
                             <br></br>
-                            <div className="text1"><b>Description:</b>
+                            <div className="text1"><b>About me::</b>
                                 <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
                             </div>
                             <br></br>
@@ -81,7 +81,6 @@ class Profile extends React.Component {
                         </center>
                     </div>
 
-
                     <footer>
                         <div className="footertext">
                             <p>Created by Stefan Vujinovic - Official licenced product by Microsoft</p>
@@ -92,6 +91,5 @@ class Profile extends React.Component {
         )
     }
 }
-
 
 export default Profile;

@@ -71,7 +71,7 @@ class Home extends React.Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (!res.data) {
+                if (res.data.length == 0) {
                     
                 }
                 else {
