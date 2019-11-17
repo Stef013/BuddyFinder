@@ -31,7 +31,6 @@ public class MatchRepository
         try
         {
             openConnection();
-            //em.getTransaction().begin();
 
             String sql = "Select * FROM buddyfinder_users WHERE NOT UserID = ?1";
 
@@ -46,18 +45,41 @@ public class MatchRepository
             {
                 if(u.getHobby1() != null)
                 {
-                    if (u.getHobby1().contains(user.getHobby1()) || u.getHobby1().contains(user.getHobby2()) ||
-                            u.getHobby1().contains(user.getHobby3()) || u.getHobby2().contains(user.getHobby1()) ||
-                            u.getHobby2().contains(user.getHobby2()) || u.getHobby2().contains(user.getHobby3()) ||
-                            u.getHobby3().contains(user.getHobby1()) || u.getHobby3().contains(user.getHobby2()) ||
-                            u.getHobby3().contains(user.getHobby3()))
+                    while(true)
                     {
-                        matches.add(u);
+                        if(!u.getHobby1().isEmpty())
+                        {
+                            if (u.getHobby1().equals(user.getHobby1()) || u.getHobby1().equals(user.getHobby2()) ||
+                                    u.getHobby1().equals(user.getHobby3()))
+                            {
+                                matches.add(u);
+                                break;
+                            }
+                        }
+
+                        if(!u.getHobby2().isEmpty())
+                        {
+                            if (u.getHobby2().equals(user.getHobby1()) || u.getHobby2().equals(user.getHobby2()) ||
+                                    u.getHobby2().equals(user.getHobby3()))
+                            {
+                                matches.add(u);
+                                break;
+                            }
+                        }
+
+                        if(!u.getHobby3().isEmpty())
+                        {
+                            if (u.getHobby3().equals(user.getHobby1()) || u.getHobby3().equals(user.getHobby2()) ||
+                                    u.getHobby3().equals(user.getHobby3()))
+                            {
+                                matches.add(u);
+                                break;
+                            }
+                        }
+                        break;
                     }
                 }
             }
-
-            //em.getTransaction().commit();
 
             emf.close();
             return matches;

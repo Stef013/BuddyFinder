@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="buddyfinder_messages")
 public class Message
 {
+    @Id
     private int recieverid;
     private int senderid;
     private String message;

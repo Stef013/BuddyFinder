@@ -79,9 +79,9 @@ public class UserController
             return json;
         });
 
-        post("/User/Update/", (request, response) -> {
+        put("/User", (request, response) -> {
 
-            System.out.println("In /User/Update");
+            System.out.println("In /User/");
             String body = request.body();
             System.out.println(body);
 
@@ -111,8 +111,8 @@ public class UserController
             return json;
         });
 
-        get("/Profile", (request, response) -> {
-            System.out.println("In /Profile");
+        get("/User", (request, response) -> {
+            System.out.println("In /User");
             String username = request.queryParams("id");
             System.out.println(username);
 

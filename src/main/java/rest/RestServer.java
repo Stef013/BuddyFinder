@@ -1,6 +1,5 @@
 package rest;
 
-
 import spark.Spark;
 import rest.controllers.UserController;
 import rest.controllers.MessageController;
@@ -14,6 +13,6 @@ public class RestServer
         Spark.ipAddress("127.0.0.1");
 
         UserController usercontroller =  new UserController(new String());
-        MessageController messagecontroller =  new MessageController(new String());
+        //MessageController messagecontroller =  new MessageController(new String());
     }
 }
