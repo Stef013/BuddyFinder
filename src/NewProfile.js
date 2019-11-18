@@ -41,7 +41,7 @@ class NewProfile extends React.Component {
 
     sendNewProfileRequest(fname, lname, cntry, cty, desc, hob1, hob2, hob3) {
 
-        axios.put(`http://localhost:4567/User`, {
+        axios.put(`http://localhost:4567/user`, {
             userid: loggedInUser.userid, username: loggedInUser.username,
             password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1, 
             hobby2: hob2, hobby3: hob3

@@ -63,7 +63,7 @@ class Home extends React.Component {
 
     sendfindMatchRequest() {
 
-        axios.post(`http://localhost:4567/Match/`, {
+        axios.post(`http://localhost:4567/match/`, {
             userid: loggedInUser.userid, hobby1: loggedInUser.hobby1, hobby2: loggedInUser.hobby2,
             hobby3: loggedInUser.hobby3
         })

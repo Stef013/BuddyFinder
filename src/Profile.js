@@ -23,7 +23,7 @@ class Profile extends React.Component {
 
     sendGetProfileRequest(id) {
 
-        axios.get(`http://localhost:4567/User`, { params: { id: id } })
+        axios.get(`http://localhost:4567/user`, { params: { id: id } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
