@@ -21,36 +21,12 @@ public class MessageController
         //Link
         //https://www.mscharhag.com/java/building-rest-api-with-spark
 
-        /*options("/*",
-                (request, response) ->
-                {
-
-                    String accessControlRequestHeaders = request
-                            .headers("Access-Control-Request-Headers");
-                    if (accessControlRequestHeaders != null)
-                    {
-                        response.header("Access-Control-Allow-Headers",
-                                accessControlRequestHeaders);
-                    }
-
-                    String accessControlRequestMethod = request
-                            .headers("Access-Control-Request-Method");
-                    if (accessControlRequestMethod != null)
-                    {
-                        response.header("Access-Control-Allow-Methods",
-                                accessControlRequestMethod);
-                    }
-
-                    return "OK";
-                });*/
-
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
-
-        post("/Message", (request, response) ->
+        post("/message", (request, response) ->
         {
 
-            System.out.println("In /Message");
+            System.out.println("POST /message");
             String body = request.body();
             System.out.println(body);
 
@@ -64,9 +40,9 @@ public class MessageController
 
         });
 
-        get("/Message", (request, response) ->
+        get("/message", (request, response) ->
         {
-            System.out.println("In /Message");
+            System.out.println("GET /message");
             String param = request.queryParams("id");
 
             int userid = Integer.parseInt(param);

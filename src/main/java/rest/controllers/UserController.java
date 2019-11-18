@@ -45,9 +45,9 @@ public class UserController
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
 
-        post("/User/SignUp/", (request, response) ->  {
+        post("/user", (request, response) ->  {
 
-            System.out.println("In /User/SignUp");
+            System.out.println("POST /User");
             String body = request.body();
             System.out.println(body);
 
@@ -62,7 +62,7 @@ public class UserController
 
         });
 
-        post("/User/Login/", (request, response) -> {
+        post("/user/login/", (request, response) -> {
 
             System.out.println("In /User/Login");
             String body = request.body();
@@ -79,9 +79,9 @@ public class UserController
             return json;
         });
 
-        put("/User", (request, response) -> {
+        put("/user", (request, response) -> {
 
-            System.out.println("In /User/");
+            System.out.println("Put /user");
             String body = request.body();
             System.out.println(body);
 
@@ -95,9 +95,22 @@ public class UserController
             return json;
         });
 
-        post("/Match/", (request, response) -> {
+        get("/user", (request, response) -> {
+            System.out.println("Get /user");
+            String username = request.queryParams("id");
+            System.out.println(username);
 
-            System.out.println("In /Match");
+            User userProfile = userRepository.getProfile(username);
+
+            String json = gson.toJson(userProfile);
+            System.out.println(json);
+
+            return json;
+        });
+
+        post("/match/", (request, response) -> {
+
+            System.out.println("In /match");
             String body = request.body();
             System.out.println(body);
 
@@ -106,19 +119,6 @@ public class UserController
             List<User> matches = matchRepository.findMatches(user);
 
             String json = gson.toJson(matches);
-            System.out.println(json);
-
-            return json;
-        });
-
-        get("/User", (request, response) -> {
-            System.out.println("In /User");
-            String username = request.queryParams("id");
-            System.out.println(username);
-
-            User userProfile = userRepository.getProfile(username);
-
-            String json = gson.toJson(userProfile);
             System.out.println(json);
 
             return json;

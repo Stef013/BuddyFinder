@@ -40,46 +40,8 @@ public class MatchRepository
             List<User> allUsers = query.getResultList();
             System.out.println(allUsers);
 
-            List<User> matches = new ArrayList<>();
-            for(User u : allUsers)
-            {
-                if(u.getHobby1() != null)
-                {
-                    while(true)
-                    {
-                        if(!u.getHobby1().isEmpty())
-                        {
-                            if (u.getHobby1().equals(user.getHobby1()) || u.getHobby1().equals(user.getHobby2()) ||
-                                    u.getHobby1().equals(user.getHobby3()))
-                            {
-                                matches.add(u);
-                                break;
-                            }
-                        }
+            List<User> matches = checkForMatches(allUsers, user);
 
-                        if(!u.getHobby2().isEmpty())
-                        {
-                            if (u.getHobby2().equals(user.getHobby1()) || u.getHobby2().equals(user.getHobby2()) ||
-                                    u.getHobby2().equals(user.getHobby3()))
-                            {
-                                matches.add(u);
-                                break;
-                            }
-                        }
-
-                        if(!u.getHobby3().isEmpty())
-                        {
-                            if (u.getHobby3().equals(user.getHobby1()) || u.getHobby3().equals(user.getHobby2()) ||
-                                    u.getHobby3().equals(user.getHobby3()))
-                            {
-                                matches.add(u);
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
 
             emf.close();
             return matches;
@@ -89,6 +51,53 @@ public class MatchRepository
             return null;
         }
     }
+
+    public List<User> checkForMatches(List<User> allUsers, User user)
+    {
+        List<User> matches = new ArrayList<>();
+
+        for(User u : allUsers)
+        {
+            if(u.getHobby1() != null)
+            {
+                while(true)
+                {
+                    if(!u.getHobby1().isEmpty())
+                    {
+                        if (u.getHobby1().equals(user.getHobby1()) || u.getHobby1().equals(user.getHobby2()) ||
+                                u.getHobby1().equals(user.getHobby3()))
+                        {
+                            matches.add(u);
+                            break;
+                        }
+                    }
+
+                    if(!u.getHobby2().isEmpty())
+                    {
+                        if (u.getHobby2().equals(user.getHobby1()) || u.getHobby2().equals(user.getHobby2()) ||
+                                u.getHobby2().equals(user.getHobby3()))
+                        {
+                            matches.add(u);
+                            break;
+                        }
+                    }
+
+                    if(!u.getHobby3().isEmpty())
+                    {
+                        if (u.getHobby3().equals(user.getHobby1()) || u.getHobby3().equals(user.getHobby2()) ||
+                                u.getHobby3().equals(user.getHobby3()))
+                        {
+                            matches.add(u);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        return matches;
+    }
+
 }
 
 
