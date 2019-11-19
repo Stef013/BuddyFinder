@@ -1,26 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-// Global variables
-
-var loggedInUser = {
-    userid: null,
-    username: null,
-    password: null,
-    firstname: null,
-    lastname: null,
-    city: null,
-    country: null,
-    description: null,
-    hobby1: null,
-    hobby2: null,
-    hobby3: null
-}
-
 class App extends Component {
+
+    state = {
+        loggedInUser: null
+    }
 
     constructor() {
         super()
+        window.sessionStorage.removeItem("loggedinuser");
         this.sendLoginRequest = this.sendLoginRequest.bind(this);
         this.sendSignUpRequest = this.sendSignUpRequest.bind(this);
         this.login = this.login.bind(this);
@@ -28,10 +17,8 @@ class App extends Component {
     }
 
     redirectToHome = () => {
-
         this.props.history.push({
-            pathname: '/home',
-            state: { loggedInUser }
+            pathname: '/home'
         })
     }
 
@@ -49,9 +36,6 @@ class App extends Component {
     login() {
         var uname = document.getElementById("usernameBox").value;
         var pword = document.getElementById("passwordBox").value;
-        console.log("in login methode");
-        console.log(uname);
-        console.log(pword);
 
         if (!uname || !pword) {
             alert("Login fields cannot be empty!")
@@ -65,9 +49,6 @@ class App extends Component {
         var uname = document.getElementById("suUsernameBox").value;
         var pword = document.getElementById("suPasswordBox").value;
         var cpword = document.getElementById("suConfirmPasswordBox").value;
-        console.log("in SignUp methode");
-        console.log(uname);
-        console.log(pword);
 
         if (!uname || !pword || !cpword) {
             alert("Sign Up fields cannot be empty!")
@@ -93,17 +74,8 @@ class App extends Component {
                     alert("Wrong username or password.")
                 }
                 else {
-                    loggedInUser.userid = res.data.userid;
-                    loggedInUser.username = res.data.username;
-                    loggedInUser.password = res.data.password;
-                    loggedInUser.firstname = res.data.firstname;
-                    loggedInUser.lastname = res.data.lastname;
-                    loggedInUser.country = res.data.country;
-                    loggedInUser.city = res.data.city;
-                    loggedInUser.hobby1 = res.data.hobby1;
-                    loggedInUser.hobby2 = res.data.hobby2;
-                    loggedInUser.hobby3 = res.data.hobby3;
-                    console.log(loggedInUser);
+                    this.setState(() => ({ loggedInUser: res.data }));
+                    window.sessionStorage.setItem("loggedinuser",  JSON.stringify(this.state.loggedInUser));
                     this.redirectToHome();
                 }
             })
@@ -115,6 +87,7 @@ class App extends Component {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+
                 if (res.data) {
                     alert("Account has been created!")
                 }
@@ -125,7 +98,6 @@ class App extends Component {
     }
 
     render() {
-
         try {
             return (
                 <div className="App">

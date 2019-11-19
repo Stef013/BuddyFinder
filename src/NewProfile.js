@@ -7,15 +7,14 @@ class NewProfile extends React.Component {
 
     constructor(props) {
         super(props)
-        loggedInUser = props.location.state.loggedInUser;
+        loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
         this.newProfile = this.newProfile.bind(this)
         this.sendNewProfileRequest = this.sendNewProfileRequest.bind(this)
     }
 
     redirect = () => {
         this.props.history.push({
-            pathname: '/home',
-            state: { loggedInUser }
+            pathname: '/home'
         })
     }
 
@@ -28,13 +27,11 @@ class NewProfile extends React.Component {
         var hobby1 = document.getElementById("hobby1Box").value;
         var hobby2 = document.getElementById("hobby2Box").value;
         var hobby3 = document.getElementById("hobby3Box").value;
-        
 
         if (!fname || !lname || !country || !city || !hobby1) {
             alert("fields cannot be empty!")
         }
         else {
-
             this.sendNewProfileRequest(fname, lname, country, city, description, hobby1, hobby2, hobby3)
         }
     }
@@ -43,7 +40,7 @@ class NewProfile extends React.Component {
 
         axios.put(`http://localhost:4567/user`, {
             userid: loggedInUser.userid, username: loggedInUser.username,
-            password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1, 
+            password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1,
             hobby2: hob2, hobby3: hob3
         })
             .then(res => {
@@ -59,6 +56,8 @@ class NewProfile extends React.Component {
                     loggedInUser.hobby1 = hob1;
                     loggedInUser.hobby2 = hob2;
                     loggedInUser.hobby3 = hob3;
+
+                    window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
                     this.redirect();
                 }
                 else {
@@ -85,7 +84,7 @@ class NewProfile extends React.Component {
                             <div className="dot">Upload picture</div>
                             <br></br>
                             <div className="text1" margin-bottom="30px">{loggedInUser.username}</div>
-                            
+
                             <br></br>
                             <input type="text" placeholder="First name" name="fname" id="firstnameBox" required></input>
                             <input type="text" placeholder="Last name" name="lname" id="lastnameBox" required></input>

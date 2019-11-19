@@ -8,11 +8,10 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props)
-        loggedInUser = props.location.state.loggedInUser;
+        loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
         this.sendfindMatchRequest = this.sendfindMatchRequest.bind(this);
         this.redirectToProfile = this.redirectToProfile.bind(this);
         this.loadMatches = this.loadMatches.bind(this);
-        console.log(loggedInUser.firstname);
 
         this.state = {
             matchVisible: false,
@@ -22,16 +21,11 @@ class Home extends React.Component {
 
     componentDidMount() {
         if (!loggedInUser.firstname) {
-            //ReactDOM.findDOMNode(this.refs.matchref).style.display='block';
-            //this.newProfileref.style.display="none";
             this.setState({
                 matchVisible: !this.state.matchVisible,
             });
-            //document.getElementById("matchContainer").style.display = 'none';
-            //document.getElementById("buddyContainer").style.display = 'none';
         }
         else {
-            //document.getElementById("newProfileContainer").style.display = 'none';
             this.setState({
                 newProfileVisible: !this.state.newProfileVisible,
             });
@@ -42,22 +36,19 @@ class Home extends React.Component {
 
     refresh = () => {
         this.props.history.push({
-            pathname: '/home',
-            state: { loggedInUser }
+            pathname: '/home'
         })
     }
 
     redirectToNewProfile = () => {
         this.props.history.push({
-            pathname: '/newprofile',
-            state: { loggedInUser }
+            pathname: '/newprofile'
         })
     }
 
     redirectToProfile = (selectedUser) => {
         this.props.history.push({
-            pathname: '/profile/' + selectedUser.username,
-            state: { loggedInUser }
+            pathname: '/profile/' + selectedUser.username
         })
     }
 
@@ -72,10 +63,9 @@ class Home extends React.Component {
                 console.log(res.data);
 
                 if (res.data.length == 0) {
-                    
+
                 }
                 else {
-                    console.log(res.data[0].firstname);
                     this.setState({ matches: res.data });
                 }
             })

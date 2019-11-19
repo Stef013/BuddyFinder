@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 
-
 class Profile extends React.Component {
 
     state = {
@@ -11,13 +10,12 @@ class Profile extends React.Component {
 
     constructor(props) {
         super(props)
-        this.setState(() => ({ loggedInUser: props.location.state.loggedInUser }));
+        this.setState(() => ({ loggedInUser: JSON.parse(window.sessionStorage.loggedinuser) }));
         this.sendGetProfileRequest = this.sendGetProfileRequest.bind(this);
     }
 
     componentWillMount() {
         const { id } = this.props.match.params;
-        console.log(id);
         this.sendGetProfileRequest(id);
     }
 
@@ -39,8 +37,7 @@ class Profile extends React.Component {
 
     redirect = () => {
         this.props.history.push({
-            pathname: '/home',
-            state: { loggedInUser: this.state.loggedInUser }
+            pathname: '/home'
         })
     }
 
