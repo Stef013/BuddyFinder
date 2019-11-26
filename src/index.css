@@ -308,9 +308,38 @@ textarea {
 	margin-top: 50px;
 	padding: 40px;
 	margin-left: 0%;
-	margin-right: 25%;
+	margin-right: 10%;
 	float: right;
 	display: inline-block;
+}
+
+.homeMessageContainer {
+	display: block;
+	/*margin: 0 auto;*/
+	width: 350px !important;
+	height: 400px;
+	background: rgba(0,0,0,0.7);
+	border-radius: 10%;
+	margin-top: 50px;
+	padding: 40px;
+	margin-left: 0%;
+	margin-right: 10%;
+	float: right;
+	display: inline-block;
+}
+
+.homeblock {
+	display: inline-block;
+	/*margin: 0 auto;*/
+	width: 350px !important;
+	height: 400px;
+	background: rgba(0,0,0,0.7);
+	border-radius: 10%;
+	margin-top: 50px;
+	margin-left: 9%;
+	margin-right: 0%;
+	padding: 40px;
+	float: left;
 }
 
 .newprofilecontainer {

@@ -10,8 +10,10 @@ class Home extends React.Component {
         super(props)
         loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
         this.sendfindMatchRequest = this.sendfindMatchRequest.bind(this);
+        this.sendGetMessageRequest = this.sendGetMessageRequest.bind(this);
         this.redirectToProfile = this.redirectToProfile.bind(this);
         this.loadMatches = this.loadMatches.bind(this);
+        this.loadMessages = this.loadMessages.bind(this);
 
         this.state = {
             matchVisible: false,
@@ -31,6 +33,7 @@ class Home extends React.Component {
             });
 
             this.sendfindMatchRequest();
+
         }
     }
 
@@ -71,10 +74,34 @@ class Home extends React.Component {
             })
     }
 
+    sendGetMessageRequest() {
+
+        axios.get(`http://localhost:4567/message`, { params: { id: loggedInUser.userid } })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                if (res.data.length == 0) {
+
+                }
+                else {
+                    this.setState({ messages: res.data });
+                }
+            })
+    }
+
     loadMatches = (app) => {
         if (app.state.matches.length > 0) {
             return app.state.matches.map(function (each) {
                 return (<div className="matchesbutton" onClick={() => app.redirectToProfile(each)}><div className="dot2"></div>{each.username}</div>)
+            })
+        }
+    }
+
+    loadMessages = (app) => {
+        if (app.state.messages.length > 0) {
+            return app.state.messages.map(function (each) {
+                return (<div className="matchesbutton"><div className="dot2"></div>{each.senderid}</div>)
             })
         }
     }
@@ -94,7 +121,7 @@ class Home extends React.Component {
                     <div className="hometext">Welcome {loggedInUser.username}!</div>
 
                     <div>
-                        <div className="homeMatchContainer" id="matchContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeblock" id="matchContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
 
                             <div className="logintext">Recent Matches</div>
                             <br></br>
@@ -106,11 +133,20 @@ class Home extends React.Component {
                             <div className="button1" onClick={this.redirectToNewProfile} >redirect</div>
                             <br></br>
                         </div>
-                        <div className="homeBuddyContainer" id="buddyContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeblock" id="buddyContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
 
                             <div className="logintext">My Buddies</div>
                             <br></br>
                             <div className="text1">You have no buddies yet.</div>
+                        </div>
+                        <div className="homeblock" id="messageContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
+
+                            <div className="logintext">Messages</div>
+                            <br></br>
+                            {this.state && this.state.messages &&
+
+                                this.loadMessages(this)
+                            }
                         </div>
                     </div>
 
