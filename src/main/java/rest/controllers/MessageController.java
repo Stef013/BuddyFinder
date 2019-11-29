@@ -1,10 +1,8 @@
 package rest.controllers;
 
 import com.google.gson.Gson;
-import data.MatchRepository;
 import data.MessageRepository;
 import models.Message;
-import models.User;
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class MessageController
         //Link
         //https://www.mscharhag.com/java/building-rest-api-with-spark
 
-        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
+        //before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         post("/message", (request, response) ->
         {
@@ -58,7 +56,6 @@ public class MessageController
 
         exception(IllegalArgumentException.class, (e, req, res) ->
         {
-
             res.status(400);
         });
     }
