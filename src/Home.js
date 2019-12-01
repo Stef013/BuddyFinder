@@ -33,6 +33,7 @@ class Home extends React.Component {
             });
 
             this.sendfindMatchRequest();
+            this.sendGetMessageRequest();
 
         }
     }
@@ -101,7 +102,19 @@ class Home extends React.Component {
     loadMessages = (app) => {
         if (app.state.messages.length > 0) {
             return app.state.messages.map(function (each) {
-                return (<div className="matchesbutton"><div className="dot2"></div>{each.senderid}</div>)
+                if (each.isrequest) {
+                    return (
+                        <div className="requestcontainer">
+                            <div className="dot2"></div>
+                            {each.senderid}
+                            <br></br> 
+                            wants to be your buddy!
+                            <br></br>
+                            <div className="acceptbutton">Accept</div><div className="declinebutton">Decline</div>
+                        </div>
+                    )
+                }
+                return (<div className="message"><div className="dot2"></div>{each.senderid} sent you a message</div>)
             })
         }
     }
