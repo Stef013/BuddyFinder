@@ -3,10 +3,11 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="buddyfinder_users")
+@Table(name="buddyfinder_users2")
 public class User
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userid;
     private String username;
     private String password;

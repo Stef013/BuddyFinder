@@ -3,19 +3,31 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="buddyfinder_messages")
+@Table(name="buddyfinder_messages2")
 public class Message
 {
+
     @Id
-    private int recieverid;
-    private int senderid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name="RecieverID")
+    private User reciever;
+
+    @ManyToOne
+    @JoinColumn(name="SenderID")
+    private User sender;
+
+    private String sendername;
     private String message;
     private boolean isrequest;
 
-    public Message(int recieverid, int senderid, String message, boolean isrequest)
+    public Message(User recieverid, User senderid, String sendername, String message, boolean isrequest)
     {
-        this.recieverid = recieverid;
-        this.senderid = senderid;
+        this.reciever = recieverid;
+        this.sender = senderid;
+        this.sendername = sendername;
         this.message = message;
         this.isrequest = isrequest;
     }
@@ -24,7 +36,7 @@ public class Message
     {}
 
 
-    public int getRecieverid()
+    public int getReciever()
     {
         return recieverid;
     }
@@ -42,6 +54,16 @@ public class Message
     public void setSenderid(int senderid)
     {
         this.senderid = senderid;
+    }
+
+    public String getSendername()
+    {
+        return sendername;
+    }
+
+    public void setSendername(String sendername)
+    {
+        this.sendername = sendername;
     }
 
     public String getMessage()
@@ -63,4 +85,7 @@ public class Message
     {
         this.isrequest = isrequest;
     }
+
+
+
 }
