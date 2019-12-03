@@ -49,10 +49,10 @@ public class MessageRepository
         try{
             openConnection();
             em.getTransaction().begin();
-            //String sql = "Select * FROM buddyfinder_messages WHERE RecieverID = ?1";
-            String sql = "SELECT buddyfinder_messages.RecieverID, buddyfinder_messages.SenderID, buddyfinder_users.Username, " +
+            String sql = "Select * FROM buddyfinder_messages2 WHERE RecieverID = ?1";
+            /*String sql = "SELECT buddyfinder_messages.RecieverID, buddyfinder_messages.SenderID, buddyfinder_users.Username, " +
                     "buddyfinder_messages.Message, buddyfinder_messages.IsRequest FROM `buddyfinder_messages` " +
-                    "INNER JOIN buddyfinder_users ON buddyfinder_messages.SenderID = buddyfinder_users.UserID";
+                    "INNER JOIN buddyfinder_users ON buddyfinder_messages.SenderID = buddyfinder_users.UserID";*/
 
             Query query = em.createNativeQuery(sql, Message.class);
             query.setParameter(1, recieverid);

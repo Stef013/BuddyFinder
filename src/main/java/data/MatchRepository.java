@@ -32,7 +32,7 @@ public class MatchRepository
         {
             openConnection();
 
-            String sql = "Select * FROM buddyfinder_users WHERE NOT UserID = ?1";
+            String sql = "Select * FROM buddyfinder_users2 WHERE NOT USERID = ?1";
 
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUserId());

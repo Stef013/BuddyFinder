@@ -9,6 +9,7 @@ public class User
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userid;
+
     private String username;
     private String password;
     private String firstname;
@@ -19,8 +20,6 @@ public class User
     private String hobby1;
     private String hobby2;
     private String hobby3;
-
-
 
     public User(String username, String password)
     {

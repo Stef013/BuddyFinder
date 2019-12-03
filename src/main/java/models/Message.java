@@ -6,27 +6,26 @@ import javax.persistence.*;
 @Table(name="buddyfinder_messages2")
 public class Message
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int messageid;
 
     @ManyToOne
-    @JoinColumn(name="RecieverID")
+    @JoinColumn(name="RecieverID", referencedColumnName = "userid")
     private User reciever;
 
     @ManyToOne
-    @JoinColumn(name="SenderID")
+    @JoinColumn(name="SenderID", referencedColumnName = "userid")
     private User sender;
 
     private String sendername;
     private String message;
     private boolean isrequest;
 
-    public Message(User recieverid, User senderid, String sendername, String message, boolean isrequest)
+    public Message(User reciever, User sender, String sendername, String message, boolean isrequest)
     {
-        this.reciever = recieverid;
-        this.sender = senderid;
+        this.reciever = reciever;
+        this.sender = sender;
         this.sendername = sendername;
         this.message = message;
         this.isrequest = isrequest;
@@ -36,24 +35,34 @@ public class Message
     {}
 
 
-    public int getReciever()
+    public int getMessageid()
     {
-        return recieverid;
+        return messageid;
     }
 
-    public void setRecieverid(int recieverid)
+    public void setMessageid(int messageid)
     {
-        this.recieverid = recieverid;
+        this.messageid = messageid;
     }
 
-    public int getSenderid()
+    public User getReciever()
     {
-        return senderid;
+        return reciever;
     }
 
-    public void setSenderid(int senderid)
+    public void setRecieverid(User reciever)
     {
-        this.senderid = senderid;
+        this.reciever = reciever;
+    }
+
+    public User getSender()
+    {
+        return sender;
+    }
+
+    public void setSenderid(User sender)
+    {
+        this.sender = sender;
     }
 
     public String getSendername()
