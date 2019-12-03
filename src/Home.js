@@ -106,7 +106,7 @@ class Home extends React.Component {
                     return (
                         <div className="requestcontainer">
                             <div className="dot2"></div>
-                            {each.senderid}
+                            {each.sendername}
                             <br></br> 
                             wants to be your buddy!
                             <br></br>
@@ -114,7 +114,7 @@ class Home extends React.Component {
                         </div>
                     )
                 }
-                return (<div className="message"><div className="dot2"></div>{each.senderid} sent you a message</div>)
+                return (<div className="message"><div className="dot2"></div>{each.sendername} sent you a message</div>)
             })
         }
     }

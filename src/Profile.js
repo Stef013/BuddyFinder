@@ -45,8 +45,8 @@ class Profile extends React.Component {
 
     sendBuddyRequest() {
 
-        axios.post(`http://localhost:4567/message`, { recieverid: this.state.profileUser.userid, senderid: loggedInUser.userid, 
-        sendername: this.state.profileUser.username, message: null, isrequest: true  })
+        axios.post(`http://localhost:4567/message`, { reciever: this.state.profileUser, sender: loggedInUser, 
+        sendername: loggedInUser.username, message: null, isrequest: true  })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
