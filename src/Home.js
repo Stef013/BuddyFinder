@@ -106,6 +106,23 @@ class Home extends React.Component {
             })
     }
 
+    sendAcceptRequest(id) {
+
+        axios.post(`http://localhost:4567/acceptrequest`, { params: { userid: loggedInUser.userid, id: id } })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                if (!res.data) {
+                    alert("Database Error!")
+                }
+                else {
+                    alert("Buddy request accepted!")
+                    this.refresh();
+                }
+            })
+    }
+
     loadMatches = (app) => {
         if (app.state.matches.length > 0) {
             return app.state.matches.map(function (each) {
@@ -125,7 +142,7 @@ class Home extends React.Component {
                             <br></br> 
                             wants to be your buddy!
                             <br></br>
-                            <div className="acceptbutton">Accept</div><div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
+                            <div className="acceptbutton" onClick={() => app.sendAcceptRequest(each.sender.userid)}>Accept</div><div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
                         </div>
                     )
                 }
