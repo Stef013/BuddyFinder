@@ -11,6 +11,7 @@ class Home extends React.Component {
         loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
         this.sendfindMatchRequest = this.sendfindMatchRequest.bind(this);
         this.sendGetMessageRequest = this.sendGetMessageRequest.bind(this);
+        this.sendDeleteMessageRequest = this.sendDeleteMessageRequest.bind(this);
         this.redirectToProfile = this.redirectToProfile.bind(this);
         this.loadMatches = this.loadMatches.bind(this);
         this.loadMessages = this.loadMessages.bind(this);
@@ -39,9 +40,7 @@ class Home extends React.Component {
     }
 
     refresh = () => {
-        this.props.history.push({
-            pathname: '/home'
-        })
+        window.location.reload();
     }
 
     redirectToNewProfile = () => {
@@ -91,6 +90,22 @@ class Home extends React.Component {
             })
     }
 
+    sendDeleteMessageRequest(id) {
+
+        axios.delete(`http://localhost:4567/message`, { params: { id: id } })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                if (!res.data) {
+                    alert("Database Error!")
+                }
+                else {
+                    this.refresh();
+                }
+            })
+    }
+
     loadMatches = (app) => {
         if (app.state.matches.length > 0) {
             return app.state.matches.map(function (each) {
@@ -110,7 +125,7 @@ class Home extends React.Component {
                             <br></br> 
                             wants to be your buddy!
                             <br></br>
-                            <div className="acceptbutton">Accept</div><div className="declinebutton">Decline</div>
+                            <div className="acceptbutton">Accept</div><div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
                         </div>
                     )
                 }
