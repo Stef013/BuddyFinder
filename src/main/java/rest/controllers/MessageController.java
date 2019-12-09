@@ -54,6 +54,22 @@ public class MessageController
             return json;
         });
 
+        delete("/message", (request, response) ->
+        {
+            System.out.println("DELETE /message");
+            String param = request.queryParams("id");
+
+            int messageid = Integer.parseInt(param);
+            System.out.println(messageid);
+
+            boolean result = messageRepository.deleteMessage(messageid);
+
+            String json = gson.toJson(result);
+            System.out.println(json);
+
+            return json;
+        });
+
         exception(IllegalArgumentException.class, (e, req, res) ->
         {
             res.status(400);

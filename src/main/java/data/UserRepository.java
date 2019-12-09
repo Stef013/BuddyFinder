@@ -63,7 +63,6 @@ public class UserRepository
             em.getTransaction().begin();
 
             String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
-
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUsername());
             query.setParameter(2, hashing.hash(user.getPassword()));
@@ -85,8 +84,7 @@ public class UserRepository
         try{
             openConnection();
             em.getTransaction().begin();
-            String sql = "Select * FROM buddyfinder_users WHERE Username = ?1";
-
+            String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, username);
             User userdata = (User)query.getSingleResult();

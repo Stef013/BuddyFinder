@@ -1,6 +1,7 @@
 package data;
 
 import models.Message;
+import models.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -67,4 +68,24 @@ public class MessageRepository
             return null;
         }
     }
+
+    public boolean deleteMessage(int messageid)
+    {
+        try{
+            openConnection();
+            em.getTransaction().begin();
+            Message message = em.find(Message.class, messageid );
+            em.remove(message);
+            em.getTransaction().commit();
+            emf.close();
+
+            return true;
+        }
+        catch(Exception ex)
+        {
+            emf.close();
+            return false;
+        }
+    }
+
 }
