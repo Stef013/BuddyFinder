@@ -70,6 +70,8 @@ public class MessageController
             return json;
         });
 
+
+
         exception(IllegalArgumentException.class, (e, req, res) ->
         {
             res.status(400);

@@ -5,10 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/MessageRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/MatchRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/MatchRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/UserRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/rest/controllers/Usercontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rest/controllers/Usercontroller.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,10 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/rest/RestServer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+            <state relative-caret-position="1406">
+              <caret line="86" column="42" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,10 +35,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="86" column="80" selection-start-line="86" selection-start-column="80" selection-end-line="86" selection-end-column="80" />
+            <state relative-caret-position="126">
+              <caret line="126" column="28" selection-start-line="126" selection-start-column="15" selection-end-line="126" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/MatchRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="702">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -57,19 +59,39 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/Message.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/RouteImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state>
+              <folding>
+                <element signature="e#0#1726#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/http/matching/Routes.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1318">
-              <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+            <state relative-caret-position="262">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/http/matching/MatcherFilter.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,50 +102,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/MessageRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+            <state relative-caret-position="150">
+              <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="51" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/LoginModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-              <folding>
-                <element signature="e#169#170#0" expanded="true" />
-                <element signature="e#221#222#0" expanded="true" />
-                <element signature="e#261#262#0" expanded="true" />
-                <element signature="e#300#301#0" expanded="true" />
-                <element signature="e#331#332#0" expanded="true" />
-                <element signature="e#383#384#0" expanded="true" />
-                <element signature="e#423#424#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -133,6 +116,22 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
               <caret line="15" column="86" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="154" column="5" selection-start-line="154" selection-start-column="5" selection-end-line="154" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2783#2784#0" expanded="true" />
+                <element signature="e#2813#2814#0" expanded="true" />
+                <element signature="e#2873#2874#0" expanded="true" />
+                <element signature="e#2911#2912#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,15 +161,15 @@
         <option value="$PROJECT_DIR$/src/main/java/models/PersonModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/Hashing.java" />
         <option value="$PROJECT_DIR$/src/main/java/rest/controllers/Usercontroller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/rest/RestServer.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/models/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/MatchRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Message.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/MessageRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java" />
       </list>
     </option>
   </component>
@@ -180,6 +179,17 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="BuddyFinder-Backend" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="225" />
@@ -285,7 +295,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575893965430" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575901424291" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -390,7 +400,7 @@
       <workItem from="1575029659315" duration="728000" />
       <workItem from="1575285980217" duration="5384000" />
       <workItem from="1575380748245" duration="3753000" />
-      <workItem from="1575885806239" duration="4684000" />
+      <workItem from="1575885806239" duration="11680000" />
     </task>
     <task id="LOCAL-00001" summary="Password Hashing toegevoegd">
       <created>1571230991320</created>
@@ -448,11 +458,18 @@
       <option name="project" value="LOCAL" />
       <updated>1575383905218</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Delete message toegevoegd">
+      <created>1575894279836</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575894279836</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119305000" />
+    <option name="totallyTimeSpent" value="126301000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1691" height="917" extended-state="6" />
@@ -484,7 +501,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3296501" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -504,7 +521,8 @@
     <MESSAGE value="Naamgeving paar methodes gewijzigd" />
     <MESSAGE value="JPA omgegooid" />
     <MESSAGE value="Tabellen laten genereren via JPA met foreign keys." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tabellen laten genereren via JPA met foreign keys." />
+    <MESSAGE value="Delete message toegevoegd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete message toegevoegd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -515,6 +533,12 @@
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/UserRepository.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -524,21 +548,11 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/RouteImpl.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/PersonModel.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1311">
           <caret line="69" column="21" selection-start-line="65" selection-start-column="8" selection-end-line="69" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/http/matching/MatcherFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
@@ -572,16 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/MatchRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/LoginModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -598,10 +602,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/persistence/org.eclipse.persistence.core/2.7.4/org.eclipse.persistence.core-2.7.4.jar!/org/eclipse/persistence/exceptions/DatabaseException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+        <state relative-caret-position="240">
+          <caret line="154" column="5" selection-start-line="154" selection-start-column="5" selection-end-line="154" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2783#2784#0" expanded="true" />
+            <element signature="e#2813#2814#0" expanded="true" />
+            <element signature="e#2873#2874#0" expanded="true" />
+            <element signature="e#2911#2912#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/RouteImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#1726#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/http/matching/Routes.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar!/spark/http/matching/MatcherFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>
@@ -612,17 +660,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Message.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="1406">
+          <caret line="86" column="42" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/MatchRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1318">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+        <state relative-caret-position="126">
+          <caret line="126" column="28" selection-start-line="126" selection-start-column="15" selection-end-line="126" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -631,18 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="86" column="80" selection-start-line="86" selection-start-column="80" selection-end-line="86" selection-end-column="80" />
+        <state relative-caret-position="284">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -651,8 +702,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/MessageRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+        <state relative-caret-position="150">
+          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="51" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -124,6 +124,25 @@ public class UserController
             return json;
         });
 
+        post("/acceptrequest", (request, response) ->
+        {
+
+            System.out.println("POST /acceptrequest");
+            String param1 = request.queryParams("userid");
+            String param2 = request.queryParams("id");
+
+            int userid = Integer.parseInt(param1);
+            int buddyid = Integer.parseInt(param2);
+
+
+            boolean result = userRepository.addBuddy(userid, buddyid);
+
+            String json = gson.toJson(result);
+            System.out.println(json);
+            return json;
+
+        });
+
         exception(IllegalArgumentException.class, (e, req, res) -> {
 
             res.status(400);

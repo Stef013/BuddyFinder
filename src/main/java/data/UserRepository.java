@@ -54,20 +54,21 @@ public class UserRepository
         }
     }
 
+
+
     public User getUserData(User user)
     {
         try{
             hashing = new Hashing();
 
             openConnection();
-            em.getTransaction().begin();
+            //em.getTransaction().begin();
 
             String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUsername());
             query.setParameter(2, hashing.hash(user.getPassword()));
             User userdata = (User)query.getSingleResult();
-            System.out.println(userdata.getHobby1());
             emf.close();
 
             return userdata;
@@ -83,7 +84,7 @@ public class UserRepository
     {
         try{
             openConnection();
-            em.getTransaction().begin();
+            //em.getTransaction().begin();
             String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, username);
@@ -109,6 +110,33 @@ public class UserRepository
             em.getTransaction().begin();
 
             em.merge(user);
+            em.getTransaction().commit();
+            emf.close();
+
+            return true;
+        }
+        catch(Exception ex)
+        {
+            emf.close();
+            return false;
+        }
+    }
+
+    public boolean addBuddy(int userid, int buddyid)
+    {
+        try{
+            openConnection();
+            em.getTransaction().begin();
+
+            User user = em.find(User.class, userid);
+            User buddy = em.find(User.class, buddyid);
+
+            user.setBuddies(buddy);
+            buddy.setBuddies(user);
+
+            em.merge(user);
+            em.merge(buddy);
+
             em.getTransaction().commit();
             emf.close();
 

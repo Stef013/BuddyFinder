@@ -49,7 +49,7 @@ public class MessageRepository
     {
         try{
             openConnection();
-            em.getTransaction().begin();
+            //em.getTransaction().begin();
             String sql = "Select * FROM buddyfinder_messages2 WHERE RecieverID = ?1";
             /*String sql = "SELECT buddyfinder_messages.RecieverID, buddyfinder_messages.SenderID, buddyfinder_users.Username, " +
                     "buddyfinder_messages.Message, buddyfinder_messages.IsRequest FROM `buddyfinder_messages` " +

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name="buddyfinder_users2")
@@ -20,6 +21,12 @@ public class User
     private String hobby1;
     private String hobby2;
     private String hobby3;
+
+    @JoinTable(name = "buddyfinder_buddies", joinColumns = {
+            @JoinColumn(name = "UserId", referencedColumnName = "userid", nullable = false)}, inverseJoinColumns = {
+            @JoinColumn(name = "BuddyId", referencedColumnName = "userid", nullable = false)})
+    @ManyToMany
+    private Collection<User> buddies;
 
     public User(String username, String password)
     {
@@ -140,5 +147,15 @@ public class User
     public void setHobby3(String hobby3)
     {
         this.hobby3 = hobby3;
+    }
+
+    public Collection<User> getBuddies()
+    {
+        return buddies;
+    }
+
+    public void setBuddies(User buddy)
+    {
+        this.buddies.add(buddy);
     }
 }
