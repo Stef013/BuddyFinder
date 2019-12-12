@@ -15,14 +15,11 @@ class Profile extends React.Component {
         }
         
         loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
-        console.log(loggedInUser.userid);
-        
         this.sendGetProfileRequest = this.sendGetProfileRequest.bind(this);
         this.sendBuddyRequest = this.sendBuddyRequest.bind(this);
     }
 
     componentWillMount() {
-        
         const { id } = this.props.match.params;
         this.sendGetProfileRequest(id);
     }
@@ -44,7 +41,6 @@ class Profile extends React.Component {
     }
 
     sendBuddyRequest() {
-
         axios.post(`http://localhost:4567/message`, { reciever: this.state.profileUser, sender: loggedInUser, 
         sendername: loggedInUser.username, message: null, isrequest: true  })
             .then(res => {

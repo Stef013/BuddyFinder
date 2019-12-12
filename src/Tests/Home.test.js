@@ -18,15 +18,8 @@ var loggedInUser = {
 
 describe('Full page render', () => {
    it('renders without crashing', () => {
-
-      const expectedProps = {
-         location: {
-            state: {
-               loggedInUser: loggedInUser
-            }
-         }
-      };
-
-      shallow(<Home {...expectedProps} />);
+      window.sessionStorage.setItem("loggedinuser",  JSON.stringify(loggedInUser));
+            
+      shallow(<Home />);
    });
 });

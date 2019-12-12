@@ -17,7 +17,7 @@ var loggedInUser = {
 }
 
 var selectedUser = {
-   userid: "1",
+   userid: "2",
    username: "selecteduser",
    password: "test123",
    firstname: "testname",
@@ -32,16 +32,13 @@ var selectedUser = {
 
 describe('Full page render', () => {
    it('renders without crashing', () => {
-
-      const expectedProps = {
-         location: {
-            state: {
-               loggedInUser: loggedInUser,
-               selectedUser: selectedUser
-            }
+      window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
+     
+      let ProfileTest = class extends Profile {
+         componentWillMount() { 
+             this.setState(() => ({ profileUser: selectedUser }));
          }
-      };
-
-      shallow(<Profile {...expectedProps} />);
+     };
+      shallow(<ProfileTest />);
    });
 });
