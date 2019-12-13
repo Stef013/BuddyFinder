@@ -3,6 +3,8 @@ package data;
 import models.User;
 import logic.Hashing;
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 public class UserRepository
 {
@@ -143,6 +145,31 @@ public class UserRepository
             return true;
         }
         catch(Exception ex)
+        {
+            emf.close();
+            return false;
+        }
+    }
+
+    public boolean getBuddies(int userid)
+    {
+        try
+        {
+            openConnection();
+
+            String sql = "Select  FROM buddyfinder_users2 e LEFT JOIN FETCH e.buddies WHERE USERID = ?1";
+
+            Query query = em.createNativeQuery(sql, User.class);
+            query.setParameter(1, userid);
+
+            List<User> allUsers = query.getResultList();
+            System.out.println(allUsers);
+
+
+
+            emf.close();
+            return true;
+        } catch (Exception ex)
         {
             emf.close();
             return false;

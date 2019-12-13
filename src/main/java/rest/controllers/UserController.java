@@ -124,12 +124,12 @@ public class UserController
             return json;
         });
 
-        post("/acceptrequest", (request, response) ->
+        post("/buddy", "application/json", (request, response) ->
         {
 
-            System.out.println("POST /acceptrequest");
-            String param1 = request.queryParams("userid");
-            String param2 = request.queryParams("id");
+            System.out.println("POST /buddy");
+            /*String param1 = request.queryParams("userid");
+            String param2 = request.queryParams("id");*
 
             int userid = Integer.parseInt(param1);
             int buddyid = Integer.parseInt(param2);
@@ -138,14 +138,36 @@ public class UserController
             boolean result = userRepository.addBuddy(userid, buddyid);
 
             String json = gson.toJson(result);
-            System.out.println(json);
-            return json;
+            System.out.println(json);*/
 
+            System.out.println(request.contentType()); // What type of data am I sending?
+            System.out.println(request.queryParams()); // What are the params sent?
+            System.out.println(request.raw());
+            System.out.println(request.body());// What's the raw data sent?
+
+            return true;
+
+        });
+
+        get("/buddy", (request, response) -> {
+            System.out.println("Get /buddy");
+            String param = request.queryParams("id");
+            int userid = Integer.parseInt(param);
+            System.out.println(userid);
+
+            boolean result = userRepository.getBuddies(userid);
+
+            String json = gson.toJson(result);
+            System.out.println(json);
+
+            return json;
         });
 
         exception(IllegalArgumentException.class, (e, req, res) -> {
 
             res.status(400);
         });
+
+
     }
 }
