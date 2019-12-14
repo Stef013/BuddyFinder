@@ -3,6 +3,7 @@ package rest.controllers;
 import com.google.gson.Gson;
 import data.MatchRepository;
 import data.UserRepository;
+import models.Acceptrequest;
 import models.LoginModel;
 import models.User;
 
@@ -118,34 +119,32 @@ public class UserController
 
             List<User> matches = matchRepository.findMatches(user);
 
+            if(matches != null)
+            {
+                matches = matchRepository.checkForBuddies(user, matches);
+            }
+
             String json = gson.toJson(matches);
             System.out.println(json);
 
             return json;
         });
 
-        post("/buddy", "application/json", (request, response) ->
+        post("/buddy", (request, response) ->
         {
 
             System.out.println("POST /buddy");
-            /*String param1 = request.queryParams("userid");
-            String param2 = request.queryParams("id");*
+            String body = request.body();
+            System.out.println(body);
 
-            int userid = Integer.parseInt(param1);
-            int buddyid = Integer.parseInt(param2);
+            Acceptrequest acceptrequest = gson.fromJson(body, Acceptrequest.class);
 
-
-            boolean result = userRepository.addBuddy(userid, buddyid);
+            boolean result = userRepository.addBuddy(acceptrequest);
 
             String json = gson.toJson(result);
-            System.out.println(json);*/
+            System.out.println(json);
 
-            System.out.println(request.contentType()); // What type of data am I sending?
-            System.out.println(request.queryParams()); // What are the params sent?
-            System.out.println(request.raw());
-            System.out.println(request.body());// What's the raw data sent?
-
-            return true;
+            return json;
 
         });
 
@@ -155,9 +154,9 @@ public class UserController
             int userid = Integer.parseInt(param);
             System.out.println(userid);
 
-            boolean result = userRepository.getBuddies(userid);
+            List<User> buddies = userRepository.getBuddies(userid);
 
-            String json = gson.toJson(result);
+            String json = gson.toJson(buddies);
             System.out.println(json);
 
             return json;

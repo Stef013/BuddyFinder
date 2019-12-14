@@ -1,5 +1,11 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -25,8 +31,9 @@ public class User
     @JoinTable(name = "buddyfinder_buddies", joinColumns = {
             @JoinColumn(name = "UserId", referencedColumnName = "userid", nullable = false)}, inverseJoinColumns = {
             @JoinColumn(name = "BuddyId", referencedColumnName = "userid", nullable = false)})
+
     @ManyToMany
-    private Collection<User> buddies;
+    private transient Collection<User> buddies;
 
     public User(String username, String password)
     {

@@ -38,12 +38,11 @@ public class MatchRepository
             query.setParameter(1, user.getUserId());
 
             List<User> allUsers = query.getResultList();
+            emf.close();
             System.out.println(allUsers);
 
             List<User> matches = checkForMatches(allUsers, user);
 
-
-            emf.close();
             return matches;
         } catch (Exception ex)
         {
@@ -51,6 +50,50 @@ public class MatchRepository
             return null;
         }
     }
+
+    public List<User> checkForBuddies(User user, List<User> matches)
+    {
+        List<User> goodmatches = new ArrayList<>();
+
+        if(matches.size()> 0)
+        {
+            for( User m : matches)
+            {
+                if(!isBuddy(user.getUserId(), m.getUserId()))
+                {
+                    goodmatches.add(m);
+                }
+            }
+        }
+
+        return goodmatches;
+    }
+
+    public boolean isBuddy(int userid, int buddyid)
+    {
+        try
+        {
+            openConnection();
+
+            String sql = "Select * FROM buddyfinder_buddies WHERE UserId = ?1 AND BuddyId = ?2";
+
+            Query query = em.createNativeQuery(sql, User.class);
+            query.setParameter(1, userid);
+            query.setParameter(2, buddyid);
+
+            List<User> allUsers = query.getResultList();
+            emf.close();
+            System.out.println(allUsers);
+
+
+            return true;
+        } catch (Exception ex)
+        {
+            emf.close();
+            return false;
+        }
+    }
+
 
     public List<User> checkForMatches(List<User> allUsers, User user)
     {

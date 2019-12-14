@@ -1,5 +1,6 @@
 package data;
 
+import models.Acceptrequest;
 import models.User;
 import logic.Hashing;
 import javax.persistence.*;
@@ -64,9 +65,9 @@ public class UserRepository
             hashing = new Hashing();
 
             openConnection();
-            //em.getTransaction().begin();
 
-            String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
+            String sql = "Select UserID, Username, Firstname, Lastname, Hobby1, Hobby2, Hobby3" +
+                    " FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUsername());
             query.setParameter(2, hashing.hash(user.getPassword()));
@@ -92,6 +93,7 @@ public class UserRepository
             query.setParameter(1, username);
             User userdata = (User)query.getSingleResult();
             userdata.setPassword(null);
+
             System.out.println(userdata.getHobby1());
             emf.close();
 
@@ -124,14 +126,14 @@ public class UserRepository
         }
     }
 
-    public boolean addBuddy(int userid, int buddyid)
+    public boolean addBuddy(Acceptrequest acceptrequest)
     {
         try{
             openConnection();
             em.getTransaction().begin();
 
-            User user = em.find(User.class, userid);
-            User buddy = em.find(User.class, buddyid);
+            User user = em.find(User.class, acceptrequest.getUserid());
+            User buddy = em.find(User.class, acceptrequest.getBuddyid());
 
             user.setBuddies(buddy);
             buddy.setBuddies(user);
@@ -151,28 +153,31 @@ public class UserRepository
         }
     }
 
-    public boolean getBuddies(int userid)
+    public List<User> getBuddies(int userid)
     {
         try
         {
             openConnection();
 
-            String sql = "Select  FROM buddyfinder_users2 e LEFT JOIN FETCH e.buddies WHERE USERID = ?1";
+            String sql = "SELECT buddyfinder_users2.USERID, buddyfinder_users2.USERNAME, buddyfinder_users2.FIRSTNAME, " +
+                    "buddyfinder_users2.LASTNAME " +
+                    "FROM buddyfinder_buddies " +
+                    "INNER JOIN buddyfinder_users2 " +
+                    "ON buddyfinder_buddies.BuddyId = buddyfinder_users2.USERID " +
+                    "WHERE buddyfinder_buddies.UserId = ?1";
 
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, userid);
 
-            List<User> allUsers = query.getResultList();
-            System.out.println(allUsers);
-
-
+            List<User> buddies = query.getResultList();
+            System.out.println(buddies);
 
             emf.close();
-            return true;
+            return buddies;
         } catch (Exception ex)
         {
             emf.close();
-            return false;
+            return null;
         }
     }
 }
