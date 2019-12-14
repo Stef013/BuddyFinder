@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 
 var loggedInUser;
-var matches;
 class Home extends React.Component {
 
     constructor(props) {
@@ -34,6 +33,7 @@ class Home extends React.Component {
             });
 
             this.sendfindMatchRequest();
+            this.sendGetBuddyRequest();
             this.sendGetMessageRequest();
 
         }
@@ -106,9 +106,25 @@ class Home extends React.Component {
             })
     }
 
+    sendGetBuddyRequest() {
+
+        axios.get(`http://localhost:4567/buddy`, { params: { id: loggedInUser.userid } })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                if (res.data.length == 0) {
+
+                }
+                else {
+                    this.setState({ buddies: res.data });
+                }
+            })
+    }
+
     sendAcceptRequest(id) {
 
-        axios.post(`http://localhost:4567/acceptrequest`, { params: { userid: loggedInUser.userid, id: id } })
+        axios.post(`http://localhost:4567/buddy`, { userid: loggedInUser.userid, buddyid: id })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -131,6 +147,15 @@ class Home extends React.Component {
         }
     }
 
+    loadBuddies = (app) => {
+        if (app.state.buddies.length > 0) {
+            return app.state.buddies.map(function (each) {
+                return (<div className="matchesbutton" onClick={() => app.redirectToProfile(each)}><div className="dot2"></div>{each.firstname}
+                    {""} {each.lastname} </div>)
+            })
+        }
+    }
+
     loadMessages = (app) => {
         if (app.state.messages.length > 0) {
             return app.state.messages.map(function (each) {
@@ -139,7 +164,7 @@ class Home extends React.Component {
                         <div className="requestcontainer">
                             <div className="dot2"></div>
                             {each.sendername}
-                            <br></br> 
+                            <br></br>
                             wants to be your buddy!
                             <br></br>
                             <div className="acceptbutton" onClick={() => app.sendAcceptRequest(each.sender.userid)}>Accept</div><div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
@@ -182,7 +207,11 @@ class Home extends React.Component {
 
                             <div className="logintext">My Buddies</div>
                             <br></br>
-                            <div className="text1">You have no buddies yet.</div>
+                            {this.state && this.state.buddies &&
+
+                                this.loadBuddies(this)
+                            }
+                            
                         </div>
                         <div className="homeblock" id="messageContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
 
