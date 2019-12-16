@@ -167,7 +167,8 @@ class Home extends React.Component {
                             <br></br>
                             wants to be your buddy!
                             <br></br>
-                            <div className="acceptbutton" onClick={() => app.sendAcceptRequest(each.sender.userid)}>Accept</div><div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
+                            <div className="acceptbutton" onClick={() => app.sendAcceptRequest(each.sender.userid)}>Accept</div>
+                            <div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
                         </div>
                     )
                 }
