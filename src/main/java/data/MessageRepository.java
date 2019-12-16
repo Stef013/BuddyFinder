@@ -49,7 +49,6 @@ public class MessageRepository
     {
         try{
             openConnection();
-            //em.getTransaction().begin();
             String sql = "Select * FROM buddyfinder_messages2 WHERE RecieverID = ?1";
 
             Query query = em.createNativeQuery(sql, Message.class);
@@ -84,5 +83,4 @@ public class MessageRepository
             return false;
         }
     }
-
 }

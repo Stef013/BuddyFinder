@@ -87,7 +87,6 @@ public class UserRepository
     {
         try{
             openConnection();
-            //em.getTransaction().begin();
             String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, username);
@@ -108,7 +107,6 @@ public class UserRepository
 
     public boolean update(User user)
     {
-        System.out.println(user.getUserId());
         try{
             openConnection();
             em.getTransaction().begin();

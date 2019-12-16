@@ -130,8 +130,7 @@ public class UserController
             return json;
         });
 
-        post("/buddy", (request, response) ->
-        {
+        post("/buddy", (request, response) -> {
 
             System.out.println("POST /buddy");
             String body = request.body();
@@ -162,11 +161,24 @@ public class UserController
             return json;
         });
 
-        exception(IllegalArgumentException.class, (e, req, res) -> {
+        get("/buddy/check", (request, response) -> {
+            System.out.println("Get /buddy");
+            String param1 = request.queryParams("userid");
+            String param2 = request.queryParams("profileid");
+            int userid = Integer.parseInt(param1);
+            int profileid = Integer.parseInt(param2);
+            System.out.println(userid);
 
-            res.status(400);
+            boolean result = matchRepository.isBuddy(userid, profileid);
+
+            String json = gson.toJson(result);
+            System.out.println(json);
+
+            return json;
         });
 
-
+        exception(IllegalArgumentException.class, (e, req, res) -> {
+            res.status(400);
+        });
     }
 }
