@@ -12,12 +12,15 @@ class Profile extends React.Component {
 
         this.state = {
             profileUser: null,
-            regular: false
+            regular: false,
+            isBuddy: null
         }
 
         loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
         this.sendGetProfileRequest = this.sendGetProfileRequest.bind(this);
         this.sendBuddyRequest = this.sendBuddyRequest.bind(this);
+        this.sendMessageRequest = this.sendMessageRequest.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
         this.toggle = this.toggle.bind(this);
     }
 
@@ -33,6 +36,16 @@ class Profile extends React.Component {
             };
         });
     };
+
+    sendMessage() {
+        var message = document.getElementById("messageBox").value;
+        if (!message) {
+            alert("Message cannot be empty!")
+        }
+        else {
+            this.sendMessageRequest(message);
+        }
+    }
 
     sendGetProfileRequest(id) {
 
@@ -58,10 +71,10 @@ class Profile extends React.Component {
                 console.log(res.data);
 
                 if (!res.data) {
-                    document.getElementById("addbuddyButton").style.display = "block";
+                    this.setState({isBuddy: "inline-block"});
                 }
                 else {
-                    document.getElementById("addbuddyButton").style.display = "none";
+                    this.setState({isBuddy: "none"})
                 }
             })
     }
@@ -84,6 +97,27 @@ class Profile extends React.Component {
             })
     }
 
+    sendMessageRequest(message) {
+        axios.post(`http://localhost:4567/message`, {
+            reciever: this.state.profileUser, sender: loggedInUser,
+            sendername: loggedInUser.username, message: message, isrequest: false
+        })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+
+                if (!res.data) {
+                    alert("Request error!")
+                }
+                else {
+                    alert("The message has been sent!");
+                    this.toggle("regular", true);
+                }
+            })
+    }
+
+    
+
     redirect = () => {
         this.props.history.push({
             pathname: '/home'
@@ -93,7 +127,7 @@ class Profile extends React.Component {
     render() {
         const { regular } = this.state
 
-        if (!this.state.profileUser) {
+        if (!this.state.isBuddy) {
             return <div className="loadingtext">Loading...</div>
         }
 
@@ -114,7 +148,10 @@ class Profile extends React.Component {
                             <div className="profilenametext">{this.state.profileUser.username}</div>
                             <div className="text2">{this.state.profileUser.city}, {this.state.profileUser.country} </div>
                             <br></br>
-                            <div className="button1" id="addbuddyButton" onClick={this.sendBuddyRequest}>+ Buddy</div>
+                            <div>
+                            <div className="acceptbutton" id="addbuddyButton" onClick={this.sendBuddyRequest} style={{display: this.state.isBuddy}}>+ Buddy</div>
+                            <div className="button1" onClick={this.toggle("regular", true)}>Message</div>
+                            </div>
                             <br></br>
                             <div className="text1"><b>About me:</b>
                                 <p>{this.state.profileUser.description}</p>
@@ -126,23 +163,18 @@ class Profile extends React.Component {
                             <div className="hobbytext">{this.state.profileUser.hobby3}</div>
                             <br></br>
                             <br></br>
-                            <div className="button1" onClick={this.toggle("regular", true)}>Send Message</div>
+                            
                         </center>
                     </div>
                     <Drawer
                         open={regular}
                         onRequestClose={this.toggle("regular", false)}
                     >
-                        <div className="container" id="container1">
-                            <center>
-                                <div className="logintext">Login</div>
-                                <input type="text" placeholder="Enter Username" name="uname" id="usernameBox" required></input>
+                        <div className="messagecontainer">
+                                <div className="logintext">Send message to {this.state.profileUser.username}</div>
+                                <textarea placeholder="Write message" id="messageBox"></textarea>
                                 <br></br>
-                                <textarea placeholder="About me:"></textarea>
-                                <br></br>
-                                <button className="loginbutton">Send</button>
-                                <br></br>
-                            </center>
+                                <button className="loginbutton" onClick={this.sendMessage}>Send</button>
                         </div>
                     </Drawer>
 

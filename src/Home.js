@@ -172,7 +172,7 @@ class Home extends React.Component {
                         </div>
                     )
                 }
-                return (<div className="message"><div className="dot2"></div>{each.sendername} sent you a message</div>)
+                return (<div className="messagesbutton"><div className="dot2"></div>{each.sendername} sent you a message</div>)
             })
         }
     }

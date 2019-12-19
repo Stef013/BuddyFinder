@@ -165,7 +165,7 @@ footer{
 .button1 {
 	margin: 0 auto;
 	width: 90px;
-	display: block;
+	display: inline-block;
 	background-color: #d3601e;
 	color: white;
 	text-align: center;
@@ -175,6 +175,8 @@ footer{
 	border-style: none !important;
 	border-width: 2px;
 	margin-top: 10px;
+	margin-left: 24px;
+	margin-right: 20px;
 }
 
 .loginbutton {
@@ -243,7 +245,22 @@ footer{
 	margin-top: 8px;
 }
 
-.matchesbutton:hover{
+.messagesbutton{
+	margin: 0 auto;
+	width: 280px;
+	height: 60px;
+	display: block;
+	background-color: #5f5f5fed;
+	color: white;
+	text-align: left;
+	padding: 5px 16px;
+	font-size: 16px;
+	border-radius: 15px;
+	border-style: none !important;
+	margin-top: 8px;
+}
+
+.matchesbutton:hover, .messagesbutton:hover{
 	background-color: #6464645b;
 	cursor: pointer;
 }
@@ -252,7 +269,7 @@ footer{
 	margin: 0 auto;
 	width: 90px;
 	display: inline-block;
-	background-color: #08be08;
+	background-color: #09a009;
 	color: white;
 	text-align: center;
 	padding: 6px 6px;
@@ -321,68 +338,10 @@ textarea {
 	display: block;
 	margin: 0 auto;
 	width: 350px !important;
-	background: rgba(0,0,0,0.7);
+	background: rgba(0,0,0,0.8);
 	border-radius: 10%;
 	margin-top: 50px;
 	padding: 40px ;
-}
-
-.homeMatchContainer {
-	display: block;
-	/*margin: 0 auto;*/
-	width: 350px !important;
-	height: 400px;
-	background: rgba(0,0,0,0.7);
-	border-radius: 10%;
-	margin-top: 50px;
-	margin-left: 25%;
-	padding: 40px;
-	display: inline-block;
-}
-
-.homeBuddyContainer {
-	display: block;
-	/*margin: 0 auto;*/
-	width: 350px !important;
-	height: 400px;
-	background: rgba(0,0,0,0.7);
-	border-radius: 10%;
-	margin-top: 50px;
-	padding: 40px;
-	margin-left: 0%;
-	margin-right: 10%;
-	float: right;
-	display: inline-block;
-}
-
-.homeMessageContainer {
-	display: block;
-	/*margin: 0 auto;*/
-	width: 350px !important;
-	height: 400px;
-	background: rgba(0,0,0,0.7);
-	border-radius: 10%;
-	margin-top: 50px;
-	padding: 40px;
-	margin-left: 0%;
-	margin-right: 10%;
-	float: right;
-	display: inline-block;
-}
-
-.requestcontainer{
-	margin: 0 auto;
-	width: 280px;
-	height: 100px;
-	display: block;
-	background-color: #5f5f5fed;
-	color: white;
-	text-align: left;
-	padding: 5px 16px;
-	font-size: 16px;
-	border-radius: 15px;
-	border-style: none !important;
-	margin-top: 8px;
 }
 
 .homeblock {
@@ -404,7 +363,7 @@ textarea {
 	margin: 0 auto;
 	width: 45% !important;
 	height: 40% !important;
-	background: rgba(0,0,0,0.7);
+	background: rgba(0,0,0,0.8);
 	border-radius: 10%;
 	margin-top: 30px;
 	padding: 20px ;
@@ -415,11 +374,51 @@ textarea {
 	margin: 0 auto;
 	width: 45% !important;
 	height: 600px !important;
-	background: rgba(0,0,0,0.7);
+	background: rgba(0,0,0,0.8);
 	border-radius: 10%;
 	margin-top: 30px;
 	padding: 20px ;
 }
+
+.requestcontainer{
+	margin: 0 auto;
+	width: 280px;
+	height: 100px;
+	display: block;
+	background-color: #5f5f5fed;
+	color: white;
+	text-align: left;
+	padding: 5px 16px;
+	font-size: 16px;
+	border-radius: 15px;
+	border-style: none !important;
+	margin-top: 8px;
+}
+
+.messagecontainer {
+	display: block;
+	margin: 0 auto;
+	width: 500px !important;
+	background: rgba(0,0,0,0.8);
+	border-radius: 10%;
+	margin-top: 50px;
+	padding: 40px ;
+	text-align: center;
+}
+
+.messagecontainer > textarea{
+	margin: 0 auto !important;
+	width: 400px !important;
+	height: 125px !important;
+	padding: 0px 10px;
+	margin-bottom: 20px !important;
+	margin-left:15px;
+	margin-right: 17px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
 
 /*------------------------------------OTHER----------------------------------*/
 .dot {
