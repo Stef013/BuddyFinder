@@ -147,8 +147,8 @@ class Home extends React.Component {
                     alert("Request error!")
                 }
                 else {
-                    alert("The reply has been sent!");
                     this.toggle("regular", false, null);
+                    alert("The reply has been sent!");
                     this.sendDeleteMessageRequest(this.state.messageid)
                 }
             })
@@ -232,7 +232,7 @@ class Home extends React.Component {
             <div className="App">
                 <div className="topnav">
                     <a href="/">Logoff</a>
-                    <a href="#">Account</a>
+                    <a href="/newprofile">Account</a>
                     <a href="/contact">Contact</a>
                     <a href="#">About</a>
                     <div className="homebutton" onClick={this.refresh}>BuddyFinder</div>
@@ -250,9 +250,6 @@ class Home extends React.Component {
 
                                 this.loadMatches(this)
                             }
-                            <br></br>
-                            <div className="button1" onClick={this.redirectToNewProfile} >redirect</div>
-                            <br></br>
                         </div>
                         <div className="homeblock" id="buddyContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
 
@@ -296,7 +293,8 @@ class Home extends React.Component {
                             <b><div className="text1">Reply:</div></b>
                             <textarea placeholder="Write message" id="messageBox"></textarea>
                             <br></br>
-                            <button className="loginbutton" onClick={this.sendMessage}>Send</button>
+                            <div className="button1" onClick={this.sendMessage}>Send</div>
+                            <div className="deletebutton"  onClick={this.toggle("regular", false, null)}>Delete</div>
                         </div>
                     </Drawer>
                 }
