@@ -1,19 +1,20 @@
 package data;
 
+import data.interfaces.IMatchRepository;
+import data.interfaces.IRepository;
 import models.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchRepository
+public class MatchRepository implements IRepository, IMatchRepository
 {
-
     @PersistenceContext
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
-    private void openConnection()
+    public void openConnection()
     {
         if (emf == null && em == null)
         {
@@ -93,7 +94,6 @@ public class MatchRepository
             return false;
         }
     }
-
 
     public List<User> checkForMatches(List<User> allUsers, User user)
     {

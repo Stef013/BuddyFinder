@@ -1,18 +1,19 @@
 package data;
 
+import data.interfaces.IMessageRepository;
+import data.interfaces.IRepository;
 import models.Message;
-import models.User;
 
 import javax.persistence.*;
 import java.util.List;
 
-public class MessageRepository
+public class MessageRepository implements IRepository, IMessageRepository
 {
     @PersistenceContext
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
-    private void openConnection()
+    public void openConnection()
     {
         if (emf == null && em == null)
         {

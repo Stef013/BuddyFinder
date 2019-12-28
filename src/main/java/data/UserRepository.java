@@ -1,13 +1,14 @@
 package data;
 
+import data.interfaces.IRepository;
+import data.interfaces.IUserRepository;
 import models.Acceptrequest;
 import models.User;
 import logic.Hashing;
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
-public class UserRepository
+public class UserRepository implements IRepository, IUserRepository
 {
     private Hashing hashing;
 
@@ -15,7 +16,7 @@ public class UserRepository
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
-    private void openConnection()
+    public void openConnection()
     {
         if(emf == null && em == null)
         {
@@ -56,8 +57,6 @@ public class UserRepository
             return false;
         }
     }
-
-
 
     public User getUserData(User user)
     {
