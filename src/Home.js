@@ -7,7 +7,13 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props)
-        loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
+
+        this.state = {
+            loggedInUser: null
+        }
+
+        //loggedInUser = JSON.parse(window.sessionStorage.loggedinuser) === null;
+        this.setState({isLoggedIn: sessionStorage.getItem('loggedin') === 'true'});
         this.sendfindMatchRequest = this.sendfindMatchRequest.bind(this);
         this.sendGetMessageRequest = this.sendGetMessageRequest.bind(this);
         this.sendDeleteMessageRequest = this.sendDeleteMessageRequest.bind(this);
@@ -21,8 +27,22 @@ class Home extends React.Component {
         };
     }
 
+    componentWillMount()
+    {
+       
+        if(!loggedInUser)
+        {
+            this.props.history.push({
+                pathname: '/'
+            })
+        }
+        else(
+            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser)
+        )
+    }
+
     componentDidMount() {
-        if (!loggedInUser.firstname) {
+        if (!this.state.loggedInUser.firstname) {
             this.setState({
                 matchVisible: !this.state.matchVisible,
             });
@@ -178,6 +198,11 @@ class Home extends React.Component {
     }
 
     render() {
+
+        if (!this.state.loggedInUser) {
+            return <div className="loadingtext">Loading...</div>
+        }
+
         return (
             <div className="App">
                 <div className="topnav">
@@ -241,9 +266,6 @@ class Home extends React.Component {
                 </footer>
             </div>
         )
-    }
-    catch(err) {
-        console.log(err);
     }
 }
 

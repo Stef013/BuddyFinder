@@ -76,6 +76,7 @@ class App extends Component {
                 else {
                     this.setState(() => ({ loggedInUser: res.data }));
                     window.sessionStorage.setItem("loggedinuser",  JSON.stringify(this.state.loggedInUser));
+                    window.sessionStorage.setItem("isloggedin",  "true");
                     this.redirectToHome();
                 }
             })
