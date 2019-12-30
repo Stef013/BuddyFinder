@@ -3,7 +3,6 @@ import axios from 'axios'
 import MessageDrawer from './MessageDrawer';
 import Drawer from 'react-drag-drawer'
 
-var loggedInUser;
 
 class Profile extends React.Component {
 
@@ -12,11 +11,11 @@ class Profile extends React.Component {
 
         this.state = {
             profileUser: null,
+            loggedInUser: null,
             regular: false,
             isBuddy: null
         }
 
-        loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
         this.sendGetProfileRequest = this.sendGetProfileRequest.bind(this);
         this.sendBuddyRequest = this.sendBuddyRequest.bind(this);
         this.sendMessageRequest = this.sendMessageRequest.bind(this);
@@ -24,9 +23,18 @@ class Profile extends React.Component {
         this.toggle = this.toggle.bind(this);
     }
 
-    componentWillMount() {
-        const { id } = this.props.match.params;
-        this.sendGetProfileRequest(id);
+    componentDidMount() {
+        //checkt of gebruiker ingelogd is
+        if (!window.sessionStorage.loggedinuser) {
+            this.props.history.push({
+                pathname: '/'
+            })
+        }
+        else {
+            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser)
+            const { id } = this.props.match.params;
+            this.sendGetProfileRequest(id);
+        }
     }
 
     toggle = (type, value) => event => {
@@ -48,7 +56,6 @@ class Profile extends React.Component {
     }
 
     sendGetProfileRequest(id) {
-
         axios.get(`http://localhost:4567/user`, { params: { id: id } })
             .then(res => {
                 console.log(res);
@@ -65,24 +72,24 @@ class Profile extends React.Component {
     }
 
     sendCheckBuddyRequest() {
-        axios.get(`http://localhost:4567/buddy/check`, { params: { userid: loggedInUser.userid, profileid: this.state.profileUser.userid } })
+        axios.get(`http://localhost:4567/buddy/check`, { params: { userid: this.state.loggedInUser.userid, profileid: this.state.profileUser.userid } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
 
                 if (!res.data) {
-                    this.setState({isBuddy: "inline-block"});
+                    this.setState({ isBuddy: "inline-block" });
                 }
                 else {
-                    this.setState({isBuddy: "none"})
+                    this.setState({ isBuddy: "none" })
                 }
             })
     }
 
     sendBuddyRequest() {
         axios.post(`http://localhost:4567/message`, {
-            reciever: this.state.profileUser, sender: loggedInUser,
-            sendername: loggedInUser.username, message: null, isrequest: true
+            reciever: this.state.profileUser, sender: this.state.loggedInUser,
+            sendername: this.state.loggedInUser.username, message: null, isrequest: true
         })
             .then(res => {
                 console.log(res);
@@ -99,8 +106,8 @@ class Profile extends React.Component {
 
     sendMessageRequest(message) {
         axios.post(`http://localhost:4567/message`, {
-            reciever: this.state.profileUser, sender: loggedInUser,
-            sendername: loggedInUser.username, message: message, isrequest: false
+            reciever: this.state.profileUser, sender: this.state.loggedInUser,
+            sendername: this.state.loggedInUser.username, message: message, isrequest: false
         })
             .then(res => {
                 console.log(res);
@@ -111,12 +118,10 @@ class Profile extends React.Component {
                 }
                 else {
                     alert("The message has been sent!");
-                    this.toggle("regular", true);
+                    //this.toggle("regular", false);
                 }
             })
     }
-
-    
 
     redirect = () => {
         this.props.history.push({
@@ -149,8 +154,8 @@ class Profile extends React.Component {
                             <div className="text2">{this.state.profileUser.city}, {this.state.profileUser.country} </div>
                             <br></br>
                             <div>
-                            <div className="acceptbutton" id="addbuddyButton" onClick={this.sendBuddyRequest} style={{display: this.state.isBuddy}}>+ Buddy</div>
-                            <div className="button1" onClick={this.toggle("regular", true)}>Message</div>
+                                <div className="acceptbutton" id="addbuddyButton" onClick={this.sendBuddyRequest} style={{ display: this.state.isBuddy }}>+ Buddy</div>
+                                <div className="button1" onClick={this.toggle("regular", true)}>Message</div>
                             </div>
                             <br></br>
                             <div className="text1"><b>About me:</b>
@@ -163,18 +168,23 @@ class Profile extends React.Component {
                             <div className="hobbytext">{this.state.profileUser.hobby3}</div>
                             <br></br>
                             <br></br>
-                            
+
                         </center>
                     </div>
                     <Drawer
+
                         open={regular}
                         onRequestClose={this.toggle("regular", false)}
                     >
                         <div className="messagecontainer">
-                                <div className="logintext">Send message to {this.state.profileUser.username}</div>
-                                <textarea placeholder="Write message" id="messageBox"></textarea>
-                                <br></br>
-                                <button className="loginbutton" onClick={this.sendMessage}>Send</button>
+                            <div className="logintext">Send message to {this.state.profileUser.username}</div>
+                            <textarea placeholder="Write message" id="messageBox"></textarea>
+                            <br></br>
+                            <button className="loginbutton" onClick={(e) => {
+                                this.toggle("regular", false);
+                                this.sendMessage(e);
+                            }
+                            }>Send</button>
                         </div>
                     </Drawer>
 

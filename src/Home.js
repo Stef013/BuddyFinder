@@ -3,18 +3,19 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Drawer from 'react-drag-drawer'
 
-var loggedInUser;
 class Home extends React.Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            loggedInUser: null
-        }
-
-        //loggedInUser = JSON.parse(window.sessionStorage.loggedinuser) === null;
-        this.setState({isLoggedIn: sessionStorage.getItem('loggedin') === 'true'});
+            loggedInUser: null,
+            matchVisible: false,
+            newProfileVisible: false,
+            message: null,
+            messageid: null
+        };
+        
         this.sendfindMatchRequest = this.sendfindMatchRequest.bind(this);
         this.sendGetMessageRequest = this.sendGetMessageRequest.bind(this);
         this.sendDeleteMessageRequest = this.sendDeleteMessageRequest.bind(this);
@@ -23,45 +24,34 @@ class Home extends React.Component {
         this.redirectToProfile = this.redirectToProfile.bind(this);
         this.loadMatches = this.loadMatches.bind(this);
         this.loadMessages = this.loadMessages.bind(this);
-        this.toggle = this.toggle.bind(this);
+        this.toggle = this.toggle.bind(this);        
+    }  
 
-        this.state = {
-            matchVisible: false,
-            newProfileVisible: false,
-            message: null,
-            messageid: null
-        };
-    }
-
-    componentWillMount()
-    {
-       
-        if(!loggedInUser)
+    componentDidMount() {
+        //checkt of gebruiker ingelogd is
+        if(!window.sessionStorage.loggedinuser)
         {
             this.props.history.push({
                 pathname: '/'
             })
         }
-        else(
-            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser)
-        )
-    }
+        else{
+            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
 
-    componentDidMount() {
-        if (!this.state.loggedInUser.firstname) {
-            this.setState({
-                matchVisible: !this.state.matchVisible,
-            });
-        }
-        else {
-            this.setState({
-                newProfileVisible: !this.state.newProfileVisible,
-            });
-
-            this.sendfindMatchRequest();
-            this.sendGetBuddyRequest();
-            this.sendGetMessageRequest();
-
+            if (!this.state.loggedInUser.firstname) {
+                this.setState({
+                    matchVisible: !this.state.matchVisible,
+                });
+            }
+            else {
+                this.setState({
+                    newProfileVisible: !this.state.newProfileVisible,
+                });
+    
+                this.sendfindMatchRequest();
+                this.sendGetBuddyRequest();
+                this.sendGetMessageRequest();
+            }
         }
     }
 
@@ -82,9 +72,8 @@ class Home extends React.Component {
     }
 
     toggle = (type, value, message) => event => {
-
         this.setState({ message: message });
-        
+
         this.setState(state => {
             return {
                 [type]: value
@@ -98,16 +87,15 @@ class Home extends React.Component {
             alert("Message cannot be empty!")
         }
         else {
-            this.setState({messageid: this.state.message.messageid})
+            this.setState({ messageid: this.state.message.messageid })
             this.sendMessageRequest(message);
         }
     }
 
     sendfindMatchRequest() {
-
         axios.post(`http://localhost:4567/match/`, {
-            userid: loggedInUser.userid, hobby1: loggedInUser.hobby1, hobby2: loggedInUser.hobby2,
-            hobby3: loggedInUser.hobby3
+            userid: this.state.loggedInUser.userid, hobby1: this.state.loggedInUser.hobby1, hobby2: this.state.loggedInUser.hobby2,
+            hobby3: this.state.loggedInUser.hobby3
         })
             .then(res => {
                 console.log(res);
@@ -124,7 +112,7 @@ class Home extends React.Component {
 
     sendGetMessageRequest() {
 
-        axios.get(`http://localhost:4567/message`, { params: { id: loggedInUser.userid } })
+        axios.get(`http://localhost:4567/message`, { params: { id: this.state.loggedInUser.userid } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -149,6 +137,7 @@ class Home extends React.Component {
                     alert("Database Error!")
                 }
                 else {
+                    this.toggle("regular", false, null);
                     this.refresh();
                 }
             })
@@ -156,8 +145,8 @@ class Home extends React.Component {
 
     sendMessageRequest(message) {
         axios.post(`http://localhost:4567/message`, {
-            reciever: this.state.message.sender, sender: loggedInUser,
-            sendername: loggedInUser.username, message: message, isrequest: false
+            reciever: this.state.message.sender, sender: this.state.loggedInUser,
+            sendername: this.state.loggedInUser.username, message: message, isrequest: false
         })
             .then(res => {
                 console.log(res);
@@ -175,8 +164,7 @@ class Home extends React.Component {
     }
 
     sendGetBuddyRequest() {
-
-        axios.get(`http://localhost:4567/buddy`, { params: { id: loggedInUser.userid } })
+        axios.get(`http://localhost:4567/buddy`, { params: { id: this.state.loggedInUser.userid } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -191,8 +179,7 @@ class Home extends React.Component {
     }
 
     sendAcceptRequest(id) {
-
-        axios.post(`http://localhost:4567/buddy`, { userid: loggedInUser.userid, buddyid: id })
+        axios.post(`http://localhost:4567/buddy`, { userid: this.state.loggedInUser.userid, buddyid: id })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -248,6 +235,10 @@ class Home extends React.Component {
     render() {
         const { regular } = this.state
 
+        if (!this.state.loggedInUser) {
+            return <div className="loadingtext">Loading...</div>
+        }
+
         return (
             <div className="App">
                 <div className="topnav">
@@ -259,7 +250,7 @@ class Home extends React.Component {
                 </div>
 
                 <div className="content">
-                    <div className="hometext">Welcome {loggedInUser.username}!</div>
+                    <div className="hometext">Welcome {this.state.loggedInUser.username}!</div>
 
                     <div>
                         <div className="homeblock" id="matchContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
@@ -294,7 +285,7 @@ class Home extends React.Component {
 
                     <div className="container" id="newProfileContainer" ref={node => this.newProfileref = node} style={{ display: this.state.newProfileVisible ? 'none' : '', }}>
 
-                        <div className="titletext">You need to create profile to use this site!</div>
+                        <div className="titletext">You need to create a profile to use this site!</div>
                         <br></br>
 
                         <div className="getstartedbutton" onClick={this.redirectToNewProfile} >Get Started ></div>
@@ -305,7 +296,6 @@ class Home extends React.Component {
                         open={regular}
                         onRequestClose={this.toggle("regular", false, null)}
                     >
-                       
                         <div className="messagecontainer">
                             <div className="logintext">Message from {this.state.message.sendername}</div>
                             <div className="text1">{this.state.message.message}</div>
@@ -314,12 +304,10 @@ class Home extends React.Component {
                             <textarea placeholder="Write message" id="messageBox"></textarea>
                             <br></br>
                             <div className="button1" onClick={this.sendMessage}>Send</div>
-                            <div className="deletebutton"  onClick={this.toggle("regular", false, null)}>Delete</div>
+                            <div className="deletebutton" onClick={() => this.sendDeleteMessageRequest(this.state.message.messageid)}>Delete</div>
                         </div>
                     </Drawer>
                 }
-
-
 
                 <footer>
                     <div className="footertext">

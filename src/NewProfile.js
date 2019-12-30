@@ -1,15 +1,33 @@
 import React from 'react'
 import axios from 'axios'
 
-var loggedInUser;
-
 class NewProfile extends React.Component {
 
     constructor(props) {
         super(props)
-        loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
+
+        this.state = {
+            loggedInUser: null,
+            trigger: null
+        };
+
         this.newProfile = this.newProfile.bind(this)
         this.sendNewProfileRequest = this.sendNewProfileRequest.bind(this)
+    }
+
+    componentWillMount() {
+        //checkt of gebruiker ingelogd is
+        if (!window.sessionStorage.loggedinuser) {
+            this.props.history.push({
+                pathname: '/'
+            })
+        }
+        else {
+            console.log("werkt");
+            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
+            this.state.trigger = true;
+            console.log(this.state.loggedInUser);
+        }
     }
 
     redirect = () => {
@@ -39,8 +57,8 @@ class NewProfile extends React.Component {
     sendNewProfileRequest(fname, lname, cntry, cty, desc, hob1, hob2, hob3) {
 
         axios.put(`http://localhost:4567/user`, {
-            userid: loggedInUser.userid, username: loggedInUser.username,
-            password: loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1,
+            userid: this.state.loggedInUser.userid, username: this.state.loggedInUser.username,
+            password: this.state.loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1,
             hobby2: hob2, hobby3: hob3
         })
             .then(res => {
@@ -48,16 +66,20 @@ class NewProfile extends React.Component {
                 console.log(res.data);
                 if (res.data) {
                     alert("Profile has been set up!")
-                    loggedInUser.firstname = fname;
-                    loggedInUser.lastname = lname;
-                    loggedInUser.country = cntry;
-                    loggedInUser.city = cty;
-                    loggedInUser.description = desc;
-                    loggedInUser.hobby1 = hob1;
-                    loggedInUser.hobby2 = hob2;
-                    loggedInUser.hobby3 = hob3;
+                    this.setState({
+                        loggedInUser: {
+                            firstname: fname,
+                            lastname: lname,
+                            country: cntry,
+                            city: cty,
+                            description: desc,
+                            hobby1: hob1,
+                            hobby2: hob2,
+                            hobby3: hob3,
+                        }
+                    })
 
-                    window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
+                    window.sessionStorage.setItem("loggedinuser", JSON.stringify(this.state.loggedInUser));
                     this.redirect();
                 }
                 else {
@@ -67,6 +89,11 @@ class NewProfile extends React.Component {
     }
 
     render() {
+
+        if (!this.state.trigger) {
+            return <div className="loadingtext">Loading...</div>
+        }
+
         return (
             <div className="App">
                 <div className="topnav">
@@ -83,7 +110,7 @@ class NewProfile extends React.Component {
                         <div className="newprofilecontainer" id="newprofileContainer">
                             <div className="dot">Upload picture</div>
                             <br></br>
-                            <div className="text1" margin-bottom="30px">{loggedInUser.username}</div>
+                            <div className="text1" margin-bottom="30px">{this.state.loggedInUser.username}</div>
 
                             <br></br>
                             <input type="text" placeholder="First name" name="fname" id="firstnameBox" required></input>
@@ -111,9 +138,6 @@ class NewProfile extends React.Component {
                 </div>
             </div>
         )
-    }
-    catch(err) {
-        console.log(err);
     }
 }
 
