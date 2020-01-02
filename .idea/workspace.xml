@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="056144d4-2b63-4008-8cb2-c4c885114fb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/interfaces/IMatchRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/interfaces/IMessageRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/interfaces/IRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/interfaces/IUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/EntityManagerProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Hash_Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Integration_Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/MessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/MatchRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/MatchRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rest/controllers/Usercontroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rest/controllers/Usercontroller.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,62 +24,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+            <state relative-caret-position="812">
+              <caret line="156" column="29" lean-forward="true" selection-start-line="156" selection-start-column="29" selection-end-line="156" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="168" column="53" lean-forward="true" selection-start-line="168" selection-start-column="53" selection-end-line="168" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IUserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="32" column="60" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IMatchRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+            <state relative-caret-position="2322">
+              <caret line="168" column="53" selection-start-line="168" selection-start-column="53" selection-end-line="168" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/MatchRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="-993">
               <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,10 +58,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IMessageRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Hash_Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="57">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="33" />
+              <folding>
+                <element signature="e#192#193#0" expanded="true" />
+                <element signature="e#231#232#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Integration_Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,11 +82,47 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1">
+              <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/EntityManagerProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-442">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+                <element signature="e#786#787#0" expanded="true" />
+                <element signature="e#817#818#0" expanded="true" />
+                <element signature="e#845#846#0" expanded="true" />
+                <element signature="e#877#878#0" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
+                <element signature="e#944#945#0" expanded="true" />
+                <element signature="e#977#978#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
+                <element signature="e#1109#1289#0" expanded="true" />
+                <element signature="e#1288#1289#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/MessageRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+            <state relative-caret-position="589">
+              <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,8 +133,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1197">
-              <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+            <state relative-caret-position="147">
+              <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="16" column="69" selection-start-line="16" selection-start-column="69" selection-end-line="16" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -139,8 +153,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -154,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/main/java/RestServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/rest/controllers/RestServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/rest/JsonUtil.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/JPAconfig/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/models/LoginModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/PersonModel.java" />
@@ -170,11 +183,18 @@
         <option value="$PROJECT_DIR$/src/main/java/data/interfaces/IRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/interfaces/IUserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/interfaces/IMatchRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/MatchRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/interfaces/IMessageRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/MessageRepository.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Hash_Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/UserRepository.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/data/EntityManagerProvider.java" />
+        <option value="$PROJECT_DIR$/src/test/java/EntityManagerProvider.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/UserRepository_Test.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Integration_Test.java" />
       </list>
     </option>
   </component>
@@ -197,9 +217,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-19" />
-    <option name="y" value="-19" />
-    <option name="width" value="1024" />
+    <option name="x" value="-22" />
+    <option name="y" value="-22" />
+    <option name="width" value="1027" />
     <option name="height" value="1045" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -208,8 +228,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,26 +303,62 @@
               <item name="rest" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BuddyFinderBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BuddyFinder-Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BuddyFinderBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BuddyFinder-Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BuddyFinderBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BuddyFinder-Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BuddyFinderBackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BuddyFinder-Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577543329759" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577978535076" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../S3/Software/BigIdea/Pong" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3494253" />
     <property name="settings.editor.selected.configurable" value="project.scopes" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Stefan\Documents\School\S4\FUN\BuddyFinder-Backend\src\test" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="logic" />
       <recent name="rest" />
@@ -326,7 +380,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RestServer (1)">
+  <component name="RunManager" selected="JUnit.Integration_Test.test_Updating_User">
     <configuration name="RestServer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rest.RestServer" />
       <module name="BuddyFinder-Backend" />
@@ -347,8 +401,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Integration_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BuddyFinder-Backend" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Integration_Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Integration_Test.test_Updating_User" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BuddyFinder-Backend" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Integration_Test" />
+      <option name="METHOD_NAME" value="test_Updating_User" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Integration_Test.test_Updating_User" />
+        <item itemvalue="JUnit.Integration_Test" />
         <item itemvalue="Application.RestServer (1)" />
         <item itemvalue="Application.RestServer" />
       </list>
@@ -409,7 +484,10 @@
       <workItem from="1576673413111" duration="76000" />
       <workItem from="1576674859999" duration="45000" />
       <workItem from="1576760960017" duration="1200000" />
-      <workItem from="1577540905917" duration="2418000" />
+      <workItem from="1577540905917" duration="2582000" />
+      <workItem from="1577625109653" duration="1199000" />
+      <workItem from="1577712726323" duration="1799000" />
+      <workItem from="1577970072748" duration="5799000" />
     </task>
     <task id="LOCAL-00001" summary="Password Hashing toegevoegd">
       <created>1571230991320</created>
@@ -502,17 +580,56 @@
       <option name="project" value="LOCAL" />
       <updated>1576500703696</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Repositories aangepast">
+      <created>1577543474419</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1577543474419</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="UserRepository_Test - 2020.01.02 at 15h 54m 01s.xml">
+      <configuration name="UserRepository_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepository_Test - 2020.01.02 at 15h 54m 39s.xml">
+      <configuration name="UserRepository_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepository_Test - 2020.01.02 at 15h 55m 45s.xml">
+      <configuration name="UserRepository_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepository_Test - 2020.01.02 at 15h 58m 59s.xml">
+      <configuration name="UserRepository_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepository_Test - 2020.01.02 at 15h 59m 10s.xml">
+      <configuration name="UserRepository_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Integration_Test_test_Updating_User - 2020.01.02 at 16h 12m 06s.xml">
+      <configuration name="Integration_Test.test_Updating_User" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Integration_Test_test_Updating_User - 2020.01.02 at 16h 15m 01s.xml">
+      <configuration name="Integration_Test.test_Updating_User" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Integration_Test_test_Updating_User - 2020.01.02 at 16h 16m 12s.xml">
+      <configuration name="Integration_Test.test_Updating_User" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Integration_Test_test_Updating_User - 2020.01.02 at 16h 17m 40s.xml">
+      <configuration name="Integration_Test.test_Updating_User" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Integration_Test_test_Updating_User - 2020.01.02 at 16h 18m 17s.xml">
+      <configuration name="Integration_Test.test_Updating_User" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150043000" />
+    <option name="totallyTimeSpent" value="159004000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1691" height="917" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16267648" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16820136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -522,7 +639,7 @@
       <window_info id="Persistence" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991013" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4990792" weight="0.35301667" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4990792" visible="true" weight="0.32991013" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33761233" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -532,7 +649,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50092083" side_tool="true" weight="0.3080873" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32991013" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32862645" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -563,7 +680,8 @@
     <MESSAGE value="accept buddy pad en settings gewijzigd" />
     <MESSAGE value="Gson probleem opgelost, get en add buddy toegevoegd, buddies filteren bij matches." />
     <MESSAGE value="Buddy check path toegevoegd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Buddy check path toegevoegd" />
+    <MESSAGE value="Repositories aangepast" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repositories aangepast" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -686,37 +804,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar!/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1995">
           <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="168" column="53" lean-forward="true" selection-start-line="168" selection-start-column="53" selection-end-line="168" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -729,35 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IUserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IMatchRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/MatchRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -766,8 +830,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/MessageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="475">
           <caret line="32" column="60" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IMatchRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -776,8 +850,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/interfaces/IMessageRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="76">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -786,8 +860,105 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/MessageRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+        <state relative-caret-position="589">
+          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/MatchRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-993">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/EntityManagerProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1109#1289#0" expanded="true" />
+            <element signature="e#1288#1289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Hash_Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="33" />
+          <folding>
+            <element signature="e#192#193#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="69" selection-start-line="16" selection-start-column="69" selection-end-line="16" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Integration_Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="156" column="29" lean-forward="true" selection-start-line="156" selection-start-column="29" selection-end-line="156" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rest/controllers/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2322">
+          <caret line="168" column="53" selection-start-line="168" selection-start-column="53" selection-end-line="168" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -846,11 +1017,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>JPA|BuddyFinder-Backend</last-edited>
+          <last-edited>BuddyFinder-Backend</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.3494253" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
