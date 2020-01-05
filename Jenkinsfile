@@ -2,7 +2,7 @@
 pipeline {
   agent any
   triggers {
-      gitlab(<triggerOnPush: true>)
+      gitlab(triggerOnPush: true)
       cron('H */4 * * 1-5')
     }
   tools {
