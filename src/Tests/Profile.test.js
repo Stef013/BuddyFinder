@@ -32,11 +32,12 @@ var selectedUser = {
 
 describe('Full page render', () => {
    it('renders without crashing', () => {
-      window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
+      //window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
      
       let ProfileTest = class extends Profile {
-         componentWillMount() { 
-             this.setState(() => ({ profileUser: selectedUser }));
+         
+         componentDidMount() { 
+             this.setState(() => ({ profileUser: selectedUser, loggedInUser: loggedInUser }));
          }
      };
       shallow(<ProfileTest />);

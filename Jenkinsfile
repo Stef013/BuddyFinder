@@ -1,6 +1,10 @@
 #!/bin/groovy
 pipeline {
   agent any
+  triggers {
+      gitlab(<triggerOnPush: true>)
+      cron('H */4 * * 1-5')
+    }
   tools {
     nodejs 'default-nodejs'
   }
@@ -33,6 +37,8 @@ pipeline {
         }
       }
     }
+
+    
     /*stage('Deploy') {
       when {
         expression {
@@ -63,3 +69,4 @@ def uploadArtifact(server) {
   server.upload spec: uploadSpec, buildInfo: buildInfo
   server.publishBuildInfo buildInfo
 }
+
