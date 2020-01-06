@@ -1,4 +1,6 @@
+import data.UserRepository;
 import models.User;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -8,10 +10,10 @@ import static org.junit.Assert.*;
 
 public class Integration_Test
 {
-    @Rule
-    public EntityManagerProvider provider = EntityManagerProvider.withUnit("testPU");
+    //@Rule
+    //public EntityManagerProvider provider = EntityManagerProvider.withUnit("testPU");
 
-    @Test
+    /*@Test
     public void test_Creating_Users() {
         this.provider.begin();
         this.provider.em().persist(new User("Piet", "Password"));
@@ -24,8 +26,8 @@ public class Integration_Test
 
         assertEquals(3, resultList.size());
 
-        for (User resultCustomer : resultList) {
-            assertNotEquals(0, resultCustomer.getUserId());
+        for (User resultUser : resultList) {
+            assertNotEquals(0, resultUser.getUserId());
         }
 
         this.provider.commit();
@@ -48,5 +50,63 @@ public class Integration_Test
         assertEquals( expectedHobby, actualHobby);
 
         this.provider.commit();
+    }*/
+
+    private UserRepository userRepo;
+
+    @Before
+    public void setup()
+    {
+        userRepo = new UserRepository("testPU");
+    }
+
+
+
+    @Test
+    public void test_Create_User() {
+        User user = new User("Piet", "Password");
+
+        boolean actualResult = userRepo.insertUser(user);
+
+        assertTrue(actualResult);
+    }
+
+    @Test
+    public void test_Create_User_AlreadyExists() {
+        User user = new User("Piet", "Password");
+        userRepo.insertUser(user);
+
+        User newUser = new User("Piet", "Password123");
+        boolean actualResult = userRepo.insertUser(newUser);
+
+        System.out.println(actualResult);
+        assertFalse(actualResult);
+    }
+
+    @Test
+    public void test_Login_User() {
+        User user = new User("Piet", "Password");
+
+        boolean actualResult = userRepo.insertUser(user);
+
+        assertTrue(actualResult);
+    }
+
+    @Test
+    public void test_Read_User_ByString() {
+        User user = new User("Piet", "Password");
+
+        boolean actualResult = userRepo.insertUser(user);
+
+        assertTrue(actualResult);
+    }
+
+    @Test
+    public void test_Update_User() {
+        User user = new User("Piet", "Password");
+
+        boolean actualResult = userRepo.insertUser(user);
+
+        assertTrue(actualResult);
     }
 }

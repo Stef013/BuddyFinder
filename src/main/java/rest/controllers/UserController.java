@@ -7,6 +7,7 @@ import models.Acceptrequest;
 import models.LoginModel;
 import models.User;
 
+import javax.print.DocFlavor;
 import java.util.List;
 
 import static rest.JsonUtil.json;
@@ -14,9 +15,11 @@ import static spark.Spark.*;
 
 public class UserController
 {
+    private static String persistenceUnit = "testPU";
+
     private Gson gson = new Gson();
-    private UserRepository userRepository = new UserRepository();
-    private MatchRepository matchRepository = new MatchRepository();
+    private UserRepository userRepository = new UserRepository(persistenceUnit);
+    private MatchRepository matchRepository = new MatchRepository(persistenceUnit);
 
     public UserController(final String a)
     {

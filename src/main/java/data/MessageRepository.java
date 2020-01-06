@@ -9,19 +9,28 @@ import java.util.List;
 
 public class MessageRepository implements IRepository, IMessageRepository
 {
+    private String persistenceUnit;
+
     @PersistenceContext
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
+
+    public MessageRepository(String persistenceUnit)
+    {
+        this.persistenceUnit = persistenceUnit;
+    }
+
     public void openConnection()
     {
-        if (emf == null && em == null)
+        if(emf == null && em == null)
         {
-            emf = Persistence.createEntityManagerFactory("buddyfinderPU");
+            emf = Persistence.createEntityManagerFactory(persistenceUnit);
             em = emf.createEntityManager();
-        } else if (!em.isOpen())
+        }
+        else if(!em.isOpen())
         {
-            emf = Persistence.createEntityManagerFactory("buddyfinderPU");
+            emf = Persistence.createEntityManagerFactory(persistenceUnit);
             em = emf.createEntityManager();
         }
     }
