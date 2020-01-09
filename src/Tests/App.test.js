@@ -1,18 +1,22 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import App from '../App';
 
-describe('First React component test with Enzyme', () => {
+describe('Full page render', () => {
    it('renders without crashing', () => {
       mount(<App />);
-    });
+   });
 });
 
+describe('Test switch function', () => {
+   it('it hides and shows containers correctly', () => {
 
-describe('Examining the syntax of Jest tests', () => {
-   
-    it('sums numbers', () => {
-        expect(1 + 2).toEqual(3);
-        expect(2 + 2).toEqual(4);
-     });
-  });
+      const component = shallow(<App />)
+      const hidden = false;
+      const shown = true;
+
+      component.instance().switchContainers();
+      expect(component.state('loginVisible')).toEqual(hidden);
+      expect(component.state('registerVisible')).toEqual(shown);
+   });
+});

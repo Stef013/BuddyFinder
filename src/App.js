@@ -3,12 +3,15 @@ import axios from 'axios';
 
 class App extends Component {
 
-    state = {
-        loggedInUser: null
-    }
-
     constructor() {
         super()
+
+        this.state = {
+            loggedInUser: null,
+            loginVisible: true,
+            registerVisible: false
+        }
+
         window.sessionStorage.removeItem("loggedinuser");
         this.sendLoginRequest = this.sendLoginRequest.bind(this);
         this.sendSignUpRequest = this.sendSignUpRequest.bind(this);
@@ -22,15 +25,11 @@ class App extends Component {
         })
     }
 
-    switch(bool) {
-        if (bool) {
-            document.getElementById("container1").style.display = 'none';
-            document.getElementById("container2").style.display = 'block';
-        }
-        else {
-            document.getElementById("container1").style.display = 'block';
-            document.getElementById("container2").style.display = 'none';
-        }
+    switchContainers() {
+        this.setState({
+            loginVisible: !this.state.loginVisible,
+            registerVisible: !this.state.registerVisible
+        });
     }
 
     login() {
@@ -110,7 +109,7 @@ class App extends Component {
                 <div className="content">
                     <div className="title1">BuddyFinder</div>
                     <div className="titletext"><center><p>Find buddies for your favorite activities!</p></center></div>
-                    <div className="container" id="container1">
+                    <div className="container" id="loginContainer" style={{ display: this.state.loginVisible ? 'block' : 'none', }}>
                         <center>
                             <div className="logintext">Login</div>
                             <input type="text" placeholder="Enter Username" name="uname" id="usernameBox" required></input>
@@ -121,12 +120,12 @@ class App extends Component {
                             <button className="loginbutton" onClick={this.login}>Login</button>
                             <br></br>
                             <div className="text1">Don't have an account? Sign up now!</div>
-                            <div className="button1" onClick={() => this.switch(true)}>Sign up</div>
+                            <div className="button1" onClick={() => this.switchContainers()}>Sign up</div>
                         </center>
                     </div>
-                    <div className="container" id="container2" style={{ display: 'none' }}>
+                    <div className="container" id="registerContainer" style={{ display: this.state.registerVisible ? 'block' : 'none', }}>
                         <center>
-                            <div><div className="backLink" onClick={() => this.switch(false)} > {"<back"} </div><div className="registertext">Sign up</div></div>
+                            <div><div className="backLink" onClick={() => this.switchContainers()} > {"<back"} </div><div className="registertext">Sign up</div></div>
                             <input type="text" placeholder="Enter Username" name="uname" id="suUsernameBox" required></input>
                             <br></br>
 
@@ -137,11 +136,6 @@ class App extends Component {
                             <button className="loginbutton" onClick={this.signUp}>Register</button>
                         </center>
                     </div>
-
-                    {this.state && this.state.data &&
-                        <div>{this.state.data}</div>
-                    }
-
                 </div>
 
                 <footer>

@@ -35,7 +35,6 @@ describe('Full page render', () => {
       //window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
      
       let ProfileTest = class extends Profile {
-         
          componentDidMount() { 
              this.setState(() => ({ profileUser: selectedUser, loggedInUser: loggedInUser }));
          }

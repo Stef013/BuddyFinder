@@ -253,7 +253,7 @@ class Home extends React.Component {
                     <div className="hometext">Welcome {this.state.loggedInUser.username}!</div>
 
                     <div>
-                        <div className="homeblock" id="matchContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeblock" id="matchContainer" style={{ display: this.state.matchVisible ? 'none' : 'block', }}>
 
                             <div className="logintext">Recent Matches</div>
                             <br></br>
@@ -262,7 +262,7 @@ class Home extends React.Component {
                                 this.loadMatches(this)
                             }
                         </div>
-                        <div className="homeblock" id="buddyContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeblock" id="buddyContainer" style={{ display: this.state.matchVisible ? 'none' : 'block', }}>
 
                             <div className="logintext">My Buddies</div>
                             <br></br>
@@ -272,7 +272,7 @@ class Home extends React.Component {
                             }
 
                         </div>
-                        <div className="homeblock" id="messageContainer" style={{ display: this.state.matchVisible ? 'none' : '', }}>
+                        <div className="homeblock" id="messageContainer" style={{ display: this.state.matchVisible ? 'none' : 'block', }}>
 
                             <div className="logintext">Messages</div>
                             <br></br>
