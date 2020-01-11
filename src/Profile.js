@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import MessageDrawer from './MessageDrawer';
 import Drawer from 'react-drag-drawer'
 
 

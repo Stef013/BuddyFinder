@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import Contact from './Contact';
 import Home from './Home';
 import NewProfile from './NewProfile';
 import Profile from './Profile';
@@ -15,7 +14,6 @@ const routing = (
       <div>
         <Route exact path="/" component={App} />
         <Route path="/home" component={Home} />
-        <Route path="/contact" component={Contact} />
         <Route path="/newprofile" component={NewProfile} />
         <Route path="/profile/:id" component={Profile} />
       </div>
