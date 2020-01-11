@@ -15,7 +15,7 @@ import static spark.Spark.*;
 
 public class UserController
 {
-    private static String persistenceUnit = "testPU";
+    private static String persistenceUnit = "buddyfinderPU";
 
     private Gson gson = new Gson();
     private UserRepository userRepository = new UserRepository(persistenceUnit);

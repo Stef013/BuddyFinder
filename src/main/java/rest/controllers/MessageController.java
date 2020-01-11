@@ -11,7 +11,7 @@ import static spark.Spark.*;
 
 public class MessageController
 {
-    private static String persistenceUnit = "testPU";
+    private static String persistenceUnit = "buddyfinderPU";
 
     private Gson gson = new Gson();
     private MessageRepository messageRepository = new MessageRepository(persistenceUnit);

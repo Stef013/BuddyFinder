@@ -20,7 +20,9 @@ public class UserRepository implements IRepository, IUserRepository
 
     public UserRepository(String persistenceUnit)
     {
-        this.persistenceUnit = persistenceUnit;
+        //this.persistenceUnit = persistenceUnit;
+        emf = Persistence.createEntityManagerFactory(persistenceUnit);
+        em = emf.createEntityManager();
     }
 
     public void openConnection()
@@ -39,7 +41,7 @@ public class UserRepository implements IRepository, IUserRepository
 
     public boolean insertUser(User user)
     {
-        if (getUserData(user) != null)
+        if (getProfile(user.getUsername()) != null)
         {
             return false;
         }
@@ -49,18 +51,18 @@ public class UserRepository implements IRepository, IUserRepository
             String hashedPassword = hashing.hash(user.getPassword());
             user.setPassword(hashedPassword);
 
-            openConnection();
+            //openConnection();
             em.getTransaction().begin();
 
             em.persist(user);
             em.getTransaction().commit();
-            emf.close();
+            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-            emf.close();
+           // emf.close();
             return false;
         }
     }
@@ -70,7 +72,7 @@ public class UserRepository implements IRepository, IUserRepository
         try{
             hashing = new Hashing();
 
-            openConnection();
+            //openConnection();
 
             String sql = "Select UserID, Username, Firstname, Lastname, Hobby1, Hobby2, Hobby3" +
                     " FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
@@ -78,13 +80,14 @@ public class UserRepository implements IRepository, IUserRepository
             query.setParameter(1, user.getUsername());
             query.setParameter(2, hashing.hash(user.getPassword()));
             User userdata = (User)query.getSingleResult();
-            emf.close();
+            //emf.close();
+            System.out.println(userdata.getUserId());
 
             return userdata;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return null;
         }
     }
@@ -92,21 +95,21 @@ public class UserRepository implements IRepository, IUserRepository
     public User getProfile(String username)
     {
         try{
-            openConnection();
+            //openConnection();
             String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, username);
             User userdata = (User)query.getSingleResult();
+            System.out.println("lolololol");
             userdata.setPassword(null);
 
-            System.out.println(userdata.getHobby1());
-            emf.close();
+            //emf.close();
 
             return userdata;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return null;
         }
     }
@@ -114,18 +117,18 @@ public class UserRepository implements IRepository, IUserRepository
     public boolean update(User user)
     {
         try{
-            openConnection();
+            //openConnection();
             em.getTransaction().begin();
 
             em.merge(user);
             em.getTransaction().commit();
-            emf.close();
+            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return false;
         }
     }
@@ -133,7 +136,7 @@ public class UserRepository implements IRepository, IUserRepository
     public boolean addBuddy(Acceptrequest acceptrequest)
     {
         try{
-            openConnection();
+            //openConnection();
             em.getTransaction().begin();
 
             User user = em.find(User.class, acceptrequest.getUserid());
@@ -146,13 +149,13 @@ public class UserRepository implements IRepository, IUserRepository
             em.merge(buddy);
 
             em.getTransaction().commit();
-            emf.close();
+            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return false;
         }
     }
@@ -161,7 +164,7 @@ public class UserRepository implements IRepository, IUserRepository
     {
         try
         {
-            openConnection();
+            //openConnection();
 
             String sql = "SELECT buddyfinder_users2.USERID, buddyfinder_users2.USERNAME, buddyfinder_users2.FIRSTNAME, " +
                     "buddyfinder_users2.LASTNAME " +
@@ -176,11 +179,11 @@ public class UserRepository implements IRepository, IUserRepository
             List<User> buddies = query.getResultList();
             System.out.println(buddies);
 
-            emf.close();
+            //emf.close();
             return buddies;
         } catch (Exception ex)
         {
-            emf.close();
+            //emf.close();
             return null;
         }
     }
