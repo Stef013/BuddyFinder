@@ -178,8 +178,8 @@ class Home extends React.Component {
             })
     }
 
-    sendAcceptRequest(id) {
-        axios.post(`http://localhost:4567/buddy`, { userid: this.state.loggedInUser.userid, buddyid: id })
+    sendAcceptRequest(buddyid, messageid) {
+        axios.post(`http://localhost:4567/buddy`, { userid: this.state.loggedInUser.userid, buddyid: buddyid, messageid: messageid })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -222,7 +222,7 @@ class Home extends React.Component {
                             <br></br>
                             wants to be your buddy!
                             <br></br>
-                            <div className="acceptbutton" onClick={() => app.sendAcceptRequest(each.sender.userid)}>Accept</div>
+                            <div className="acceptbutton" onClick={() => app.sendAcceptRequest(each.sender.userid, each.messageid)}>Accept</div>
                             <div className="declinebutton" onClick={() => app.sendDeleteMessageRequest(each.messageid)}>Decline</div>
                         </div>
                     )
