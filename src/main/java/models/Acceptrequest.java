@@ -1,9 +1,16 @@
 package models;
 
+import com.google.gson.annotations.Expose;
+
 public class Acceptrequest
 {
+    @Expose (serialize = false, deserialize = true)
     private int userid;
+    @Expose (serialize = false, deserialize = true)
     private int buddyid;
+    @Expose (serialize = false, deserialize = true)
+    private int messageid;
+
 
     public int getUserid()
     {
@@ -23,5 +30,15 @@ public class Acceptrequest
     public void setBuddyid(int buddyid)
     {
         this.buddyid = buddyid;
+    }
+
+    public int getMessageid()
+    {
+        return messageid;
+    }
+
+    public void setMessageid(int messageid)
+    {
+        this.messageid = messageid;
     }
 }

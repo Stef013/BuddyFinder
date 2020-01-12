@@ -19,7 +19,9 @@ public class MatchRepository implements IRepository, IMatchRepository
 
     public MatchRepository(String persistenceUnit)
     {
-        this.persistenceUnit = persistenceUnit;
+        //this.persistenceUnit = persistenceUnit;
+        emf = Persistence.createEntityManagerFactory(persistenceUnit);
+        em = emf.createEntityManager();
     }
 
     public void openConnection()
@@ -40,7 +42,7 @@ public class MatchRepository implements IRepository, IMatchRepository
     {
         try
         {
-            openConnection();
+            //openConnection();
 
             String sql = "Select * FROM buddyfinder_users2 WHERE NOT USERID = ?1";
 
@@ -48,7 +50,7 @@ public class MatchRepository implements IRepository, IMatchRepository
             query.setParameter(1, user.getUserId());
 
             List<User> allUsers = query.getResultList();
-            emf.close();
+            //emf.close();
             System.out.println(allUsers);
 
             List<User> matches = checkForMatches(allUsers, user);
@@ -56,7 +58,7 @@ public class MatchRepository implements IRepository, IMatchRepository
             return matches;
         } catch (Exception ex)
         {
-            emf.close();
+            //emf.close();
             return null;
         }
     }
@@ -71,6 +73,7 @@ public class MatchRepository implements IRepository, IMatchRepository
             {
                 if(!isBuddy(user.getUserId(), m.getUserId()))
                 {
+                    //m.clearBuddies();
                     goodmatches.add(m);
                 }
             }
@@ -83,7 +86,7 @@ public class MatchRepository implements IRepository, IMatchRepository
     {
         try
         {
-            openConnection();
+            //openConnection();
 
             String sql = "Select * FROM buddyfinder_buddies WHERE UserId = ?1 AND BuddyId = ?2";
 
@@ -91,15 +94,19 @@ public class MatchRepository implements IRepository, IMatchRepository
             query.setParameter(1, userid);
             query.setParameter(2, buddyid);
 
-            List<User> allUsers = query.getResultList();
-            emf.close();
-            System.out.println(allUsers);
+            List<User> result = query.getResultList();
+            //emf.close();
+            if(result.size() > 0)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
 
-
-            return true;
         } catch (Exception ex)
         {
-            emf.close();
+            //emf.close();
             return false;
         }
     }

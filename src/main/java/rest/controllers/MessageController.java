@@ -1,6 +1,7 @@
 package rest.controllers;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import data.MessageRepository;
 import models.Message;
 
@@ -13,7 +14,7 @@ public class MessageController
 {
     private static String persistenceUnit = "buddyfinderPU";
 
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     private MessageRepository messageRepository = new MessageRepository(persistenceUnit);
 
     public MessageController(final String a)
@@ -25,7 +26,6 @@ public class MessageController
 
         post("/message", (request, response) ->
         {
-
             System.out.println("POST /message");
             String body = request.body();
             System.out.println(body);
@@ -37,7 +37,6 @@ public class MessageController
             String json = gson.toJson(result);
             System.out.println(json);
             return json;
-
         });
 
         get("/message", (request, response) ->
@@ -71,8 +70,6 @@ public class MessageController
 
             return json;
         });
-
-
 
         exception(IllegalArgumentException.class, (e, req, res) ->
         {

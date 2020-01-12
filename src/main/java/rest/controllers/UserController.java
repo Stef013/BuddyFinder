@@ -1,7 +1,9 @@
 package rest.controllers;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import data.MatchRepository;
+import data.MessageRepository;
 import data.UserRepository;
 import models.Acceptrequest;
 import models.LoginModel;
@@ -17,7 +19,7 @@ public class UserController
 {
     private static String persistenceUnit = "buddyfinderPU";
 
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     private UserRepository userRepository = new UserRepository(persistenceUnit);
     private MatchRepository matchRepository = new MatchRepository(persistenceUnit);
 
@@ -143,6 +145,11 @@ public class UserController
 
             boolean result = userRepository.addBuddy(acceptrequest);
 
+            if(result)
+            {
+                MessageRepository messageRepo = new MessageRepository(persistenceUnit);
+                messageRepo.deleteMessage(acceptrequest.getMessageid());
+            }
             String json = gson.toJson(result);
             System.out.println(json);
 

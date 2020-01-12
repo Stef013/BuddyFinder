@@ -15,10 +15,11 @@ public class MessageRepository implements IRepository, IMessageRepository
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
-
     public MessageRepository(String persistenceUnit)
     {
-        this.persistenceUnit = persistenceUnit;
+        //this.persistenceUnit = persistenceUnit;
+        emf = Persistence.createEntityManagerFactory(persistenceUnit);
+        em = emf.createEntityManager();
     }
 
     public void openConnection()
@@ -39,18 +40,18 @@ public class MessageRepository implements IRepository, IMessageRepository
     {
 
         try{
-            openConnection();
+            //openConnection();
             em.getTransaction().begin();
 
             em.persist(message);
             em.getTransaction().commit();
-            emf.close();
+            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return false;
         }
     }
@@ -58,19 +59,24 @@ public class MessageRepository implements IRepository, IMessageRepository
     public List<Message> getMessages(int recieverid)
     {
         try{
-            openConnection();
+            //openConnection();
             String sql = "Select * FROM buddyfinder_messages2 WHERE RecieverID = ?1";
 
             Query query = em.createNativeQuery(sql, Message.class);
             query.setParameter(1, recieverid);
             List<Message> messages = query.getResultList();
-            emf.close();
+            //emf.close();
+            /*for(Message m : messages)
+            {
+                m.getReciever().clearBuddies();
+                m.getSender().clearBuddies();
+            }*/
 
             return messages;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return null;
         }
     }
@@ -78,18 +84,25 @@ public class MessageRepository implements IRepository, IMessageRepository
     public boolean deleteMessage(int messageid)
     {
         try{
-            openConnection();
+            //openConnection();
             em.getTransaction().begin();
             Message message = em.find(Message.class, messageid );
             em.remove(message);
             em.getTransaction().commit();
-            emf.close();
+            //emf.close();
+            /*em.getTransaction().begin();
+            String sql = "DELETE FROM buddyfinder_messages2 WHERE MessageID = ?1";
 
+            Query query = em.createNativeQuery(sql);
+            query.setParameter(1, messageid);
+
+            query.executeUpdate();
+            em.getTransaction().commit();*/
             return true;
         }
         catch(Exception ex)
         {
-            emf.close();
+            //emf.close();
             return false;
         }
     }

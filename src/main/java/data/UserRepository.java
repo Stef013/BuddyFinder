@@ -13,6 +13,7 @@ public class UserRepository implements IRepository, IUserRepository
     private Hashing hashing;
     private String persistenceUnit;
 
+
     @PersistenceContext
     public static EntityManagerFactory emf;
     public static EntityManager em;
@@ -81,7 +82,7 @@ public class UserRepository implements IRepository, IUserRepository
             query.setParameter(2, hashing.hash(user.getPassword()));
             User userdata = (User)query.getSingleResult();
             //emf.close();
-            System.out.println(userdata.getUserId());
+            //userdata.clearBuddies();
 
             return userdata;
         }
@@ -101,7 +102,8 @@ public class UserRepository implements IRepository, IUserRepository
             query.setParameter(1, username);
             User userdata = (User)query.getSingleResult();
             System.out.println("lolololol");
-            userdata.setPassword(null);
+            //userdata.setPassword(null);
+            //userdata.clearBuddies();
 
             //emf.close();
 
@@ -138,17 +140,18 @@ public class UserRepository implements IRepository, IUserRepository
         try{
             //openConnection();
             em.getTransaction().begin();
-
             User user = em.find(User.class, acceptrequest.getUserid());
             User buddy = em.find(User.class, acceptrequest.getBuddyid());
-
             user.setBuddies(buddy);
-            buddy.setBuddies(user);
-
             em.merge(user);
-            em.merge(buddy);
-
             em.getTransaction().commit();
+
+            em.getTransaction().begin();
+            buddy.setBuddies(user);
+            em.merge(buddy);
+            em.getTransaction().commit();
+
+
             //emf.close();
 
             return true;
@@ -178,7 +181,10 @@ public class UserRepository implements IRepository, IUserRepository
 
             List<User> buddies = query.getResultList();
             System.out.println(buddies);
-
+            /*for(User b : buddies)
+            {
+                b.clearBuddies();
+            }*/
             //emf.close();
             return buddies;
         } catch (Exception ex)
