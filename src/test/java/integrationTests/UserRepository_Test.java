@@ -7,6 +7,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class UserRepository_Test
@@ -60,13 +62,14 @@ public class UserRepository_Test
     public void setup()
     {
         userRepo = new UserRepository("testPU");
-        testUser = new User("testUser", "Password");
+        testUser = new User("testUser1", "Password");
         userRepo.insertUser(testUser);
+        testUser.setUserId(1);
         testUser.setPassword("Password");
     }
 
     @AfterEach
-    public void close()
+    public void end()
     {
         userRepo.emf.close();
     }
@@ -83,7 +86,7 @@ public class UserRepository_Test
     @Test
     public void test_Create_User_AlreadyExists() {
 
-        User newUser = new User("testUser", "Password123");
+        User newUser = new User("testUser1", "Password123");
         boolean actualResult = userRepo.insertUser(newUser);
 
         assertFalse(actualResult);
@@ -100,7 +103,7 @@ public class UserRepository_Test
     @Test
     public void test_Get_Profile() {
         User actualProfile = userRepo.getProfile(testUser.getUsername());
-        String expectedUsername = "testUser";
+        String expectedUsername = "testUser1";
 
         assertEquals(expectedUsername, actualProfile.getUsername());
     }
@@ -137,5 +140,25 @@ public class UserRepository_Test
         boolean actualResult = userRepo.addBuddy(buddyrequest);
 
         assertTrue(actualResult);
+    }
+
+    @Test
+    public void test_Get_Buddies() {
+        User user = new User("testBuddy", "Password");
+        userRepo.insertUser(user);
+
+        Acceptrequest buddyrequest = new Acceptrequest();
+        buddyrequest.setUserid(testUser.getUserId());
+        buddyrequest.setBuddyid(user.getUserId());
+
+        userRepo.addBuddy(buddyrequest);
+
+        List<User> buddies = userRepo.getBuddies(1);
+
+        String expectedBuddy = "testBuddy";
+        String actualBuddy = buddies.get(0).getUsername();
+
+        assertEquals(expectedBuddy, actualBuddy);
+
     }
 }
