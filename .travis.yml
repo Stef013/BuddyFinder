@@ -4,9 +4,12 @@ node_js:
 cache:
   directories:
     - node_modules
+env:
+  - CI=false
 script:
   - npm test
-  - npm set CI false 
+  - npm set CI false
+  - unset CI 
   - npm run build
 on:
   branch: Frontend
