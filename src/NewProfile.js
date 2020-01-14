@@ -23,10 +23,8 @@ class NewProfile extends React.Component {
             })
         }
         else {
-            console.log("werkt");
             this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
             this.state.trigger = true;
-            console.log(this.state.loggedInUser);
         }
     }
 
