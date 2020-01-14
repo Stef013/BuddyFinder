@@ -1,5 +1,5 @@
 before_script:
-  - bundle install
+  - npm install
 
 pages:
   stage: deploy
@@ -15,5 +15,5 @@ test:
   stage: test
   script:
   - npm run test
-  except:
-  - master
+  only:
+  - Frontend
