@@ -1,9 +1,14 @@
 language: node_js
 node_js:
-  - "stable"
+  - node
 cache:
+  - npm
   directories:
     - node_modules
+
+before-script:
+  - npm install
+
 script:
   - npm test
   - npm run build
