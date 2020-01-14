@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchRepository implements IRepository, IMatchRepository
+public class MatchRepository implements IMatchRepository
 {
     private String persistenceUnit;
 
@@ -24,7 +24,7 @@ public class MatchRepository implements IRepository, IMatchRepository
         em = emf.createEntityManager();
     }
 
-    public void openConnection()
+    /*public void openConnection()
     {
         if(emf == null && em == null)
         {
@@ -36,7 +36,7 @@ public class MatchRepository implements IRepository, IMatchRepository
             emf = Persistence.createEntityManagerFactory(persistenceUnit);
             em = emf.createEntityManager();
         }
-    }
+    }*/
 
     public List<User> findMatches(User user)
     {

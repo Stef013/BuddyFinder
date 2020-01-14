@@ -64,7 +64,7 @@ public class UserRepository_Test
         userRepo = new UserRepository("testPU");
         testUser = new User("testUser1", "Password");
         userRepo.insertUser(testUser);
-        testUser.setUserId(1);
+
         testUser.setPassword("Password");
     }
 
@@ -159,6 +159,5 @@ public class UserRepository_Test
         String actualBuddy = buddies.get(0).getUsername();
 
         assertEquals(expectedBuddy, actualBuddy);
-
     }
 }

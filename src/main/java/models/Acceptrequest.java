@@ -11,7 +11,6 @@ public class Acceptrequest
     @Expose (serialize = false, deserialize = true)
     private int messageid;
 
-
     public int getUserid()
     {
         return userid;

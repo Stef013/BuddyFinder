@@ -31,7 +31,6 @@ public class MatchRepository_Test
         testUser.setHobby2("Schilderen");
         testUser.setHobby3("Lezen");
         userRepo.insertUser(testUser);
-        testUser.setUserId(1);
 
 
         testMatch = new User("testMatch", "Password");
@@ -39,7 +38,6 @@ public class MatchRepository_Test
         testMatch.setHobby2("Lezen");
         testMatch.setHobby3("Koken");
         userRepo.insertUser(testMatch);
-        testMatch.setUserId(2);
 
 
         testGeenMatch = new User("testGeenMatch", "Password");
@@ -47,7 +45,6 @@ public class MatchRepository_Test
         testGeenMatch.setHobby2(" ");
         testGeenMatch.setHobby3(" ");
         userRepo.insertUser(testGeenMatch);
-        testGeenMatch.setUserId(3);
 
     }
 

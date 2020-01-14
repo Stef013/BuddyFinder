@@ -7,7 +7,7 @@ import models.Message;
 import javax.persistence.*;
 import java.util.List;
 
-public class MessageRepository implements IRepository, IMessageRepository
+public class MessageRepository implements IMessageRepository
 {
     private String persistenceUnit;
 
@@ -22,7 +22,7 @@ public class MessageRepository implements IRepository, IMessageRepository
         em = emf.createEntityManager();
     }
 
-    public void openConnection()
+    /*public void openConnection()
     {
         if(emf == null && em == null)
         {
@@ -34,7 +34,7 @@ public class MessageRepository implements IRepository, IMessageRepository
             emf = Persistence.createEntityManagerFactory(persistenceUnit);
             em = emf.createEntityManager();
         }
-    }
+    }*/
 
     public boolean insertMessage(Message message)
     {

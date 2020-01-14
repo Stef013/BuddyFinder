@@ -8,7 +8,7 @@ import logic.Hashing;
 import javax.persistence.*;
 import java.util.List;
 
-public class UserRepository implements IRepository, IUserRepository
+public class UserRepository implements IUserRepository
 {
     private Hashing hashing;
     private String persistenceUnit;
@@ -26,7 +26,7 @@ public class UserRepository implements IRepository, IUserRepository
         em = emf.createEntityManager();
     }
 
-    public void openConnection()
+    /*public void openConnection()
     {
         if(emf == null && em == null)
         {
@@ -38,7 +38,7 @@ public class UserRepository implements IRepository, IUserRepository
             emf = Persistence.createEntityManagerFactory(persistenceUnit);
             em = emf.createEntityManager();
         }
-    }
+    }*/
 
     public boolean insertUser(User user)
     {

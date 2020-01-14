@@ -1,13 +1,8 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.gson.annotations.Expose;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -181,10 +176,5 @@ public class User
     {
         //this.buddies = new ArrayList<>();
         this.buddies.add(buddy);
-    }
-
-    public void clearBuddies()
-    {
-        this.buddies.clear();
     }
 }
