@@ -1,15 +1,19 @@
-stages:
-  - deploy
+before_script:
+  - bundle install
 
-deploy:
+pages:
   stage: deploy
-  environment:
-    name: production
-    url: https://stefanv-buddyfinder.netlify.com
-  only:
-    - Frontend
   script:
-    - npm i
-    # your build command
-    - npm run build
-    - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+  - npm run build -d public
+  artifacts:
+    paths:
+    - public
+  only:
+  - Frontend
+
+test:
+  stage: test
+  script:
+  - npm run test
+  except:
+  - master
