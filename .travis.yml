@@ -5,10 +5,10 @@ cache:
   - npm
   directories:
     - node_modules
-
 before-script:
   - npm install
-
 script:
   - npm test
   - npm run build
+on:
+  branch: Frontend
