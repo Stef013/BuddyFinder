@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set \"process.env.CI=false\" && react-scripts build",
+    "build": "react-scripts build",
     "test": "set CI=true && react-scripts test --coverage",
     "test:watch": "react-scripts test",
     "test:coverage": "set CI=true && react-scripts test --coverage --coverageDirectory=output/coverage/jest",
