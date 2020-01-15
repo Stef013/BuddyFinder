@@ -2,7 +2,6 @@
 pipeline {
   agent any
   triggers {
-      github(triggerOnPush: true)
       cron('H */4 * * 1-5')
     }
   tools {
