@@ -19,7 +19,7 @@ var loggedInUser = {
 describe('Full page render', () => {
     it('renders without crashing', () => {
         let NewProfileTest = class extends NewProfile {
-            componentDidMount() {
+            componentWillMount() {
                 this.setState(() => ({ loggedInUser: loggedInUser, trigger: true }));
             }
         };

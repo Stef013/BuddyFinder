@@ -15,7 +15,7 @@ class NewProfile extends React.Component {
         this.sendNewProfileRequest = this.sendNewProfileRequest.bind(this)
     }
 
-    componentDidMount() {
+    componentWillMount() {
         //checkt of gebruiker ingelogd is
         if (!window.sessionStorage.loggedinuser) {
             this.props.history.push({
@@ -65,7 +65,9 @@ class NewProfile extends React.Component {
                 if (res.data) {
                     alert("Profile has been set up!")
                     this.setState({
-                        loggedInUser: {
+                        updatedUser: {
+                            userid: this.state.loggedInUser.userid,
+                            username: this.state.loggedInUser.username,
                             firstname: fname,
                             lastname: lname,
                             country: cntry,
@@ -77,7 +79,7 @@ class NewProfile extends React.Component {
                         }
                     })
 
-                    window.sessionStorage.setItem("loggedinuser", JSON.stringify(this.state.loggedInUser));
+                    window.sessionStorage.setItem("loggedinuser", JSON.stringify(this.state.updatedUser));
                     this.redirect();
                 }
                 else {
