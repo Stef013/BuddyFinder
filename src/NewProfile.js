@@ -15,7 +15,7 @@ class NewProfile extends React.Component {
         this.sendNewProfileRequest = this.sendNewProfileRequest.bind(this)
     }
 
-    componentWillMount() {
+    componentDidMount() {
         //checkt of gebruiker ingelogd is
         if (!window.sessionStorage.loggedinuser) {
             this.props.history.push({

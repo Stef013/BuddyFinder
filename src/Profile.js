@@ -117,7 +117,6 @@ class Profile extends React.Component {
                 }
                 else {
                     alert("The message has been sent!");
-                    //this.toggle("regular", false);
                 }
             })
     }

@@ -63,7 +63,7 @@ class App extends Component {
     }
 
     sendLoginRequest(name, password) {
-        axios.post(`http://145.93.112.246:4567/user/login/`, { username: name, password: password })
+        axios.post(`http://localhost:4567/user/login/`, { username: name, password: password })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -83,7 +83,7 @@ class App extends Component {
     sendSignUpRequest(name, password) {
         axios.post(`http://localhost:4567/user`, { username: name, password: password })
             .then(res => {
-                console.log(res);
+                console.log(res);l
                 console.log(res.data);
 
                 if (res.data) {

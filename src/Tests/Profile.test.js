@@ -32,7 +32,6 @@ var selectedUser = {
 
 describe('Full page render', () => {
    it('renders without crashing', () => {
-      //window.sessionStorage.setItem("loggedinuser", JSON.stringify(loggedInUser));
      
       let ProfileTest = class extends Profile {
          componentDidMount() { 

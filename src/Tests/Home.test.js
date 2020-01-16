@@ -23,7 +23,7 @@ describe('Full page render', () => {
                 this.setState(() => ({ loggedInUser: loggedInUser, newProfileVisible: !this.state.newProfileVisible }));
             }
         };
-        shallow( < HomeTest / > );
+        shallow( < HomeTest /> );
     });
 });
 
