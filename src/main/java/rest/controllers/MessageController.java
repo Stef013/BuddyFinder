@@ -5,17 +5,17 @@ import com.google.gson.GsonBuilder;
 import data.MessageRepository;
 import models.Message;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
-import static rest.JsonUtil.json;
 import static spark.Spark.*;
 
 public class MessageController
 {
     private static String persistenceUnit = "buddyfinderPU";
 
-    private Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-    private MessageRepository messageRepository = new MessageRepository(persistenceUnit);
+    private Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PROTECTED).create();
+    private MessageRepository messageRepository;
 
     public MessageController(final String a)
     {
@@ -32,7 +32,9 @@ public class MessageController
 
             Message message = gson.fromJson(body, Message.class);
 
+            messageRepository = new MessageRepository(persistenceUnit);
             boolean result = messageRepository.insertMessage(message);
+            messageRepository.closeConnection();
 
             String json = gson.toJson(result);
             System.out.println(json);
@@ -47,7 +49,9 @@ public class MessageController
             int userid = Integer.parseInt(param);
             System.out.println(userid);
 
+            messageRepository = new MessageRepository(persistenceUnit);
             List<Message> messages = messageRepository.getMessages(userid);
+            messageRepository.closeConnection();
 
             String json = gson.toJson(messages);
             System.out.println(json);
@@ -63,7 +67,9 @@ public class MessageController
             int messageid = Integer.parseInt(param);
             System.out.println(messageid);
 
+            messageRepository = new MessageRepository(persistenceUnit);
             boolean result = messageRepository.deleteMessage(messageid);
+            messageRepository.closeConnection();
 
             String json = gson.toJson(result);
             System.out.println(json);

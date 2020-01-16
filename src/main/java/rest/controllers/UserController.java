@@ -9,19 +9,18 @@ import models.Acceptrequest;
 import models.LoginModel;
 import models.User;
 
-import javax.print.DocFlavor;
+import java.lang.reflect.Modifier;
 import java.util.List;
 
-import static rest.JsonUtil.json;
 import static spark.Spark.*;
 
 public class UserController
 {
     private static String persistenceUnit = "buddyfinderPU";
 
-    private Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-    private UserRepository userRepository = new UserRepository(persistenceUnit);
-    private MatchRepository matchRepository = new MatchRepository(persistenceUnit);
+    private Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PROTECTED).create();
+    private UserRepository userRepository;
+    private MatchRepository matchRepository;
 
     public UserController(final String a)
     {
@@ -60,12 +59,13 @@ public class UserController
             LoginModel lm = gson.fromJson(body, LoginModel.class);
             User user = new User(lm.getUsername(), lm.getPassword()) ;
 
+            userRepository = new UserRepository(persistenceUnit);
             boolean result = userRepository.insertUser(user);
+            userRepository.closeConnection();
 
             String json = gson.toJson(result);
             System.out.println(json);
             return json;
-
         });
 
         post("/user/login/", (request, response) -> {
@@ -77,7 +77,10 @@ public class UserController
             LoginModel lm = gson.fromJson(body, LoginModel.class);
             User user = new User(lm.getUsername(), lm.getPassword()) ;
 
+            userRepository = new UserRepository(persistenceUnit);
             User resultdata = userRepository.getUserData(user);
+            userRepository.closeConnection();
+
 
             String json = gson.toJson(resultdata);
             System.out.println(json);
@@ -93,7 +96,9 @@ public class UserController
 
             User user = gson.fromJson(body, User.class);
 
+            userRepository = new UserRepository(persistenceUnit);
             boolean resultdata = userRepository.update(user);
+            userRepository.closeConnection();
 
             String json = gson.toJson(resultdata);
             System.out.println(json);
@@ -106,7 +111,9 @@ public class UserController
             String username = request.queryParams("id");
             System.out.println(username);
 
+            userRepository = new UserRepository(persistenceUnit);
             User userProfile = userRepository.getProfile(username);
+            userRepository.closeConnection();
 
             String json = gson.toJson(userProfile);
             System.out.println(json);
@@ -122,11 +129,15 @@ public class UserController
 
             User user = gson.fromJson(body, User.class);
 
+            matchRepository = new MatchRepository(persistenceUnit);
             List<User> matches = matchRepository.findMatches(user);
+            matchRepository.closeConnection();
 
             if(matches != null)
             {
+                matchRepository = new MatchRepository(persistenceUnit);
                 matches = matchRepository.checkForBuddies(user, matches);
+                matchRepository.closeConnection();
             }
 
             String json = gson.toJson(matches);
@@ -143,18 +154,20 @@ public class UserController
 
             Acceptrequest acceptrequest = gson.fromJson(body, Acceptrequest.class);
 
+            userRepository = new UserRepository(persistenceUnit);
             boolean result = userRepository.addBuddy(acceptrequest);
+            userRepository.closeConnection();
 
             if(result)
             {
                 MessageRepository messageRepo = new MessageRepository(persistenceUnit);
                 messageRepo.deleteMessage(acceptrequest.getMessageid());
+                messageRepo.closeConnection();
             }
             String json = gson.toJson(result);
             System.out.println(json);
 
             return json;
-
         });
 
         get("/buddy", (request, response) -> {
@@ -163,7 +176,9 @@ public class UserController
             int userid = Integer.parseInt(param);
             System.out.println(userid);
 
+            userRepository = new UserRepository(persistenceUnit);
             List<User> buddies = userRepository.getBuddies(userid);
+            userRepository.closeConnection();
 
             String json = gson.toJson(buddies);
             System.out.println(json);
@@ -179,7 +194,9 @@ public class UserController
             int profileid = Integer.parseInt(param2);
             System.out.println(userid);
 
+            matchRepository = new MatchRepository(persistenceUnit);
             boolean result = matchRepository.isBuddy(userid, profileid);
+            matchRepository.closeConnection();
 
             String json = gson.toJson(result);
             System.out.println(json);

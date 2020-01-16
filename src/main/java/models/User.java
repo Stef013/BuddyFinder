@@ -11,40 +11,25 @@ public class User
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Expose (serialize = true, deserialize = true)
     private int userid;
 
-    @Expose (serialize = true, deserialize = true)
     private String username;
-
-    @Expose (serialize = false, deserialize = true)
     private String password;
-
-    @Expose (serialize = true, deserialize = true)
     private String firstname;
-    @Expose (serialize = true, deserialize = true)
     private String lastname;
-    @Expose (serialize = true, deserialize = true)
     private String country;
-    @Expose (serialize = true, deserialize = true)
     private String city;
-    @Expose (serialize = true, deserialize = true)
     private String description;
-    @Expose (serialize = true, deserialize = true)
     private String hobby1;
-    @Expose (serialize = true, deserialize = true)
     private String hobby2;
-    @Expose (serialize = true, deserialize = true)
     private String hobby3;
-
 
     @JoinTable(name = "buddyfinder_buddies", joinColumns = {
             @JoinColumn(name = "UserId", referencedColumnName = "userid", nullable = false)}, inverseJoinColumns = {
             @JoinColumn(name = "BuddyId", referencedColumnName = "userid", nullable = false)})
 
     @ManyToMany
-    @Expose(serialize = false, deserialize = false)
-    private Collection<User> buddies;
+    protected Collection<User> buddies;
 
     public User(String username, String password)
     {

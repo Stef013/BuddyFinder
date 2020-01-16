@@ -32,29 +32,25 @@ public class MatchRepository_Test
         testUser.setHobby3("Lezen");
         userRepo.insertUser(testUser);
 
-
         testMatch = new User("testMatch", "Password");
         testMatch.setHobby1("Voetballen");
         testMatch.setHobby2("Lezen");
         testMatch.setHobby3("Koken");
         userRepo.insertUser(testMatch);
 
-
         testGeenMatch = new User("testGeenMatch", "Password");
         testGeenMatch.setHobby1("Niksen");
         testGeenMatch.setHobby2(" ");
         testGeenMatch.setHobby3(" ");
         userRepo.insertUser(testGeenMatch);
-
     }
 
     @AfterEach
     public void end()
     {
-        userRepo.emf.close();
-        matchRepo.emf.close();
+        userRepo.closeConnection();
+        matchRepo.closeConnection();
     }
-
 
     @Test
     public void test_Find_Matches()
@@ -91,5 +87,4 @@ public class MatchRepository_Test
         matches = matchRepo.checkForBuddies(testUser, matches);
         assertEquals(0,matches.size());
     }
-
 }

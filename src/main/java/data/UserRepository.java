@@ -8,37 +8,25 @@ import logic.Hashing;
 import javax.persistence.*;
 import java.util.List;
 
-public class UserRepository implements IUserRepository
+public class UserRepository implements IUserRepository, IRepository
 {
     private Hashing hashing;
-    private String persistenceUnit;
-
 
     @PersistenceContext
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
-
     public UserRepository(String persistenceUnit)
     {
-        //this.persistenceUnit = persistenceUnit;
         emf = Persistence.createEntityManagerFactory(persistenceUnit);
         em = emf.createEntityManager();
     }
 
-    /*public void openConnection()
+    @Override
+    public void closeConnection()
     {
-        if(emf == null && em == null)
-        {
-            emf = Persistence.createEntityManagerFactory(persistenceUnit);
-            em = emf.createEntityManager();
-        }
-        else if(!em.isOpen())
-        {
-            emf = Persistence.createEntityManagerFactory(persistenceUnit);
-            em = emf.createEntityManager();
-        }
-    }*/
+        emf.close();
+    }
 
     public boolean insertUser(User user)
     {
@@ -52,18 +40,15 @@ public class UserRepository implements IUserRepository
             String hashedPassword = hashing.hash(user.getPassword());
             user.setPassword(hashedPassword);
 
-            //openConnection();
             em.getTransaction().begin();
 
             em.persist(user);
             em.getTransaction().commit();
-            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-           // emf.close();
             return false;
         }
     }
@@ -73,22 +58,16 @@ public class UserRepository implements IUserRepository
         try{
             hashing = new Hashing();
 
-            //openConnection();
-
-            String sql = "Select UserID, Username, Firstname, Lastname, Hobby1, Hobby2, Hobby3" +
-                    " FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
+            String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUsername());
             query.setParameter(2, hashing.hash(user.getPassword()));
             User userdata = (User)query.getSingleResult();
-            //emf.close();
-            //userdata.clearBuddies();
 
             return userdata;
         }
         catch(Exception ex)
         {
-            //emf.close();
             return null;
         }
     }
@@ -96,22 +75,15 @@ public class UserRepository implements IUserRepository
     public User getProfile(String username)
     {
         try{
-            //openConnection();
-            String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1";
+            String sql = "Select UserID, UserName, Firstname, Lastname, City, Country, Description, Hobby1, Hobby2, Hobby3 FROM buddyfinder_users2 WHERE Username = ?1";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, username);
-            User userdata = (User)query.getSingleResult();
-            System.out.println("lolololol");
-            //userdata.setPassword(null);
-            //userdata.clearBuddies();
+            User profile = (User)query.getSingleResult();
 
-            //emf.close();
-
-            return userdata;
+            return profile;
         }
         catch(Exception ex)
         {
-            //emf.close();
             return null;
         }
     }
@@ -119,18 +91,15 @@ public class UserRepository implements IUserRepository
     public boolean update(User user)
     {
         try{
-            //openConnection();
             em.getTransaction().begin();
 
             em.merge(user);
             em.getTransaction().commit();
-            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-            //emf.close();
             return false;
         }
     }
@@ -138,27 +107,19 @@ public class UserRepository implements IUserRepository
     public boolean addBuddy(Acceptrequest acceptrequest)
     {
         try{
-            //openConnection();
             em.getTransaction().begin();
             User user = em.find(User.class, acceptrequest.getUserid());
             User buddy = em.find(User.class, acceptrequest.getBuddyid());
             user.setBuddies(buddy);
-            em.merge(user);
-            em.getTransaction().commit();
-
-            em.getTransaction().begin();
             buddy.setBuddies(user);
+            em.merge(user);
             em.merge(buddy);
             em.getTransaction().commit();
-
-
-            //emf.close();
 
             return true;
         }
         catch(Exception ex)
         {
-            //emf.close();
             return false;
         }
     }
@@ -167,8 +128,6 @@ public class UserRepository implements IUserRepository
     {
         try
         {
-            //openConnection();
-
             String sql = "SELECT buddyfinder_users2.USERID, buddyfinder_users2.USERNAME, buddyfinder_users2.FIRSTNAME, " +
                     "buddyfinder_users2.LASTNAME " +
                     "FROM buddyfinder_buddies " +
@@ -181,15 +140,10 @@ public class UserRepository implements IUserRepository
 
             List<User> buddies = query.getResultList();
             System.out.println(buddies);
-            /*for(User b : buddies)
-            {
-                b.clearBuddies();
-            }*/
-            //emf.close();
+
             return buddies;
         } catch (Exception ex)
         {
-            //emf.close();
             return null;
         }
     }

@@ -34,8 +34,8 @@ public class MessageRepository_Test
     @AfterEach
     public void end()
     {
-        messageRepo.emf.close();
-        userRepo.emf.close();
+        messageRepo.closeConnection();
+        userRepo.closeConnection();
     }
 
     @Test

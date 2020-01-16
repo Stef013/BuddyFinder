@@ -8,57 +8,41 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchRepository implements IMatchRepository
+public class MatchRepository implements IMatchRepository, IRepository
 {
-    private String persistenceUnit;
-
     @PersistenceContext
-    public static EntityManagerFactory emf;
-    public static EntityManager em;
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
 
 
     public MatchRepository(String persistenceUnit)
     {
-        //this.persistenceUnit = persistenceUnit;
         emf = Persistence.createEntityManagerFactory(persistenceUnit);
         em = emf.createEntityManager();
     }
 
-    /*public void openConnection()
+    @Override
+    public void closeConnection()
     {
-        if(emf == null && em == null)
-        {
-            emf = Persistence.createEntityManagerFactory(persistenceUnit);
-            em = emf.createEntityManager();
-        }
-        else if(!em.isOpen())
-        {
-            emf = Persistence.createEntityManagerFactory(persistenceUnit);
-            em = emf.createEntityManager();
-        }
-    }*/
+        emf.close();
+    }
 
     public List<User> findMatches(User user)
     {
         try
         {
-            //openConnection();
-
             String sql = "Select * FROM buddyfinder_users2 WHERE NOT USERID = ?1";
 
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, user.getUserId());
 
             List<User> allUsers = query.getResultList();
-            //emf.close();
-            System.out.println(allUsers);
 
             List<User> matches = checkForMatches(allUsers, user);
 
             return matches;
         } catch (Exception ex)
         {
-            //emf.close();
             return null;
         }
     }
@@ -73,7 +57,6 @@ public class MatchRepository implements IMatchRepository
             {
                 if(!isBuddy(user.getUserId(), m.getUserId()))
                 {
-                    //m.clearBuddies();
                     goodmatches.add(m);
                 }
             }
@@ -86,8 +69,6 @@ public class MatchRepository implements IMatchRepository
     {
         try
         {
-            //openConnection();
-
             String sql = "Select * FROM buddyfinder_buddies WHERE UserId = ?1 AND BuddyId = ?2";
 
             Query query = em.createNativeQuery(sql, User.class);
@@ -95,7 +76,7 @@ public class MatchRepository implements IMatchRepository
             query.setParameter(2, buddyid);
 
             List<User> result = query.getResultList();
-            //emf.close();
+
             if(result.size() > 0)
             {
                 return true;
@@ -106,7 +87,6 @@ public class MatchRepository implements IMatchRepository
 
         } catch (Exception ex)
         {
-            //emf.close();
             return false;
         }
     }

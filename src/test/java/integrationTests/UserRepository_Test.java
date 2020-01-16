@@ -13,48 +13,6 @@ import static org.junit.Assert.*;
 
 public class UserRepository_Test
 {
-    //@Rule
-    //public integrationTests.EntityManagerProvider provider = integrationTests.EntityManagerProvider.withUnit("testPU");
-
-    /*@Test
-    public void test_Creating_Users() {
-        this.provider.begin();
-        this.provider.em().persist(new User("Piet", "Password"));
-        this.provider.em().persist(new User("Jan", "Password"));
-        this.provider.em().persist(new User("Henk", "Password"));
-
-        List<User> resultList = this.provider.em()
-                .createNativeQuery("SELECT * FROM buddyfinder_users2", User.class)
-                .getResultList();
-
-        assertEquals(3, resultList.size());
-
-        for (User resultUser : resultList) {
-            assertNotEquals(0, resultUser.getUserId());
-        }
-
-        this.provider.commit();
-    }
-
-    @Test
-    public void test_Updating_User() {
-        this.provider.begin();
-        User user = new User("Piet", "Password");
-        this.provider.em().persist(user);
-
-        user.setHobby1("Voetballen");
-        this.provider.em().merge(user);
-
-        String expectedHobby = "Voetballen";
-        String actualHobby = this.provider.em()
-                .createNativeQuery("SELECT HOBBY1 FROM buddyfinder_users2 WHERE Username='Piet'")
-                .getSingleResult().toString();
-
-        assertEquals( expectedHobby, actualHobby);
-
-        this.provider.commit();
-    }*/
-
     private UserRepository userRepo;
     private User testUser;
 
@@ -71,7 +29,7 @@ public class UserRepository_Test
     @AfterEach
     public void end()
     {
-        userRepo.emf.close();
+        userRepo.closeConnection();
     }
 
     @Test
