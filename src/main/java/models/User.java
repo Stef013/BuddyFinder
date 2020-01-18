@@ -1,7 +1,5 @@
 package models;
 
-import com.google.gson.annotations.Expose;
-
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -14,7 +12,7 @@ public class User
     private int userid;
 
     private String username;
-    private String password;
+    protected String password;
     private String firstname;
     private String lastname;
     private String country;
@@ -159,7 +157,6 @@ public class User
 
     public void setBuddies(User buddy)
     {
-        //this.buddies = new ArrayList<>();
         this.buddies.add(buddy);
     }
 }

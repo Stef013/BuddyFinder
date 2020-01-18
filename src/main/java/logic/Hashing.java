@@ -5,7 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Hashing
 {
     private static MessageDigest md;

@@ -14,7 +14,6 @@ public class MatchRepository implements IMatchRepository, IRepository
     private static EntityManagerFactory emf;
     private static EntityManager em;
 
-
     public MatchRepository(String persistenceUnit)
     {
         emf = Persistence.createEntityManagerFactory(persistenceUnit);

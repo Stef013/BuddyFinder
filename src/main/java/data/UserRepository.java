@@ -13,8 +13,8 @@ public class UserRepository implements IUserRepository, IRepository
     private Hashing hashing;
 
     @PersistenceContext
-    public static EntityManagerFactory emf;
-    public static EntityManager em;
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
 
     public UserRepository(String persistenceUnit)
     {
@@ -35,7 +35,6 @@ public class UserRepository implements IUserRepository, IRepository
             return false;
         }
         try{
-
             hashing = new Hashing();
             String hashedPassword = hashing.hash(user.getPassword());
             user.setPassword(hashedPassword);
@@ -75,7 +74,8 @@ public class UserRepository implements IUserRepository, IRepository
     public User getProfile(String username)
     {
         try{
-            String sql = "Select UserID, UserName, Firstname, Lastname, City, Country, Description, Hobby1, Hobby2, Hobby3 FROM buddyfinder_users2 WHERE Username = ?1";
+            String sql = "Select UserID, UserName, Firstname, Lastname, City, Country, Description, Hobby1, Hobby2, Hobby3 " +
+                    "FROM buddyfinder_users2 WHERE Username = ?1";
             Query query = em.createNativeQuery(sql, User.class);
             query.setParameter(1, username);
             User profile = (User)query.getSingleResult();

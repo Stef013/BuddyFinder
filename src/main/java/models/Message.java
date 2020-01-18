@@ -1,7 +1,5 @@
 package models;
 
-import com.google.gson.annotations.Expose;
-
 import javax.persistence.*;
 
 @Entity

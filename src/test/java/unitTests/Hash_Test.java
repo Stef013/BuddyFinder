@@ -1,12 +1,14 @@
+package unitTests;
+
 import logic.Hashing;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import static org.junit.Assert.*;
 
 public class Hash_Test {
     Hashing hashing;
 
-    @Before
+    @BeforeEach
     public void setup()
     {
         hashing = new Hashing();
