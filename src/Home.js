@@ -36,7 +36,8 @@ class Home extends React.Component {
             })
         }
         else{
-            this.setState({loggedInUser: JSON.parse(window.sessionStorage.loggedinuser)});
+            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
+            
             if (!this.state.loggedInUser.firstname) {
                 this.setState({
                     matchVisible: !this.state.matchVisible,
