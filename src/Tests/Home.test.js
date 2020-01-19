@@ -26,20 +26,3 @@ describe('Full page render', () => {
         shallow( < HomeTest /> );
     });
 });
-
-/*describe('test drawer toggle', () => {
-   it('toggles without problems', () => {
-      
-      let HomeTest = class extends Home {
-         componentDidMount() { 
-             this.setState(() => ({ loggedInUser: loggedInUser, newProfileVisible: !this.state.newProfileVisible }));
-         }
-     };
-
-      const component = shallow(<HomeTest />)
-      const isOpen = true;
-
-      component.instance().toggle("regular", true, "test");
-      expect(component.regular.toEqual(isOpen));
-   });
-});*/
