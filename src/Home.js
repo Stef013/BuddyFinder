@@ -254,7 +254,7 @@ class Home extends React.Component {
 
                             <div className="logintext">Recent Matches</div>
                             <br></br>
-                            {this.state && this.state.matches &&
+                            {this.state.matches &&
 
                                 this.loadMatches(this)
                             }
@@ -263,7 +263,7 @@ class Home extends React.Component {
 
                             <div className="logintext">My Buddies</div>
                             <br></br>
-                            {this.state && this.state.buddies &&
+                            {this.state.buddies &&
 
                                 this.loadBuddies(this)
                             }
@@ -273,7 +273,7 @@ class Home extends React.Component {
 
                             <div className="logintext">Messages</div>
                             <br></br>
-                            {this.state && this.state.messages &&
+                            {this.state.messages &&
 
                                 this.loadMessages(this)
                             }
