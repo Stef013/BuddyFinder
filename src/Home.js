@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Drawer from 'react-drag-drawer'
 
@@ -23,10 +22,10 @@ class Home extends React.Component {
         this.sendDeleteMessageRequest = this.sendDeleteMessageRequest.bind(this);
         this.sendMessageRequest = this.sendMessageRequest.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
-        this.redirectToProfile = this.redirectToProfile.bind(this);
-        this.loadMatches = this.loadMatches.bind(this);
-        this.loadMessages = this.loadMessages.bind(this);
-        this.toggle = this.toggle.bind(this);        
+        //this.redirectToProfile = this.redirectToProfile.bind(this);
+        //this.loadMatches = this.loadMatches.bind(this);
+        //this.loadMessages = this.loadMessages.bind(this);
+        //this.toggle = this.toggle.bind(this);        
     }  
 
     async componentDidMount() {
@@ -83,13 +82,13 @@ class Home extends React.Component {
         });
     };
 
-    sendMessage() {
+    async sendMessage() {
         var message = document.getElementById("messageBox").value;
         if (!message) {
             alert("Message cannot be empty!")
         }
         else {
-            this.setState({ messageid: this.state.message.messageid })
+            await this.setState({ messageid: this.state.message.messageid })
             this.sendMessageRequest(message);
         }
     }
@@ -119,10 +118,7 @@ class Home extends React.Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (res.data.length === 0) {
-
-                }
-                else {
+                if (res.data.length > 0) {
                     this.setState({ messages: res.data });
                 }
             })
