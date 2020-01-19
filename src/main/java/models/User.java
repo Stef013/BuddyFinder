@@ -12,7 +12,7 @@ public class User
     private int userid;
 
     private String username;
-    protected String password;
+    private String password;
     private String firstname;
     private String lastname;
     private String country;

@@ -133,6 +133,10 @@ public class UserRepository implements IUserRepository, IRepository
 
             List<User> buddies = query.getResultList();
 
+            if (buddies.get(0) == null)
+            {
+                buddies.clear();
+            }
             return buddies;
         } catch (Exception ex)
         {
