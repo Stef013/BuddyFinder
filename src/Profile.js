@@ -31,7 +31,7 @@ class Profile extends React.Component {
             })
         }
         else {
-            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser)
+            this.setState({loggedInUser: JSON.parse(window.sessionStorage.loggedinuser)});
             const { id } = this.props.match.params;
             this.sendGetProfileRequest(id);
         }
@@ -139,9 +139,7 @@ class Profile extends React.Component {
             <div className="App">
                 <div className="topnav">
                     <a href="/">Logoff</a>
-                    <a href="#">Account</a>
-                    <a href="/contact">Contact</a>
-                    <a href="#">About</a>
+                    <a href="/newprofile">Account</a>
                     <div className="homebutton" onClick={this.redirect}>BuddyFinder</div>
                 </div>
 

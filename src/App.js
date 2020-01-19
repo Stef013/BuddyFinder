@@ -103,8 +103,6 @@ class App extends Component {
             <div className="App">
                 <div className="topnav">
                     <a href="/">Login</a>
-                    <a href="/contact">Contact</a>
-                    <a href="#">About</a>
                     <div className="homebutton" onClick={this.refresh}>BuddyFinder</div>
                 </div>
 

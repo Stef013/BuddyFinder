@@ -29,7 +29,7 @@ class Home extends React.Component {
         this.toggle = this.toggle.bind(this);        
     }  
 
-    componentDidMount() {
+    async componentDidMount() {
         //checkt of gebruiker ingelogd is
         if(!window.sessionStorage.loggedinuser)
         {
@@ -38,7 +38,7 @@ class Home extends React.Component {
             })
         }
         else{
-            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
+            await this.setState({loggedInUser: JSON.parse(window.sessionStorage.loggedinuser)});
             
             if (!this.state.loggedInUser.firstname) {
                 this.setState({
@@ -103,7 +103,7 @@ class Home extends React.Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (res.data.length == 0) {
+                if (res.data.length === 0) {
 
                 }
                 else {
@@ -119,7 +119,7 @@ class Home extends React.Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (res.data.length == 0) {
+                if (res.data.length === 0) {
 
                 }
                 else {
@@ -171,10 +171,7 @@ class Home extends React.Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (res.data.length == 0) {
-
-                }
-                else {
+                if (res.data.length > 0) {
                     this.setState({ buddies: res.data });
                 }
             })
@@ -246,8 +243,6 @@ class Home extends React.Component {
                 <div className="topnav">
                     <a href="/">Logoff</a>
                     <a href="/newprofile">Account</a>
-                    <a href="/contact">Contact</a>
-                    <a href="#">About</a>
                     <div className="homebutton" onClick={this.refresh}>BuddyFinder</div>
                 </div>
 
@@ -293,7 +288,7 @@ class Home extends React.Component {
                         <div className="getstartedbutton" onClick={this.redirectToNewProfile} >Get Started ></div>
                     </div>
                 </div>
-                {this.state && this.state.message &&
+                {this.state.message &&
                     <Drawer
                         open={regular}
                         onRequestClose={this.toggle("regular", false, null)}

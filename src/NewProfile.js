@@ -17,7 +17,7 @@ class NewProfile extends React.Component {
         this.sendNewProfileRequest = this.sendNewProfileRequest.bind(this)
     }
 
-    componentWillMount() {
+    componentDidMount() {
         //checkt of gebruiker ingelogd is
         if (!window.sessionStorage.loggedinuser) {
             this.props.history.push({
@@ -25,8 +25,7 @@ class NewProfile extends React.Component {
             })
         }
         else {
-            this.state.loggedInUser = JSON.parse(window.sessionStorage.loggedinuser);
-            this.state.trigger = true;
+            this.setState({loggedInUser: JSON.parse(window.sessionStorage.loggedinuser)});
         }
     }
 
@@ -92,7 +91,7 @@ class NewProfile extends React.Component {
 
     render() {
 
-        if (!this.state.trigger) {
+        if (!this.state.loggedInUser) {
             return <div className="loadingtext">Loading...</div>
         }
 
@@ -100,9 +99,7 @@ class NewProfile extends React.Component {
             <div className="App">
                 <div className="topnav">
                     <a href="/">Logoff</a>
-                    <a href="#">Account</a>
-                    <a href="/contact">Contact</a>
-                    <a href="#">About</a>
+                    <a href="/newprofile">Account</a>
                     <div className="homebutton" onClick={this.redirect}>BuddyFinder</div>
                 </div>
 
