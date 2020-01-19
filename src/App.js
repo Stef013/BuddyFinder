@@ -27,8 +27,8 @@ class App extends Component {
         })
     }
 
-    async switchContainers() {
-        await this.setState({
+    switchContainers() {
+        this.setState({
             loginVisible: !this.state.loginVisible,
             registerVisible: !this.state.registerVisible
         });

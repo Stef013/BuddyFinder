@@ -82,13 +82,13 @@ class Home extends React.Component {
         });
     };
 
-    async sendMessage() {
+    sendMessage() {
         var message = document.getElementById("messageBox").value;
         if (!message) {
             alert("Message cannot be empty!")
         }
         else {
-            await this.setState({ messageid: this.state.message.messageid })
+            this.setState({ messageid: this.state.message.messageid })
             this.sendMessageRequest(message);
         }
     }
@@ -102,10 +102,7 @@ class Home extends React.Component {
                 console.log(res);
                 console.log(res.data);
 
-                if (res.data.length === 0) {
-
-                }
-                else {
+                if (res.data.length > 0) {
                     this.setState({ matches: res.data });
                 }
             })
