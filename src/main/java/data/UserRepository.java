@@ -57,11 +57,11 @@ public class UserRepository implements IUserRepository, IRepository
         try{
             hashing = new Hashing();
 
-            String sql = "Select * FROM buddyfinder_users2 WHERE Username = ?1 AND Password = ?2";
-            Query query = em.createNativeQuery(sql, User.class);
+            String jpql = "SELECT u FROM User u WHERE u.username LIKE ?1 AND u.password Like ?2";
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
             query.setParameter(1, user.getUsername());
             query.setParameter(2, hashing.hash(user.getPassword()));
-            User userdata = (User)query.getSingleResult();
+            User userdata = query.getSingleResult();
 
             return userdata;
         }
@@ -74,11 +74,10 @@ public class UserRepository implements IUserRepository, IRepository
     public User getProfile(String username)
     {
         try{
-            String sql = "Select UserID, UserName, Firstname, Lastname, City, Country, Description, Hobby1, Hobby2, Hobby3 " +
-                    "FROM buddyfinder_users2 WHERE Username = ?1";
-            Query query = em.createNativeQuery(sql, User.class);
+            String jpql = "SELECT u FROM User u WHERE u.username LIKE ?1";
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
             query.setParameter(1, username);
-            User profile = (User)query.getSingleResult();
+            User profile = query.getSingleResult();
 
             return profile;
         }
@@ -128,18 +127,11 @@ public class UserRepository implements IUserRepository, IRepository
     {
         try
         {
-            String sql = "SELECT buddyfinder_users2.USERID, buddyfinder_users2.USERNAME, buddyfinder_users2.FIRSTNAME, " +
-                    "buddyfinder_users2.LASTNAME " +
-                    "FROM buddyfinder_buddies " +
-                    "INNER JOIN buddyfinder_users2 " +
-                    "ON buddyfinder_buddies.BuddyId = buddyfinder_users2.USERID " +
-                    "WHERE buddyfinder_buddies.UserId = ?1";
-
-            Query query = em.createNativeQuery(sql, User.class);
+            String jpql = "SELECT u.buddies FROM User u Where u.userid LIKE ?1";
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
             query.setParameter(1, userid);
 
             List<User> buddies = query.getResultList();
-            System.out.println(buddies);
 
             return buddies;
         } catch (Exception ex)

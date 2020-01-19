@@ -43,9 +43,9 @@ public class MessageRepository implements IMessageRepository, IRepository
     public List<Message> getMessages(int recieverid)
     {
         try{
-            String sql = "Select * FROM buddyfinder_messages2 WHERE RecieverID = ?1";
+            String jpql = "SELECT m FROM Message m WHERE m.reciever.userid LIKE ?1";
 
-            Query query = em.createNativeQuery(sql, Message.class);
+            TypedQuery<Message> query = em.createQuery(jpql, Message.class);
             query.setParameter(1, recieverid);
             List<Message> messages = query.getResultList();
 

@@ -30,9 +30,9 @@ public class MatchRepository implements IMatchRepository, IRepository
     {
         try
         {
-            String sql = "Select * FROM buddyfinder_users2 WHERE NOT USERID = ?1";
+            String jpql = "SELECT u FROM User u WHERE u.userid NOT IN (?1)";
 
-            Query query = em.createNativeQuery(sql, User.class);
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
             query.setParameter(1, user.getUserId());
 
             List<User> allUsers = query.getResultList();
@@ -68,17 +68,22 @@ public class MatchRepository implements IMatchRepository, IRepository
     {
         try
         {
-            String sql = "Select * FROM buddyfinder_buddies WHERE UserId = ?1 AND BuddyId = ?2";
+            String jpql = "Select u.buddies FROM User u WHERE u.userid LIKE ?1";
 
-            Query query = em.createNativeQuery(sql, User.class);
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
             query.setParameter(1, userid);
-            query.setParameter(2, buddyid);
-
             List<User> result = query.getResultList();
 
             if(result.size() > 0)
             {
-                return true;
+                for(User buddy : result)
+                {
+                    if(buddy.getUserId() == buddyid)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
             else{
                 return false;
