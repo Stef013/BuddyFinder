@@ -19,8 +19,8 @@ var loggedInUser = {
 describe('Full page render', () => {
     it('renders without crashing', () => {
         let NewProfileTest = class extends NewProfile {
-            componentWillMount() {
-                this.setState(() => ({ loggedInUser: loggedInUser, trigger: true }));
+            componentDidMount() {
+                this.setState(() => ({ loggedInUser: loggedInUser }));
             }
         };
         shallow( < NewProfileTest /> );

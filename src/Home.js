@@ -21,11 +21,7 @@ class Home extends React.Component {
         this.sendGetMessageRequest = this.sendGetMessageRequest.bind(this);
         this.sendDeleteMessageRequest = this.sendDeleteMessageRequest.bind(this);
         this.sendMessageRequest = this.sendMessageRequest.bind(this);
-        this.sendMessage = this.sendMessage.bind(this);
-        //this.redirectToProfile = this.redirectToProfile.bind(this);
-        //this.loadMatches = this.loadMatches.bind(this);
-        //this.loadMessages = this.loadMessages.bind(this);
-        //this.toggle = this.toggle.bind(this);        
+        this.sendMessage = this.sendMessage.bind(this);        
     }  
 
     async componentDidMount() {

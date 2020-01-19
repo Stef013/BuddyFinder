@@ -20,7 +20,6 @@ class Profile extends React.Component {
         this.sendBuddyRequest = this.sendBuddyRequest.bind(this);
         this.sendMessageRequest = this.sendMessageRequest.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
-        //this.toggle = this.toggle.bind(this);
     }
 
     componentDidMount() {
