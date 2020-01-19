@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Drawer from 'react-drag-drawer'
 
+const URL =  "https://6d4bfe3f.ngrok.io";
 
 class Profile extends React.Component {
 
@@ -55,7 +56,7 @@ class Profile extends React.Component {
     }
 
     sendGetProfileRequest(id) {
-        axios.get(`http://localhost:4567/user`, { params: { id: id } })
+        axios.get(URL + "/user", { params: { id: id } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -71,7 +72,7 @@ class Profile extends React.Component {
     }
 
     sendCheckBuddyRequest() {
-        axios.get(`http://localhost:4567/buddy/check`, { params: { userid: this.state.loggedInUser.userid, profileid: this.state.profileUser.userid } })
+        axios.get(URL + "/buddy/check", { params: { userid: this.state.loggedInUser.userid, profileid: this.state.profileUser.userid } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -86,7 +87,7 @@ class Profile extends React.Component {
     }
 
     sendBuddyRequest() {
-        axios.post(`http://localhost:4567/message`, {
+        axios.post(URL + "/message", {
             reciever: this.state.profileUser, sender: this.state.loggedInUser,
             sendername: this.state.loggedInUser.username, message: null, isrequest: true
         })
@@ -104,7 +105,7 @@ class Profile extends React.Component {
     }
 
     sendMessageRequest(message) {
-        axios.post(`http://localhost:4567/message`, {
+        axios.post(URL + "/message", {
             reciever: this.state.profileUser, sender: this.state.loggedInUser,
             sendername: this.state.loggedInUser.username, message: message, isrequest: false
         })

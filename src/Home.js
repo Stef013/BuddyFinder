@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Drawer from 'react-drag-drawer'
 
+const URL =  "https://6d4bfe3f.ngrok.io"
+
 class Home extends React.Component {
 
     constructor(props) {
@@ -93,7 +95,7 @@ class Home extends React.Component {
     }
 
     sendfindMatchRequest() {
-        axios.post(`http://localhost:4567/match/`, {
+        axios.post(URL + "/match/", {
             userid: this.state.loggedInUser.userid, hobby1: this.state.loggedInUser.hobby1, hobby2: this.state.loggedInUser.hobby2,
             hobby3: this.state.loggedInUser.hobby3
         })
@@ -112,7 +114,7 @@ class Home extends React.Component {
 
     sendGetMessageRequest() {
 
-        axios.get(`http://localhost:4567/message`, { params: { id: this.state.loggedInUser.userid } })
+        axios.get(URL + "/message", { params: { id: this.state.loggedInUser.userid } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -128,7 +130,7 @@ class Home extends React.Component {
 
     sendDeleteMessageRequest(id) {
 
-        axios.delete(`http://localhost:4567/message`, { params: { id: id } })
+        axios.delete(URL + "/message", { params: { id: id } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -144,7 +146,7 @@ class Home extends React.Component {
     }
 
     sendMessageRequest(message) {
-        axios.post(`http://localhost:4567/message`, {
+        axios.post(URL + "/message", {
             reciever: this.state.message.sender, sender: this.state.loggedInUser,
             sendername: this.state.loggedInUser.username, message: message, isrequest: false
         })
@@ -164,7 +166,7 @@ class Home extends React.Component {
     }
 
     sendGetBuddyRequest() {
-        axios.get(`http://localhost:4567/buddy`, { params: { id: this.state.loggedInUser.userid } })
+        axios.get(URL + "/buddy", { params: { id: this.state.loggedInUser.userid } })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -179,7 +181,7 @@ class Home extends React.Component {
     }
 
     sendAcceptRequest(buddyid, messageid) {
-        axios.post(`http://localhost:4567/buddy`, { userid: this.state.loggedInUser.userid, buddyid: buddyid, messageid: messageid })
+        axios.post(URL + "/buddy", { userid: this.state.loggedInUser.userid, buddyid: buddyid, messageid: messageid })
             .then(res => {
                 console.log(res);
                 console.log(res.data);

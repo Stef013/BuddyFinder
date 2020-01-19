@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+const URL =  "https://6d4bfe3f.ngrok.io";
+
 class NewProfile extends React.Component {
 
     constructor(props) {
@@ -54,7 +56,7 @@ class NewProfile extends React.Component {
 
     sendNewProfileRequest(fname, lname, cntry, cty, desc, hob1, hob2, hob3) {
 
-        axios.put(`http://localhost:4567/user`, {
+        axios.put(URL + "/user", {
             userid: this.state.loggedInUser.userid, username: this.state.loggedInUser.username,
             password: this.state.loggedInUser.password, firstname: fname, lastname: lname, country: cntry, city: cty, description: desc, hobby1: hob1,
             hobby2: hob2, hobby3: hob3
