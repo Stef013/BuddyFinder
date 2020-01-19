@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-const URL =  "http://6d4bfe3f.ngrok.io"
+const URL =  "https://6d4bfe3f.ngrok.io"
 
 class App extends Component {
 
