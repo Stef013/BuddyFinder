@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Drawer from 'react-drag-drawer'
 
-const URL =  "https://6d4bfe3f.ngrok.io"
+const URL =  "https://2059667b.ngrok.io"
 
 class Home extends React.Component {
 

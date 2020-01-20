@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-const URL =  "https://6d4bfe3f.ngrok.io";
+const URL =  "https://2059667b.ngrok.io";
 
 class NewProfile extends React.Component {
 
